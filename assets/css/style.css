@@ -252,25 +252,29 @@ body{
 }
 /* PC: 左にクリームのパネル、右にグラフ、出典はブロック中央下 */
 @media (min-width:768px){
-  .stat{width:min(87.5vw,1260px);margin:min(6.04vw,87px) auto 0;
+  .stat{position:relative;width:min(87.5vw,1260px);margin:min(6.04vw,87px) auto 0;padding:0;
     display:grid;grid-template-columns:min(30.6vw,440px) 1fr;grid-template-areas:"lead chart" "src src"}
-  .stat__lead{grid-area:lead;padding:min(4.6vw,66px) min(1.7vw,24px) min(2.8vw,40px);align-self:start}
+  /* クリームのパネルはブロックの全高（出典の行にもかかる）— Figma */
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;
+    width:min(30.6vw,440px);background:var(--cream)}
+  .stat__lead{grid-area:lead;position:relative;background:none;
+    padding:min(4.3vw,62px) min(1.7vw,24px) 0}
   .stat__headline{font-size:min(2.083vw,30px);line-height:1.57}
-  .stat__label{position:relative;margin-top:min(3.2vw,46px);padding-top:min(2.9vw,42px);
+  .stat__label{position:relative;margin-top:min(2.08vw,30px);padding-top:min(2.29vw,33px);
     font-size:min(1.667vw,24px);line-height:1.5}
   .stat__label::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
     width:min(8vw,115px);height:2px;background:var(--stat-rule)}
-  .stat__figure{margin-top:min(1.1vw,16px)}
+  .stat__figure{margin-top:min(.28vw,4px)}
   .stat__num{font-size:min(10.4vw,150px)}
   .stat__unit{font-size:min(3.6vw,52px);margin-left:min(1.7vw,24px)}
   .stat__note{margin-top:min(2.7vw,39px);font-size:min(1.667vw,24px);line-height:1.21}
-  .stat__chart{grid-area:chart;padding:min(2.5vw,36px) min(2.1vw,30px) 0}
+  .stat__chart{grid-area:chart;position:relative;padding:min(2.5vw,36px) min(2.1vw,30px) 0}
   .chart__heading{font-size:min(1.806vw,26px)}
   .chart__headingIcon{display:block;width:min(3.19vw,46px);height:min(3.4vw,49px);
     margin-right:min(1.32vw,19px)}
   .chart__badge{font-size:min(1.389vw,20px)}
-  .stat__source{grid-area:src;margin-top:min(3.4vw,49px);padding-bottom:min(2.7vw,39px);
-    font-size:min(1.528vw,22px);line-height:1.45}
+  .stat__source{grid-area:src;position:relative;margin-top:min(3.13vw,45px);
+    padding-bottom:min(2.15vw,31px);font-size:min(1.528vw,22px);line-height:1.45}
 }
 
 /* ---------- 10. 棒グラフ（Figma: プロット高329 / 棒幅73 / ピッチ135） ---------- */

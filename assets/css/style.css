@@ -179,7 +179,7 @@ body{
 .pcard__note{font-size:var(--fs-card4note);line-height:var(--lh-card4note)}
 /* SP: 枠の中にアイコン・見出し・補足すべてを収める（Figma: 330x160） */
 @media (max-width:767px){
-  .pcards{margin-top:40px;gap:13px}
+  .pcards{margin-top:40px;gap:13px;grid-template-columns:minmax(0,1fr)}
   .pcard{position:relative;width:330px;max-width:100%;margin-inline:auto;min-height:160px;
     border:1px solid var(--card-border);border-radius:var(--radius);background:var(--white);
     padding:24px 16px 18px;text-align:center}
@@ -299,7 +299,7 @@ body{
 
 /* ---------- 12. 第三者関係図 ---------- */
 .triangle{width:100%;max-width:var(--container);margin:min(2.08vw,30px) auto 0;height:auto}
-.tri-node{font-size:40px;font-weight:700;fill:var(--text)}
+.tri-node{font-size:36px;font-weight:700;fill:var(--text)}
 .tri-node--jsoa{font-size:50px;fill:var(--green)}
 .tri-label{font-size:24px;fill:var(--text)}
 
@@ -328,7 +328,7 @@ body{
 .mcard__title{font-size:var(--fs-card3);font-weight:700;color:var(--green);line-height:1.21;text-align:center}
 .mcard__text{line-height:1.21}
 @media (max-width:767px){
-  .mcards{margin-top:37px;gap:19px}
+  .mcards{margin-top:37px;gap:19px;grid-template-columns:minmax(0,1fr)}
   .mcard{position:relative;width:330px;max-width:100%;margin-inline:auto;background:var(--green-pale);
     padding:18px 16px 20px}
   .mcard__icon{position:absolute;left:14px;top:20px;width:44px;height:44px}

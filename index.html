@@ -225,28 +225,35 @@
       <h2 class="h2">企業と消費者の間に、<br class="sp-only">第三者という選択肢を</h2>
 
       <!-- PC: 三角図 -->
-      <svg class="triangle pc-only" viewBox="0 0 1250 400" role="img" aria-labelledby="triTitle">
+      <!-- viewBox はコンテナ幅 1360 と 1:1。SVG単位 = CSS px なので文字サイズも実寸。 -->
+      <svg class="triangle pc-only" viewBox="0 0 1360 440" role="img" aria-labelledby="triTitle">
         <title id="triTitle">企業から消費者へJSOAを案内し、消費者はJSOAへ相談、JSOAは第三者として対応し必要に応じて企業と連携する関係図</title>
         <defs>
           <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
             <path d="M0 0 10 5 0 10z" fill="#000"/>
           </marker>
         </defs>
-        <text class="tri-node" x="95" y="98">企業</text>
-        <text class="tri-node" x="1155" y="98" text-anchor="end">消費者</text>
-        <text class="tri-node tri-node--jsoa" x="625" y="356" text-anchor="middle">JSOA</text>
 
-        <line x1="205" y1="88" x2="1045" y2="88" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
-        <text class="tri-label" x="625" y="72" text-anchor="middle">相談窓口を案内</text>
+        <!-- ノード -->
+        <text class="tri-node" x="123" y="107">企業</text>
+        <text class="tri-node" x="1174" y="107" text-anchor="end">消費者</text>
+        <text class="tri-node tri-node--jsoa" x="648" y="390" text-anchor="middle">JSOA</text>
 
-        <line x1="1080" y1="112" x2="700" y2="326" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
-        <text class="tri-label" x="950" y="158" text-anchor="end">JSOAへ相談</text>
-        <line x1="712" y1="344" x2="1115" y2="112" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
-        <text class="tri-label" x="1000" y="250">第三者として対応</text>
+        <!-- 企業 → 消費者 -->
+        <text class="tri-label" x="642" y="42" text-anchor="middle">相談窓口を案内</text>
+        <line x1="212" y1="87" x2="1050" y2="87" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
 
-        <line x1="550" y1="326" x2="122" y2="112" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
-        <text class="tri-label" x="250" y="204" text-anchor="end">必要に応じて</text>
-        <text class="tri-label" x="250" y="234" text-anchor="end">企業に連携</text>
+        <!-- 消費者 → JSOA -->
+        <line x1="1124" y1="125" x2="814" y2="381" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="910" y="163" text-anchor="end">JSOAへ相談</text>
+        <!-- JSOA → 消費者 -->
+        <line x1="855" y1="388" x2="1153" y2="132" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="960" y="219">第三者として対応</text>
+
+        <!-- JSOA → 企業 -->
+        <line x1="562" y1="378" x2="186" y2="122" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="280" y="250" text-anchor="middle">必要に応じて</text>
+        <text class="tri-label" x="280" y="280" text-anchor="middle">企業に連携</text>
       </svg>
 
       <!-- SP: 縦フロー -->

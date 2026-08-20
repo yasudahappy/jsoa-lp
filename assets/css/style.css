@@ -23,11 +23,19 @@ a{color:inherit;text-decoration:none}
 /* ---------- 2. Design tokens ---------- */
 :root{
   /* Palette（Figma 実測） */
-  --green:#1a7c32;            /* CTA・ポジティブ要素 */
+  /* Figma は緑を用途ごとに使い分けているため、実測値をそれぞれ保持する */
+  --green:#1a7c32;            /* CTA帯ボタン・比較セクションのアイコン */
+  --green-hero-btn:#449e47;   /* ヒーローのボタン */
+  --green-h2:#0f6d30;         /* 「こんなお悩みありませんか？」 */
+  --green-card:#2e7d32;       /* メリットカードの見出し */
+  --green-card-icon:#14ae5c;  /* メリットカードのアイコン */
+  --green-jsoa:#21c560;       /* 関係図・縦フローの JSOA */
+  --green-after:#045d10;      /* 比較セクション「JSOA加入後」ラベル */
   --green-footer:#3f8f48;     /* フッター */
   --green-pale:#e8f5e9;       /* ヒーロー左パネル・メリットカード */
   --green-tint:#f5f8f6;       /* 比較セクション右パネル・CTA帯 */
   --orange:#ff8903;           /* 見出しの強調 */
+  --orange-chart:#fe7200;     /* グラフ見出し */
   --orange-bar:#fe8109;       /* グラフ・大きな数字・アイコン */
   --orange-strong:#fe5400;    /* 「これまで」ラベル */
   --cream:#fdf5ed;            /* 相談件数ブロック左パネル */
@@ -92,7 +100,7 @@ body{
 }
 .h2{font-size:var(--fs-h2);font-weight:700;line-height:1.2;text-align:center}
 @media (max-width:767px){.problems .h2{font-size:26px}}
-.h2--green{color:var(--green)}
+.h2--green{color:var(--green-h2)}
 .u-orange{color:var(--orange)}
 .section__lead{text-align:center;font-weight:700;
   font-size:var(--fs-sublead);line-height:var(--lh-sublead)}
@@ -107,7 +115,7 @@ body{
 .btn__icon,.btn__arrow{width:1.15em;height:1.15em;flex:none;fill:none;stroke:currentColor}
 .btn__arrow{width:.9em;height:.9em;margin-left:.4em}
 .btn--block{width:100%}
-.hero__cta{font-size:16px;padding:14px 26px}
+.hero__cta{font-size:16px;padding:14px 26px;background:var(--green-hero-btn)}
 .btn--lg{font-size:14px;padding:13px 22px}
 @media (min-width:768px){
   .hero__cta{font-size:min(1.528vw,22px);padding:min(1.32vw,19px) min(2.71vw,39px)}
@@ -208,7 +216,7 @@ body{
 .stat__num{font-weight:700;color:var(--orange-bar);letter-spacing:-.03em}
 .stat__unit{font-weight:700}
 .stat__note b{color:var(--orange-bar);font-weight:700}
-.chart__heading{display:flex;align-items:center;font-weight:700;color:var(--orange);line-height:1.25}
+.chart__heading{display:flex;align-items:center;font-weight:700;color:var(--orange-chart);line-height:1.25}
 .chart__headingIcon{display:none;flex:none;color:var(--orange-bar)}
 .chart__headingIcon svg{width:100%;height:100%}
 .stat__warn{display:flex;align-items:center;gap:14px;background:#fdeee0;border-radius:8px}
@@ -300,12 +308,12 @@ body{
 /* ---------- 12. 第三者関係図 ---------- */
 .triangle{width:100%;max-width:var(--container);margin:min(2.08vw,30px) auto 0;height:auto}
 .tri-node{font-size:36px;font-weight:700;fill:var(--text)}
-.tri-node--jsoa{font-size:50px;fill:var(--green)}
+.tri-node--jsoa{font-size:50px;fill:var(--green-jsoa)}
 .tri-label{font-size:24px;fill:var(--text)}
 
 .vflow{margin-top:34px;text-align:center;display:flex;flex-direction:column;align-items:center}
 .vflow__node{font-size:24px;font-weight:700;line-height:1.3}
-.vflow__node--jsoa{color:var(--green);font-size:32px}
+.vflow__node--jsoa{color:var(--green-jsoa);font-size:32px}
 .vflow__label{font-size:16px;line-height:1.35}
 .vflow__arrow{display:block;width:1px;height:16px;background:var(--text);position:relative;margin:5px 0}
 .vflow__arrow::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
@@ -316,16 +324,16 @@ body{
   .vflow__arrow{margin:7px 0}}
 @media (max-width:767px){.flowsec__text{margin-top:38px;font-size:12px;line-height:1.17}}
 @media (min-width:768px){
-  .flowsec__text{margin-top:min(4.44vw,64px);font-size:min(1.667vw,24px);line-height:1.21;
+  .flowsec__text{margin-top:min(1.67vw,24px);font-size:min(1.667vw,24px);line-height:1.21;
     max-width:none}
 }
 
 /* ---------- 13. メリット3枚（Figma: アイコンは枠の外・角丸なし） ---------- */
 .mcards{display:grid}
-.mcard__icon{color:var(--green)}
+.mcard__icon{color:var(--green-card-icon)}
 .mcard__icon svg{width:100%;height:100%}
 .mcard__body{background:var(--green-pale)}
-.mcard__title{font-size:var(--fs-card3);font-weight:700;color:var(--green);line-height:1.21;text-align:center}
+.mcard__title{font-size:var(--fs-card3);font-weight:700;color:var(--green-card);line-height:1.21;text-align:center}
 .mcard__text{line-height:1.21}
 @media (max-width:767px){
   .mcards{margin-top:37px;gap:19px;grid-template-columns:minmax(0,1fr)}
@@ -359,7 +367,7 @@ body{
 .cmp__col--before,.cmp__col--after{background:#fefefe}
 .cmp__head{text-align:center;font-weight:700}
 .cmp__col--before .cmp__head{background:#fceee1;color:var(--orange-strong)}
-.cmp__col--after .cmp__head{background:#e8f0e9;color:var(--green)}
+.cmp__col--after .cmp__head{background:#e8f0e9;color:var(--green-after)}
 .cmp__rel{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
 .cmp__actor{display:flex;flex-direction:column;align-items:center;gap:4px;flex:none;text-align:center}
 .cmp__actorIcon svg{width:100%;height:100%}

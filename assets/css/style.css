@@ -371,35 +371,43 @@ body{
 .cmp__arrow{display:none}
 .cmp__col{border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
 .cmp__body{flex:1}
-.cmp__col--before,.cmp__col--after{background:#fefefe}
-.cmp__head{text-align:center;font-weight:700}
-.cmp__col--before .cmp__head{background:#fceee1;color:var(--orange-strong)}
-.cmp__col--after .cmp__head{background:#e8f0e9;color:var(--green-after)}
+.cmp__col--before,.cmp__col--after{background:#fefefe;border:2px solid}
+.cmp__col--before{border-color:#fedecf}
+.cmp__col--after{border-color:#dde7e2}
+.cmp__head{text-align:center;font-weight:700;line-height:1.3}
+.cmp__col--before .cmp__head{background:#fef8f2;color:var(--orange-strong)}
+.cmp__col--after .cmp__head{background:#f6f9f7;color:var(--green-after)}
 .cmp__rel{display:flex;align-items:flex-start;justify-content:space-between;gap:6px}
-.cmp__actor{display:flex;flex-direction:column;align-items:center;gap:4px;flex:none;text-align:center}
+.cmp__actor{display:flex;flex-direction:column;align-items:center;flex:none;text-align:center}
 .cmp__actorIcon svg{width:100%;height:100%}
 .cmp__col--before .cmp__actorIcon{color:var(--orange-bar)}
 .cmp__col--after .cmp__actorIcon{color:var(--green)}
-.cmp__actorName{font-weight:700;line-height:1.3}
-.cmp__actorName--jsoa{color:var(--green)}
+.cmp__actorName{font-weight:700;line-height:1.3;white-space:nowrap}
 .cmp__actorName--jsoa small{display:block;font-weight:400;color:var(--text)}
-.cmp__link{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:0}
+.cmp__link{flex:1;display:flex;flex-direction:column;align-items:center;min-width:0}
 .cmp__linkLabel{line-height:1.2;white-space:nowrap}
-.cmp__line{position:relative;width:100%;height:1px;background:#555}
-.cmp__line--to::after,.cmp__line--both::after{content:"";position:absolute;right:-1px;top:50%;
-  transform:translateY(-50%);border:4px solid transparent;border-left-color:#555;border-right:0}
-.cmp__line--both::before{content:"";position:absolute;left:-1px;top:50%;
-  transform:translateY(-50%);border:4px solid transparent;border-right-color:#555;border-left:0}
-.cmp__down{display:block;width:1px;background:#555;position:relative}
-.cmp__down::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
-  border:4px solid transparent;border-top-color:#555;border-bottom:0}
+/* 連結線と矢頭（Figma: 線 5px / 矢頭 18x11） */
+.cmp__line{position:relative;width:100%;height:var(--ln,1px);background:#555}
+.cmp__line--to::after,.cmp__line--both::after{content:"";position:absolute;right:0;top:50%;
+  transform:translateY(-50%);border-top:var(--ah,4px) solid transparent;
+  border-bottom:var(--ah,4px) solid transparent;border-left:var(--al,4px) solid #555}
+.cmp__line--both::before{content:"";position:absolute;left:0;top:50%;
+  transform:translateY(-50%);border-top:var(--ah,4px) solid transparent;
+  border-bottom:var(--ah,4px) solid transparent;border-right:var(--al,4px) solid #555}
+.cmp__down{display:block;width:var(--ln,1px);background:#555;position:relative}
+.cmp__down::after{content:"";position:absolute;bottom:calc(var(--dl,4px) * -1);left:50%;
+  transform:translateX(-50%);border-left:var(--dh,4px) solid transparent;
+  border-right:var(--dh,4px) solid transparent;border-top:var(--dl,4px) solid #555}
 .cmp__steps li{display:flex;align-items:center;background:var(--white);
-  border:1px solid var(--card-border);font-weight:500;line-height:1.4}
+  border:1px solid var(--card-border);font-weight:700;line-height:1.4}
+.cmp__col--before .cmp__steps li{border-color:#fef0e7}
+.cmp__col--after .cmp__steps li{border-color:#ebf1ee}
 .cmp__steps li + li{position:relative}
 .cmp__steps li + li::before{content:"";position:absolute;left:50%;transform:translateX(-50%);
-  width:1px;background:#555}
+  width:var(--ln,1px);background:#555}
 .cmp__steps li + li::after{content:"";position:absolute;left:50%;transform:translateX(-50%);
-  border:4px solid transparent;border-top-color:#555;border-bottom:0}
+  border-left:var(--dh,4px) solid transparent;border-right:var(--dh,4px) solid transparent;
+  border-top:var(--dl,4px) solid #555}
 .cmp__stepIcon{flex:none}
 .cmp__stepIcon svg{width:100%;height:100%}
 .cmp__col--before .cmp__stepIcon{color:var(--orange-bar)}
@@ -407,76 +415,103 @@ body{
 .cmp__sub{text-align:center;font-weight:700}
 .cmp__col--before .cmp__sub{color:var(--orange)}
 .cmp__col--after .cmp__sub{color:var(--green)}
-.cmp__list li{display:flex;align-items:flex-start;line-height:1.45}
-.cmp__col--before .cmp__list li{background:#fdefe2}
-.cmp__col--after .cmp__list li{background:#e9f2eb}
-.cmp__listIcon{flex:none;margin-top:.15em}
+.cmp__list li{display:flex;align-items:center;line-height:1.45}
+.cmp__col--before .cmp__list li{background:#fef8f3}
+.cmp__col--after .cmp__list li{background:#f6f9f7}
+.cmp__listIcon{flex:none}
 .cmp__listIcon svg{width:100%;height:100%}
 .cmp__col--before .cmp__listIcon{color:var(--orange-bar)}
 .cmp__col--after .cmp__listIcon{color:var(--green)}
 .cmp__result{display:flex;align-items:center;font-weight:700;line-height:1.4}
-.cmp__col--before .cmp__result{background:#fbe3d0}
-.cmp__col--after .cmp__result{background:#dfeee4;color:var(--green)}
+.cmp__col--before .cmp__result{background:#fef8f2}
+.cmp__col--after .cmp__result{background:#f5f8f6;color:var(--green)}
 .cmp__resultIcon{flex:none}
 .cmp__resultIcon svg{width:100%;height:100%}
 .cmp__col--before .cmp__resultIcon{color:var(--orange-bar)}
 .cmp__col--after .cmp__resultIcon{color:var(--green)}
 
 @media (max-width:767px){
-  .cmp{margin-top:23px;gap:6px}
-  .cmp__head{padding:3px 10px;font-size:11px}
-  .cmp__body{padding:8px 10px 8px}
-  .cmp__actor{width:44px}
-  .cmp__actorIcon{width:19px;height:19px}
-  .cmp__actorName{font-size:8px}
-  .cmp__actorName--jsoa{font-size:9px}
+  /* Figma(SP): パネル 320x333 / 306、ヘッダー 24 */
+  .cmp{margin-top:23px;gap:6px;max-width:320px;margin-inline:auto}
+  .cmp__col{--ln:2px;--ah:3px;--al:5px;--dh:3.5px;--dl:4px}
+  .cmp__head{padding:5px 10px;font-size:11px}
+  .cmp__body{padding:6px 18px 5px}
+  .cmp__rel{max-width:232px;margin-inline:auto}
+  .cmp__actor{width:24px;gap:3px}
+  .cmp__actorIcon{width:22px;height:22px}
+  .cmp__actorName{font-size:8.5px}
+  .cmp__actorName--jsoa{font-size:8.5px}
   .cmp__actorName--jsoa small{font-size:7px}
-  .cmp__link{padding-top:8px}
-  .cmp__linkLabel{font-size:7px}
-  .cmp__down{height:11px;margin:6px auto 4px}
-  .cmp__col--before .cmp__down{margin-left:22px;margin-right:auto}
+  .cmp__link{padding-top:2px;gap:3.5px}
+  .cmp__linkLabel{font-size:8px}
+  .cmp__line{width:77%}
+  .cmp__rel--three .cmp__line{width:58%}
+  .cmp__down{height:24px;margin:-20px auto 5px}
+  .cmp__col--after .cmp__down{height:5px;margin:2px auto 5px}
   .cmp__col--after .cmp__steps br{display:none}
-  .cmp__steps li{gap:7px;padding:3px 9px;border-radius:5px;font-size:9px}
+  .cmp__steps{margin-inline:2px}
+  .cmp__steps li{gap:20px;padding:3.5px 9px 3.5px 40px;border-radius:5px;
+    font-size:9.3px;line-height:1.5}
   .cmp__steps li + li{margin-top:9px}
   .cmp__steps li + li::before{top:-10px;height:7px}
   .cmp__steps li + li::after{top:-4px}
-  .cmp__stepIcon{width:16px;height:16px}
-  .cmp__sub{margin-top:9px;font-size:10px}
-  .cmp__list{margin-top:4px;display:grid;gap:1px}
-  .cmp__list li{gap:6px;padding:0 8px;border-radius:4px;font-size:9px;line-height:1.3}
-  .cmp__listIcon{width:11px;height:11px}
-  .cmp__result{margin-top:6px;gap:8px;padding:6px 10px;border-radius:5px;font-size:10px}
-  .cmp__resultIcon{width:17px;height:17px}
+  .cmp__stepIcon{width:18px;height:18px}
+  /* SP は見出し＋箇条書きが1枚の色面（Figma） */
+  .cmp__sub{margin-top:5px;padding:4px 0 2px;font-size:9.5px;border-radius:5px 5px 0 0}
+  .cmp__col--before .cmp__sub{background:#fef8f2}
+  .cmp__col--after .cmp__sub{background:#f6f9f7}
+  .cmp__list{margin-top:0;display:grid;gap:0}
+  .cmp__list li{gap:5px;padding:2.5px 8px;border-radius:0;font-size:7.5px;line-height:1.3}
+  .cmp__listIcon{width:12px;height:12px}
+  .cmp__result{margin-top:0;gap:10px;padding:4px 9px 4px 13px;
+    border-radius:0 0 5px 5px;font-size:10px}
+  .cmp__resultIcon{width:20px;height:20px}
 }
+
 @media (min-width:768px){
-  .cmp{margin-top:min(1.11vw,16px);grid-template-columns:1fr auto 1fr;align-items:stretch;gap:min(1.9vw,27px)}
-  .cmp__arrow{display:block;align-self:center;width:0;height:0;
-    border:min(1.5vw,22px) solid transparent;border-left-color:#c9cdc9;border-right:0}
-  .cmp__head{padding:min(1.15vw,16px);font-size:min(1.389vw,20px)}
-  .cmp__body{padding:min(1.11vw,16px) min(1.7vw,25px) min(1.39vw,20px)}
-  .cmp__actor{width:min(6vw,86px)}
-  .cmp__actorIcon{width:min(3vw,44px);height:min(3vw,44px)}
-  .cmp__actorName{font-size:min(1.04vw,15px)}
-  .cmp__actorName--jsoa{font-size:min(1.11vw,16px)}
-  .cmp__actorName--jsoa small{font-size:min(.83vw,12px)}
-  .cmp__linkLabel{font-size:min(.9vw,13px)}
-  .cmp__link{padding-top:min(1.5vw,22px)}
-  .cmp__down{height:min(1.53vw,22px);margin:min(.7vw,10px) auto min(.55vw,8px)}
-  .cmp__col--before .cmp__down{margin-left:min(3vw,43px);margin-right:auto}
-  .cmp__steps li{gap:min(1vw,14px);padding:min(.83vw,12px) min(1.3vw,19px);
-    border-radius:9px;font-size:min(1.11vw,16px)}
-  .cmp__steps li + li{margin-top:min(1.9vw,27px)}
-  .cmp__steps li + li::before{top:min(-1.5vw,-21px);height:min(1.1vw,16px)}
-  .cmp__steps li + li::after{top:min(-.6vw,-8px)}
-  .cmp__stepIcon{width:min(2.1vw,30px);height:min(2.1vw,30px)}
-  .cmp__sub{margin-top:min(2.71vw,39px);font-size:min(1.25vw,18px)}
-  .cmp__list{margin-top:min(.9vw,13px);display:grid;gap:min(.28vw,4px)}
-  .cmp__list li{gap:min(.7vw,10px);padding:min(.35vw,5px) min(1.1vw,16px);
-    border-radius:7px;font-size:min(1.04vw,15px)}
-  .cmp__listIcon{width:min(1.4vw,20px);height:min(1.4vw,20px)}
-  .cmp__result{margin-top:min(1.11vw,16px);gap:min(.7vw,10px);
-    padding:min(1.04vw,15px) min(1.3vw,19px);border-radius:9px;font-size:min(1.18vw,17px)}
-  .cmp__resultIcon{width:min(2.1vw,30px);height:min(2.1vw,30px)}
+  /* Figma: パネル 627/643 x 838、間のガター 87（矢印 30x50） */
+  .cmp{margin-top:min(1.11vw,16px);grid-template-columns:1fr auto 1fr;
+    align-items:stretch;gap:min(2.01vw,29px)}
+  .cmp__col{--ln:min(.35vw,5px);--ah:min(.63vw,9px);--al:min(.76vw,11px);
+    --dh:min(.66vw,9.5px);--dl:min(.83vw,12px)}
+  .cmp__arrow{display:block;align-self:start;margin-top:min(22.7vw,327px);width:0;height:0;
+    border-top:min(1.74vw,25px) solid transparent;border-bottom:min(1.74vw,25px) solid transparent;
+    border-left:min(2.08vw,30px) solid #b2b3b2}
+  .cmp__head{padding:min(.715vw,10.3px);font-size:min(1.944vw,28px)}
+  .cmp__body{padding:min(1.11vw,16px) min(2.08vw,30px) min(1.39vw,20px)}
+  /* 関係図は本文幅いっぱいではなく中央寄せ（Figma: 左 461 / 右 500） */
+  .cmp__rel{max-width:min(32vw,461px);margin-inline:auto}
+  .cmp__rel--three{max-width:min(34.7vw,500px)}
+  .cmp__actor{width:min(4.03vw,58px);gap:min(.63vw,9px)}
+  .cmp__actorIcon{width:min(4.03vw,58px);height:min(4.03vw,58px)}
+  .cmp__actorName{font-size:min(1.25vw,18px)}
+  .cmp__actorName--jsoa small{font-size:min(.97vw,14px)}
+  .cmp__linkLabel{font-size:min(1.25vw,18px)}
+  .cmp__link{padding-top:min(.35vw,5px);gap:min(.6vw,8.7px)}
+  .cmp__line{width:72%}
+  .cmp__rel--three .cmp__line{width:55%}
+  /* 下向き矢印はパネル中央。Figma では氏名行の高さに食い込む */
+  .cmp__down{height:min(3.82vw,55px);
+    margin:max(-2.01vw,-29px) auto min(1.25vw,18px)}
+  .cmp__col--after .cmp__down{height:min(.63vw,9px);
+    margin:min(.35vw,5px) auto min(1.18vw,17px)}
+  .cmp__steps{margin-inline:min(.9vw,13px)}
+  .cmp__steps li{gap:min(3.13vw,45px);min-height:min(4.86vw,70px);
+    padding:min(.56vw,8px) min(1.32vw,19px) min(.56vw,8px) min(5.56vw,80px);
+    border-radius:11px;font-size:min(1.389vw,20px);line-height:1.3}
+  .cmp__steps li + li{margin-top:min(1.46vw,21px)}
+  .cmp__steps li + li::before{top:min(-1.46vw,-21px);height:min(.63vw,9px)}
+  .cmp__steps li + li::after{top:max(-.83vw,-12px)}
+  .cmp__stepIcon{width:min(3.13vw,45px);height:min(3.13vw,45px)}
+  .cmp__sub{margin-top:min(1.6vw,23px);font-size:min(1.53vw,22px);line-height:1.4}
+  .cmp__list{margin-top:min(.63vw,9px);display:grid;gap:min(.19vw,2.7px)}
+  .cmp__list li{gap:min(1.32vw,19px);padding:min(.38vw,5.5px) min(1.11vw,16px);
+    border-radius:5px;font-size:min(1.32vw,19px)}
+  .cmp__listIcon{width:min(2.08vw,30px);height:min(2.08vw,30px)}
+  .cmp__result{margin-top:min(1.11vw,16px);gap:min(1.11vw,16px);
+    padding:min(.42vw,6px) min(1.32vw,19px) min(.42vw,6px) min(1.18vw,17px);
+    border-radius:9px;font-size:min(1.53vw,22px)}
+  .cmp__resultIcon{width:min(3.33vw,48px);height:min(3.33vw,48px)}
 }
 
 /* ---------- 15. CTA帯（Figma: 1356x157 / #f4f8f6） ---------- */

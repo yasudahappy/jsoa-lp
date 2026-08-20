@@ -34,13 +34,13 @@
     <path d="M14 8 8.5 13M34 8l5.5 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
   </symbol>
   <symbol id="i-hourglass" viewBox="0 0 48 48">
-    <path d="M13 7h22M13 41h22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-    <path d="M16 7v6c0 5 8 8 8 11s-8 6-8 11v6M32 7v6c0 5-8 8-8 11s8 6 8 11v6" fill="none" stroke="currentColor" stroke-width="3"/>
-    <path d="M19 36c1.5-3 3.5-4 5-4s3.5 1 5 4z" fill="currentColor"/>
+    <rect x="11" y="4" width="26" height="5" rx="2.5" fill="currentColor"/>
+    <rect x="11" y="39" width="26" height="5" rx="2.5" fill="currentColor"/>
+    <path d="M15 9h18v5c0 5.5-9 8-9 10s9 4.5 9 10v5H15v-5c0-5.5 9-8 9-10s-9-4.5-9-10z" fill="currentColor"/>
   </symbol>
   <symbol id="i-chat" viewBox="0 0 48 48">
-    <path d="M8 11h32a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H20l-9 7v-7H8a3 3 0 0 1-3-3V14a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
-    <path d="M15 20h18M15 26h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <path d="M6 8h36a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4H21l-11 8v-8H6a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4z" fill="currentColor"/>
+    <path d="M11 17h26M11 25h17" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
   </symbol>
   <symbol id="i-gov" viewBox="0 0 48 48">
     <path d="M24 5 44 15H4z" fill="currentColor"/>
@@ -97,6 +97,9 @@
   <symbol id="i-arrow" viewBox="0 0 48 48">
     <path d="M8 24h30m-9-10 10 10-10 10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+  <symbol id="i-chevron" viewBox="0 0 48 48">
+    <path d="M19 12l14 12-14 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
 </svg>
 
 <!-- ============ ヘッダー ============ -->
@@ -109,7 +112,7 @@
       <ul class="nav__list">
         <li><a href="#service">サービス</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#" data-cta>お問い合わせ</a></li>
+        <li><a href="#" data-cta>お問合わせ</a></li>
       </ul>
     </nav>
   </div>
@@ -123,7 +126,7 @@
       <div class="hero__body">
         <p class="hero__eyebrow">訪問販売事業者のための第三者相談窓口</p>
         <h1 class="hero__title">訪問販売のトラブルから<br>企業と消費者を守る</h1>
-        <p class="hero__lead">特定商取引法の企業リスクに対応。<br>第三者相談窓口が<br>企業と消費者の間に入り、<br>トラブルの大きくなる前の解決をサポートします。</p>
+        <p class="hero__lead">特商法時代の企業リスクに対応。<br>第三者相談窓口が<br>企業と消費者の間に入り、<br>トラブルの大きくなる前の解決をサポートします。</p>
         <a class="btn btn--primary hero__cta" href="#" data-cta>資料請求・お問い合わせ</a>
       </div>
     </div>
@@ -155,7 +158,7 @@
         </li>
         <li class="pcard">
           <span class="pcard__icon"><svg><use href="#i-chat"/></svg></span>
-          <div class="pcard__box"><h3 class="pcard__title">消費者<br>センター<br>への相談</h3></div>
+          <div class="pcard__box"><h3 class="pcard__title">消費者<br class="pc-only pcard__br">センター<br>への相談</h3></div>
           <p class="pcard__note">小さな行き違いから<br>外部への相談につながることも</p>
         </li>
         <li class="pcard">
@@ -208,11 +211,11 @@
             <p>件数は高止まりしており、<br>相談が重なることで<b>行政対応</b>に<br>発展するリスクが高まっています。</p>
           </div>
 
-          <p class="stat__source">出典：消費者庁「特定商取引に関する消費生活相談の状況」<br>（PIO-NET・販売購入形態別）</p>
+          <p class="stat__source">出典：消費者庁<br class="sp-only">「特定商取引に関する消費生活相談の状況」<br>（PIO-NET・販売購入形態別）</p>
         </div>
       </div>
 
-      <p class="bridge">トラブルが大きくなる前に<br>第三者が対応します。</p>
+      <p class="bridge"><span class="u-orange">トラブルが大きくなる</span>前に<br>第三者が対応します。</p>
     </div>
   </section>
 
@@ -229,19 +232,19 @@
             <path d="M0 0 10 5 0 10z" fill="#000"/>
           </marker>
         </defs>
-        <text class="tri-node" x="95" y="62">企業</text>
-        <text class="tri-node" x="1155" y="62" text-anchor="end">消費者</text>
-        <text class="tri-node tri-node--jsoa" x="625" y="368" text-anchor="middle">JSOA</text>
+        <text class="tri-node" x="95" y="98">企業</text>
+        <text class="tri-node" x="1155" y="98" text-anchor="end">消費者</text>
+        <text class="tri-node tri-node--jsoa" x="625" y="356" text-anchor="middle">JSOA</text>
 
-        <line x1="205" y1="80" x2="1045" y2="80" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
-        <text class="tri-label" x="625" y="64" text-anchor="middle">相談窓口を案内</text>
+        <line x1="205" y1="88" x2="1045" y2="88" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="625" y="72" text-anchor="middle">相談窓口を案内</text>
 
-        <line x1="1070" y1="100" x2="700" y2="326" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <line x1="1080" y1="112" x2="700" y2="326" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
         <text class="tri-label" x="950" y="158" text-anchor="end">JSOAへ相談</text>
-        <line x1="712" y1="344" x2="1105" y2="104" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <line x1="712" y1="344" x2="1115" y2="112" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
         <text class="tri-label" x="1000" y="250">第三者として対応</text>
 
-        <line x1="550" y1="326" x2="125" y2="100" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <line x1="550" y1="326" x2="122" y2="112" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
         <text class="tri-label" x="250" y="204" text-anchor="end">必要に応じて</text>
         <text class="tri-label" x="250" y="234" text-anchor="end">企業に連携</text>
       </svg>
@@ -249,14 +252,19 @@
       <!-- SP: 縦フロー -->
       <div class="vflow sp-only">
         <p class="vflow__node">企業</p>
-        <p class="vflow__step"><span class="vflow__arrow"></span>相談窓口を案内</p>
+        <span class="vflow__arrow" aria-hidden="true"></span>
+        <p class="vflow__label">相談窓口を案内</p>
+        <span class="vflow__arrow" aria-hidden="true"></span>
         <p class="vflow__node">消費者</p>
-        <p class="vflow__step"><span class="vflow__arrow"></span>JSOAへ相談</p>
+        <span class="vflow__arrow" aria-hidden="true"></span>
+        <p class="vflow__label">JSOAへ相談</p>
+        <span class="vflow__arrow" aria-hidden="true"></span>
         <p class="vflow__node vflow__node--jsoa">JSOA</p>
-        <p class="vflow__step"><span class="vflow__arrow"></span>必要に応じて<br>企業に連携</p>
+        <span class="vflow__arrow" aria-hidden="true"></span>
+        <p class="vflow__label">必要に応じて<br>企業に連携</p>
       </div>
 
-      <p class="flowsec__text">企業様から消費者へJSOAを第三者相談窓口としてご案内いただきます。<br>消費者からの相談をJSOAが受け付け、必要に応じて企業様と連携しながら問題解決をサポートします。</p>
+      <p class="flowsec__text">企業様から消費者へJSOAを第三者相談窓口としてご<br>案内いただきます。<br>消費者からの相談をJSOAが受け付け、必要に応じて<br>企業様と連携しながら問題解決をサポートします。</p>
     </div>
   </section>
 
@@ -267,18 +275,24 @@
       <ul class="mcards">
         <li class="mcard">
           <span class="mcard__icon"><svg><use href="#i-headset"/></svg></span>
-          <h3 class="mcard__title">相談窓口を<br>増やせる</h3>
-          <p class="mcard__text">消費者が企業の担当者へ相談しづらい場合にも、第三者の相談窓口を案内できます。</p>
+          <div class="mcard__body">
+            <h3 class="mcard__title">相談窓口を<br>増やせる</h3>
+            <p class="mcard__text">消費者が企業の担当者へ相談しづらい場合にも、第三者の相談窓口を案内できます。</p>
+          </div>
         </li>
         <li class="mcard">
           <span class="mcard__icon"><svg><use href="#i-check"/></svg></span>
-          <h3 class="mcard__title">トラブルの早期<br>解決をサポート</h3>
-          <p class="mcard__text">消費者からの相談を受け付け必要に応じて企業と連携しながら問題解決をサポートします。</p>
+          <div class="mcard__body">
+            <h3 class="mcard__title">トラブルの早期<br>解決をサポート</h3>
+            <p class="mcard__text">消費者からの相談を受け付け必要に応じて企業と連携しながら問題解決をサポートします。</p>
+          </div>
         </li>
         <li class="mcard">
           <span class="mcard__icon"><svg><use href="#i-shield"/></svg></span>
-          <h3 class="mcard__title">企業の対応負担<br>を軽減</h3>
-          <p class="mcard__text">企業だけでは対応が難しい相談について、第三者として間に入り、解決をサポートします。</p>
+          <div class="mcard__body">
+            <h3 class="mcard__title">企業の対応負担<br>を軽減</h3>
+            <p class="mcard__text">企業だけでは対応が難しい相談について、第三者として間に入り、解決をサポートします。</p>
+          </div>
         </li>
       </ul>
     </div>
@@ -362,7 +376,7 @@
         <a class="btn btn--primary btn--lg" href="#" data-cta>
           <svg class="btn__icon"><use href="#i-doc"/></svg>
           <span>資料請求・お問い合わせ</span>
-          <svg class="btn__arrow"><use href="#i-arrow"/></svg>
+          <svg class="btn__arrow"><use href="#i-chevron"/></svg>
         </a>
       </div>
     </div>
@@ -373,20 +387,24 @@
 <!-- ============ フッター ============ -->
 <footer class="footer">
   <div class="container footer__inner">
-    <div class="footer__brand">
-      <img class="footer__logo" src="assets/images/LOGO.png" width="126" height="126" alt="">
-      <p class="footer__org">一般社団法人訪問販売適正化推進協会</p>
-      <p class="footer__copy">©2026 JSOA</p>
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/images/LOGO-white.png" width="126" height="126" alt="">
+        <p class="footer__org">一般社団法人訪問販売適正化推進協会</p>
+      </div>
+      <nav class="footer__nav" aria-label="フッターナビゲーション">
+        <ul>
+          <li><a href="#service">サービス</a></li>
+          <li><a href="#about">第三者相談窓口について</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#" data-cta>お問い合わせ</a></li>
+        </ul>
+      </nav>
     </div>
-    <nav class="footer__nav" aria-label="フッターナビゲーション">
-      <ul>
-        <li><a href="#service">サービス</a></li>
-        <li><a href="#about">第三者相談窓口について</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#" data-cta>お問い合わせ</a></li>
-        <li><a href="#privacy">プライバシーポリシー</a></li>
-      </ul>
-    </nav>
+    <div class="footer__bottom">
+      <p class="footer__copy">@2026 JSOA</p>
+      <p class="footer__privacy"><a href="#privacy">プライバシーポリシー</a></p>
+    </div>
   </div>
 </footer>
 

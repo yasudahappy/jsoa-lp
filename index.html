@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>一般社団法人訪問販売適正化推進協会（JSOA）｜訪問販売事業者のための第三者相談窓口</title>
+<meta name="description" content="JSOAは訪問販売事業者のための第三者相談窓口です。企業と消費者の間に入り、トラブルが大きくなる前の早期解決と企業の対応負担の軽減をサポートします。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一般社団法人訪問販売適正化推進協会（JSOA）">
+<meta property="og:description" content="訪問販売のトラブルから企業と消費者を守る。第三者相談窓口が早期解決をサポートします。">
+<meta property="og:image" content="assets/images/hero-main.jpg">
+<link rel="icon" href="assets/images/LOGO.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>
+  /* ============================================================
+     CTA（資料請求・お問い合わせ）の遷移先
+     予約システム／Googleフォームが用意できたら、この1行だけ書き換えてください。
+     ページ内すべての CTA ボタンとナビの「お問い合わせ」が一括で切り替わります。
+     例: window.JSOA_CTA_URL = 'https://example.com/reserve';
+     ============================================================ */
+  window.JSOA_CTA_URL = '';
+</script>
+</head>
+<body>
+
+<!-- ============ SVG アイコンスプライト ============ -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-clock" viewBox="0 0 48 48">
+    <circle cx="24" cy="25" r="15" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M24 17v8.5l6 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <path d="M14 8 8.5 13M34 8l5.5 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-hourglass" viewBox="0 0 48 48">
+    <path d="M13 7h22M13 41h22" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <path d="M16 7v6c0 5 8 8 8 11s-8 6-8 11v6M32 7v6c0 5-8 8-8 11s8 6 8 11v6" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M19 36c1.5-3 3.5-4 5-4s3.5 1 5 4z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-chat" viewBox="0 0 48 48">
+    <path d="M8 11h32a3 3 0 0 1 3 3v18a3 3 0 0 1-3 3H20l-9 7v-7H8a3 3 0 0 1-3-3V14a3 3 0 0 1 3-3z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M15 20h18M15 26h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-gov" viewBox="0 0 48 48">
+    <path d="M24 5 44 15H4z" fill="currentColor"/>
+    <path d="M8 18v18M17 18v18M31 18v18M40 18v18" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    <path d="M3 39h42" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-chartup" viewBox="0 0 48 48">
+    <path d="M6 40h8V26H6zM19 40h8V18h-8zM32 40h8V10h-8z" fill="currentColor"/>
+    <path d="M28 7h13v13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-headset" viewBox="0 0 48 48">
+    <path d="M9 28v-4a15 15 0 0 1 30 0v4" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+    <rect x="4" y="26" width="9" height="14" rx="4" fill="currentColor"/>
+    <rect x="35" y="26" width="9" height="14" rx="4" fill="currentColor"/>
+    <path d="M39 38v1a5 5 0 0 1-5 5h-6" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="19" fill="currentColor"/>
+    <path d="M15 24.5 21.5 31 34 18.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 48 48">
+    <path d="M24 4 41 10v13c0 11-7 18-17 21-10-3-17-10-17-21V10z" fill="currentColor"/>
+    <path d="M16 24.5 22 30.5 33 19" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-handshake" viewBox="0 0 48 48">
+    <path d="M3 28.5 15.5 21.5M45 28.5 32.5 21.5" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round"/>
+    <rect x="14.5" y="18" width="19" height="12" rx="6" fill="none" stroke="currentColor" stroke-width="3"/>
+    <path d="M21 19.5v9M27 19.5v9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-building" viewBox="0 0 48 48">
+    <path d="M8 44V7a2 2 0 0 1 2-2h18a2 2 0 0 1 2 2v37z" fill="currentColor"/>
+    <path d="M32 44V19h7a2 2 0 0 1 2 2v23z" fill="currentColor"/>
+    <g fill="#fff"><rect x="13" y="10" width="4" height="4"/><rect x="21" y="10" width="4" height="4"/><rect x="13" y="18" width="4" height="4"/><rect x="21" y="18" width="4" height="4"/><rect x="13" y="26" width="4" height="4"/><rect x="21" y="26" width="4" height="4"/><rect x="35" y="25" width="3" height="4"/><rect x="35" y="33" width="3" height="4"/></g>
+  </symbol>
+  <symbol id="i-person" viewBox="0 0 48 48">
+    <circle cx="24" cy="14" r="9" fill="currentColor"/>
+    <path d="M6 45c0-10 8-17 18-17s18 7 18 17z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="19" fill="currentColor"/>
+    <path d="M24 13v16" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="24" cy="36" r="2.8" fill="#fff"/>
+  </symbol>
+  <symbol id="i-warning" viewBox="0 0 48 48">
+    <path d="M24 4 46 43H2z" fill="currentColor"/>
+    <path d="M24 18v11" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="24" cy="36" r="2.8" fill="#fff"/>
+  </symbol>
+  <symbol id="i-doc" viewBox="0 0 48 48">
+    <path d="M10 4h19l9 9v31H10z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M28 4v10h10" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M17 24h14M17 32h14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 48 48">
+    <path d="M8 24h30m-9-10 10 10-10 10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- ============ ヘッダー ============ -->
+<header class="header">
+  <div class="header__inner">
+    <a class="header__logo" href="#top">
+      <img src="assets/images/LOGO.png" width="126" height="126" alt="一般社団法人訪問販売適正化推進協会">
+    </a>
+    <nav class="nav" aria-label="メインナビゲーション">
+      <ul class="nav__list">
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#" data-cta>お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ ヒーロー ============ -->
+  <section class="hero">
+    <div class="hero__panel">
+      <div class="hero__body">
+        <p class="hero__eyebrow">訪問販売事業者のための第三者相談窓口</p>
+        <h1 class="hero__title">訪問販売のトラブルから<br>企業と消費者を守る</h1>
+        <p class="hero__lead">特定商取引法の企業リスクに対応。<br>第三者相談窓口が<br>企業と消費者の間に入り、<br>トラブルの大きくなる前の解決をサポートします。</p>
+        <a class="btn btn--primary hero__cta" href="#" data-cta>資料請求・お問い合わせ</a>
+      </div>
+    </div>
+    <div class="hero__media">
+      <picture>
+        <source media="(max-width: 767px)" srcset="assets/images/hero-main-sp.webp" type="image/webp">
+        <source srcset="assets/images/hero-main.webp" type="image/webp">
+        <img src="assets/images/hero-main.jpg" width="1440" height="1640" alt="相談に応じるスタッフ" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+  </section>
+
+  <!-- ============ こんなお悩みありませんか？ ============ -->
+  <section class="section problems">
+    <div class="container">
+      <h2 class="h2 h2--green">こんなお悩みありませんか？</h2>
+      <p class="section__lead">訪問販売の消費者対応に<br>こんなリスクを抱えていませんか？</p>
+
+      <ul class="pcards">
+        <li class="pcard">
+          <span class="pcard__icon"><svg><use href="#i-clock"/></svg></span>
+          <div class="pcard__box"><h3 class="pcard__title">営業時間外に<br>対応できない</h3></div>
+          <p class="pcard__note">休日の解約相談などに<br>すぐ対応できない</p>
+        </li>
+        <li class="pcard">
+          <span class="pcard__icon"><svg><use href="#i-hourglass"/></svg></span>
+          <div class="pcard__box"><h3 class="pcard__title">対応が<br>長期化する</h3></div>
+          <p class="pcard__note">クレーム対応が長引き<br>社員の時間と負担が増える</p>
+        </li>
+        <li class="pcard">
+          <span class="pcard__icon"><svg><use href="#i-chat"/></svg></span>
+          <div class="pcard__box"><h3 class="pcard__title">消費者<br>センター<br>への相談</h3></div>
+          <p class="pcard__note">小さな行き違いから<br>外部への相談につながることも</p>
+        </li>
+        <li class="pcard">
+          <span class="pcard__icon"><svg><use href="#i-gov"/></svg></span>
+          <div class="pcard__box"><h3 class="pcard__title">行政対応<br>へ発展</h3></div>
+          <p class="pcard__note">相談が重なることで<br>行政対応へ発展する可能性も</p>
+        </li>
+      </ul>
+
+      <!-- ---- 相談件数データ ---- -->
+      <div class="stat">
+        <div class="stat__lead">
+          <span class="stat__icon sp-only"><svg><use href="#i-chartup"/></svg></span>
+          <h3 class="stat__headline">訪問販売のトラブルは<br>決して他人事ではありません</h3>
+          <p class="stat__label">2024年度の「訪問販売」に関する<br>消費生活相談件数</p>
+          <p class="stat__figure"><span class="stat__num">7.9</span><span class="stat__unit">万件</span></p>
+          <p class="stat__note">今も年間 <b>約7.9万件</b> の相談が<br>寄せられています。</p>
+        </div>
+
+        <div class="stat__chart">
+          <h4 class="chart__heading">
+            <span class="chart__headingIcon"><svg><use href="#i-chartup"/></svg></span>
+            <span class="chart__headingText">訪問販売に関する<br class="sp-only">消費生活相談件数の推移<span class="chart__badge">（過去5年）</span></span>
+          </h4>
+
+          <figure class="chart">
+            <span class="chart__unitLabel">（万件）</span>
+            <div class="chart__body">
+              <div class="chart__yaxis" aria-hidden="true">
+                <span style="--p:100">10</span><span style="--p:80">8</span><span style="--p:60">6</span><span style="--p:40">4</span><span style="--p:20">2</span><span style="--p:0">0</span>
+              </div>
+              <div class="chart__plot">
+                <div class="chart__grid" aria-hidden="true"><i style="--p:100"></i><i style="--p:80"></i><i style="--p:60"></i><i style="--p:40"></i><i style="--p:20"></i></div>
+                <ul class="chart__series">
+                  <li style="--v:7.6"><b class="chart__val">7.6<small>万件</small></b><span class="chart__bar"></span></li>
+                  <li style="--v:7.8"><b class="chart__val">7.8<small>万件</small></b><span class="chart__bar"></span></li>
+                  <li style="--v:7.0"><b class="chart__val">7.0<small>万件</small></b><span class="chart__bar"></span></li>
+                  <li style="--v:7.5"><b class="chart__val">7.5<small>万件</small></b><span class="chart__bar"></span></li>
+                  <li class="is-current" style="--v:7.9"><b class="chart__val">7.9<small>万件</small></b><span class="chart__bar"></span></li>
+                </ul>
+              </div>
+              <ul class="chart__xaxis">
+                <li>2020年度</li><li>2021年度</li><li>2022年度</li><li>2023年度</li><li class="is-current">2024年度</li>
+              </ul>
+            </div>
+          </figure>
+
+          <div class="stat__warn sp-only">
+            <span class="stat__warnIcon"><svg><use href="#i-alert"/></svg></span>
+            <p>件数は高止まりしており、<br>相談が重なることで<b>行政対応</b>に<br>発展するリスクが高まっています。</p>
+          </div>
+
+          <p class="stat__source">出典：消費者庁「特定商取引に関する消費生活相談の状況」<br>（PIO-NET・販売購入形態別）</p>
+        </div>
+      </div>
+
+      <p class="bridge">トラブルが大きくなる前に<br>第三者が対応します。</p>
+    </div>
+  </section>
+
+  <!-- ============ 第三者という選択肢 ============ -->
+  <section class="section flowsec" id="about">
+    <div class="container">
+      <h2 class="h2">企業と消費者の間に、<br class="sp-only">第三者という選択肢を</h2>
+
+      <!-- PC: 三角図 -->
+      <svg class="triangle pc-only" viewBox="0 0 1250 400" role="img" aria-labelledby="triTitle">
+        <title id="triTitle">企業から消費者へJSOAを案内し、消費者はJSOAへ相談、JSOAは第三者として対応し必要に応じて企業と連携する関係図</title>
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0 0 10 5 0 10z" fill="#000"/>
+          </marker>
+        </defs>
+        <text class="tri-node" x="95" y="62">企業</text>
+        <text class="tri-node" x="1155" y="62" text-anchor="end">消費者</text>
+        <text class="tri-node tri-node--jsoa" x="625" y="368" text-anchor="middle">JSOA</text>
+
+        <line x1="205" y1="80" x2="1045" y2="80" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="625" y="64" text-anchor="middle">相談窓口を案内</text>
+
+        <line x1="1070" y1="100" x2="700" y2="326" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="950" y="158" text-anchor="end">JSOAへ相談</text>
+        <line x1="712" y1="344" x2="1105" y2="104" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="1000" y="250">第三者として対応</text>
+
+        <line x1="550" y1="326" x2="125" y2="100" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
+        <text class="tri-label" x="250" y="204" text-anchor="end">必要に応じて</text>
+        <text class="tri-label" x="250" y="234" text-anchor="end">企業に連携</text>
+      </svg>
+
+      <!-- SP: 縦フロー -->
+      <div class="vflow sp-only">
+        <p class="vflow__node">企業</p>
+        <p class="vflow__step"><span class="vflow__arrow"></span>相談窓口を案内</p>
+        <p class="vflow__node">消費者</p>
+        <p class="vflow__step"><span class="vflow__arrow"></span>JSOAへ相談</p>
+        <p class="vflow__node vflow__node--jsoa">JSOA</p>
+        <p class="vflow__step"><span class="vflow__arrow"></span>必要に応じて<br>企業に連携</p>
+      </div>
+
+      <p class="flowsec__text">企業様から消費者へJSOAを第三者相談窓口としてご案内いただきます。<br>消費者からの相談をJSOAが受け付け、必要に応じて企業様と連携しながら問題解決をサポートします。</p>
+    </div>
+  </section>
+
+  <!-- ============ 加入メリット3枚 ============ -->
+  <section class="section merits" id="service">
+    <div class="container">
+      <h2 class="h2">JSOAへの加入で、<br class="sp-only">訪問販売のリスクに備える</h2>
+      <ul class="mcards">
+        <li class="mcard">
+          <span class="mcard__icon"><svg><use href="#i-headset"/></svg></span>
+          <h3 class="mcard__title">相談窓口を<br>増やせる</h3>
+          <p class="mcard__text">消費者が企業の担当者へ相談しづらい場合にも、第三者の相談窓口を案内できます。</p>
+        </li>
+        <li class="mcard">
+          <span class="mcard__icon"><svg><use href="#i-check"/></svg></span>
+          <h3 class="mcard__title">トラブルの早期<br>解決をサポート</h3>
+          <p class="mcard__text">消費者からの相談を受け付け必要に応じて企業と連携しながら問題解決をサポートします。</p>
+        </li>
+        <li class="mcard">
+          <span class="mcard__icon"><svg><use href="#i-shield"/></svg></span>
+          <h3 class="mcard__title">企業の対応負担<br>を軽減</h3>
+          <p class="mcard__text">企業だけでは対応が難しい相談について、第三者として間に入り、解決をサポートします。</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ ビフォーアフター比較 ============ -->
+  <section class="section compare">
+    <div class="container">
+      <h2 class="h2">訪問販売のトラブルは、<br class="sp-only"><span class="u-orange">備え方で未来が変わります。</span></h2>
+      <p class="section__lead section__lead--sm">これまでの対応と、JSOA加入後の違い</p>
+
+      <div class="cmp">
+        <!-- これまで -->
+        <div class="cmp__col cmp__col--before">
+          <p class="cmp__head">これまで</p>
+          <div class="cmp__body">
+            <div class="cmp__rel">
+              <div class="cmp__actor"><span class="cmp__actorIcon"><svg><use href="#i-building"/></svg></span><span class="cmp__actorName">企業</span></div>
+              <div class="cmp__link"><span class="cmp__linkLabel">直接対応</span><span class="cmp__line cmp__line--to"></span></div>
+              <div class="cmp__actor"><span class="cmp__actorIcon"><svg><use href="#i-person"/></svg></span><span class="cmp__actorName">消費者</span></div>
+            </div>
+            <span class="cmp__down"></span>
+
+            <ul class="cmp__steps">
+              <li><span class="cmp__stepIcon"><svg><use href="#i-alert"/></svg></span>トラブル発生・相談</li>
+              <li><span class="cmp__stepIcon"><svg><use href="#i-headset"/></svg></span>担当者が個別に対応</li>
+              <li><span class="cmp__stepIcon"><svg><use href="#i-gov"/></svg></span>消費者センターへ<br>別途行政対応が必要</li>
+            </ul>
+
+            <p class="cmp__sub">こんな課題が発生しやすい</p>
+            <ul class="cmp__list">
+              <li><span class="cmp__listIcon"><svg><use href="#i-alert"/></svg></span>相談が担当者に集中し、業務が圧迫される</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-alert"/></svg></span>対応が長期化し、解決までに時間がかかる</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-alert"/></svg></span>対応方法にばらつきがあり、属人化しやすい</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-alert"/></svg></span>行政対応が必要となり、負担が増大する</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-alert"/></svg></span>企業の信頼低下につながるリスクがある</li>
+            </ul>
+            <p class="cmp__result"><span class="cmp__resultIcon"><svg><use href="#i-warning"/></svg></span>相談が長期化し、企業の負担が増大するリスク</p>
+          </div>
+        </div>
+
+        <span class="cmp__arrow" aria-hidden="true"></span>
+
+        <!-- JSOA加入後 -->
+        <div class="cmp__col cmp__col--after">
+          <p class="cmp__head">JSOA加入後</p>
+          <div class="cmp__body">
+            <div class="cmp__rel cmp__rel--three">
+              <div class="cmp__actor"><span class="cmp__actorIcon"><svg><use href="#i-building"/></svg></span><span class="cmp__actorName">企業</span></div>
+              <div class="cmp__link"><span class="cmp__linkLabel">連携</span><span class="cmp__line cmp__line--both"></span></div>
+              <div class="cmp__actor"><span class="cmp__actorIcon"><svg><use href="#i-headset"/></svg></span><span class="cmp__actorName cmp__actorName--jsoa">JSOA<small>（相談窓口）</small></span></div>
+              <div class="cmp__link"><span class="cmp__linkLabel">連携</span><span class="cmp__line cmp__line--both"></span></div>
+              <div class="cmp__actor"><span class="cmp__actorIcon"><svg><use href="#i-person"/></svg></span><span class="cmp__actorName">消費者</span></div>
+            </div>
+            <span class="cmp__down"></span>
+
+            <ul class="cmp__steps">
+              <li><span class="cmp__stepIcon"><svg><use href="#i-handshake"/></svg></span>第三者が間に入り、<br>適切に対応・調整</li>
+              <li><span class="cmp__stepIcon"><svg><use href="#i-check"/></svg></span>早期解決・<br>企業の負担を軽減</li>
+              <li><span class="cmp__stepIcon"><svg><use href="#i-shield"/></svg></span>信頼向上・<br>リスクの未然防止</li>
+            </ul>
+
+            <p class="cmp__sub">JSOAがもたらすメリット</p>
+            <ul class="cmp__list">
+              <li><span class="cmp__listIcon"><svg><use href="#i-check"/></svg></span>第三者が対応することで、公平・中立な解決が可能</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-check"/></svg></span>早期解決により、業務負担とコストを軽減</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-check"/></svg></span>専門窓口が一括対応し、社内の負担を削減</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-check"/></svg></span>行政対応のリスクを減らし、安心して事業運営</li>
+              <li><span class="cmp__listIcon"><svg><use href="#i-check"/></svg></span>企業の信頼向上と、ブランド価値の維持につながる</li>
+            </ul>
+            <p class="cmp__result"><span class="cmp__resultIcon"><svg><use href="#i-check"/></svg></span>早期解決と企業負担の軽減を実現</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ctaband">
+        <div class="ctaband__text">
+          <p class="ctaband__title">訪問販売のトラブルに備えませんか？</p>
+          <p class="ctaband__sub">JSOAの第三者相談窓口について詳しく知りたい方はこちら</p>
+        </div>
+        <a class="btn btn--primary btn--lg" href="#" data-cta>
+          <svg class="btn__icon"><use href="#i-doc"/></svg>
+          <span>資料請求・お問い合わせ</span>
+          <svg class="btn__arrow"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ フッター ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <img class="footer__logo" src="assets/images/LOGO.png" width="126" height="126" alt="">
+      <p class="footer__org">一般社団法人訪問販売適正化推進協会</p>
+      <p class="footer__copy">©2026 JSOA</p>
+    </div>
+    <nav class="footer__nav" aria-label="フッターナビゲーション">
+      <ul>
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#about">第三者相談窓口について</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#" data-cta>お問い合わせ</a></li>
+        <li><a href="#privacy">プライバシーポリシー</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+<!-- ============ SP: 追従CTA ============ -->
+<div class="stickycta" id="stickycta" hidden>
+  <a class="btn btn--primary btn--block" href="#" data-cta>
+    <svg class="btn__icon"><use href="#i-doc"/></svg>
+    <span>資料請求・お問い合わせ</span>
+  </a>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -17,6 +17,9 @@ img{height:auto}
 a{color:inherit;text-decoration:none}
 .sprite{display:none}
 /* アイコン用の span は inline のままだと width/height が効かないため block 化 */
+/* シールドの分割線は背景色で抜く（PCは白地、SPは淡いグリーンのカード上） */
+.ico-gap{stroke:var(--icon-gap,#fff)}
+@media (max-width:767px){.mcard{--icon-gap:var(--green-pale)}}
 .pcard__icon,.stat__icon,.chart__headingIcon,.stat__warnIcon,.mcard__icon,
 .cmp__actorIcon,.cmp__stepIcon,.cmp__listIcon,.cmp__resultIcon{display:block}
 
@@ -229,7 +232,7 @@ body{
 @media (max-width:767px){
   .stat{margin-top:27px}
   .stat__lead{padding:22px 20px 20px}
-  .stat__icon{width:28px;height:28px;margin-bottom:9px}
+  .stat__icon{width:28px;height:30px;margin-bottom:9px}
   .stat__headline{font-size:18px;line-height:22px}
   .stat__label{margin-top:17px;font-size:13px;line-height:19px}
   /* SP は「7.9」と「万件」を縦に積む（Figma） */
@@ -263,7 +266,7 @@ body{
   .stat__note{margin-top:min(2.7vw,39px);font-size:min(1.667vw,24px);line-height:1.21}
   .stat__chart{grid-area:chart;padding:min(2.5vw,36px) min(2.1vw,30px) 0}
   .chart__heading{font-size:min(1.806vw,26px)}
-  .chart__headingIcon{display:block;width:min(3.06vw,44px);height:min(3.06vw,44px);
+  .chart__headingIcon{display:block;width:min(3.19vw,46px);height:min(3.4vw,49px);
     margin-right:min(1.32vw,19px)}
   .chart__badge{font-size:min(1.389vw,20px)}
   .stat__source{grid-area:src;margin-top:min(3.4vw,49px);padding-bottom:min(2.7vw,39px);

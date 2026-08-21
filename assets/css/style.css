@@ -360,11 +360,13 @@ body{
 }
 
 /* ---------- 14. ビフォーアフター比較 ---------- */
-.compare .h2{font-size:min(3.056vw,44px)}
-.compare .section__lead{font-weight:400;font-size:min(1.944vw,28px);margin-top:min(.76vw,11px)}
+@media (min-width:768px){
+  .compare .h2{font-size:min(3.056vw,44px)}
+  .compare .section__lead{font-weight:400;font-size:min(1.944vw,28px);margin-top:min(.76vw,11px)}
+}
 @media (max-width:767px){
-  .compare .h2{font-size:14px}
-  .compare .section__lead{font-size:10.5px;font-weight:400;margin-top:2px}
+  /* Figma は1行14pxだが、他セクションの見出し（24〜26px）と揃えて2行に */
+  .compare .section__lead{font-weight:400;margin-top:6px}
 }
 .cmp{display:grid}
 .cmp__arrow{display:none}

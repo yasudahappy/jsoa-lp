@@ -195,7 +195,6 @@ body{
     border:1px solid var(--card-border);border-radius:var(--radius);background:var(--white);
     padding:24px 16px 18px;text-align:center}
   .pcard__icon{position:absolute;left:13px;top:18px;width:48px;height:48px}
-  .pcard__title br{display:inline}
   .pcard__note{margin-top:21px}
 }
 /* PC: アイコンは枠の上、補足は枠の下（Figma: 枠 319x280 / gap 28） */
@@ -434,7 +433,7 @@ body{
   /* Figma(SP): パネル 320x333 / 306、ヘッダー 24 */
   .cmp{margin-top:23px;gap:6px;max-width:320px;margin-inline:auto}
   .cmp__col{--ln:2px;--ah:3px;--al:5px;--dh:3.5px;--dl:4px}
-  .cmp__head{padding:5px 10px;font-size:11px}
+  .cmp__head{padding:4px 10px;font-size:11px}
   .cmp__body{padding:6px 18px 5px}
   .cmp__rel{max-width:232px;margin-inline:auto}
   .cmp__actor{width:24px;gap:3px}
@@ -447,13 +446,14 @@ body{
   .cmp__line{width:77%}
   .cmp__rel--three .cmp__line{width:58%}
   .cmp__down{height:24px;margin:-20px auto 5px}
-  .cmp__col--after .cmp__down{height:5px;margin:2px auto 5px}
+  /* Figma(SP): JSOA加入後パネルには下向き矢印がない */
+  .cmp__col--after .cmp__down{display:none}
   .cmp__col--after .cmp__steps br{display:none}
   .cmp__steps{margin-inline:2px}
   .cmp__steps li{gap:20px;padding:3.5px 9px 3.5px 40px;border-radius:5px;
     font-size:9.3px;line-height:1.5}
-  .cmp__steps li + li{margin-top:9px}
-  .cmp__steps li + li::before{top:-10px;height:7px}
+  .cmp__steps li + li{margin-top:7.5px}
+  .cmp__steps li + li::before{top:-8.5px;height:5px}
   .cmp__steps li + li::after{top:-4px}
   .cmp__stepIcon{width:18px;height:18px}
   /* SP は見出し＋箇条書きが1枚の色面（Figma） */

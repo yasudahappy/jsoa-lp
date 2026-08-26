@@ -55,14 +55,23 @@ STORES 予約の予約ウィジェットを埋め込むための受け皿です�
 - 所要時間：30分 ／ オンライン ／ 参加費無料
 - 予約システム：STORES 予約（フリープラン）
 
-**埋め込み手順**
+**予約カレンダーへの接続（現状：外部リンク）**
 
-1. STORES 予約の管理画面で予約カレンダーの埋め込みコードを取得
-2. `reserve/index.html` の `<div class="bookform" id="book-embed">` の中に貼り付け
-3. 同じ div の中にある `<div class="bookform__placeholder">…</div>` を削除
+いまは STORES 予約の公開ページへ遷移させています。遷移先を変えるときは
+`reserve/index.html` の `.bookform__btn` の `href` 1か所だけです。
 
-`.bookform` に最低高さ（PC 620px / SP 520px）を持たせてあるので、
-ウィジェットの読み込み中もレイアウトが動きません。
+```
+https://ippanshadanhoujinhou.stores.jp/reserve/honten-cclvvc/1977464
+```
+
+カレンダーをページ内に表示したい場合は、STORES 予約の管理画面
+**「カレンダーの統合」**で iframe の埋め込みコードを取得し、
+`<div class="bookform" id="book-embed">` の中身（`.bookform__link` ごと）を
+そのコードに差し替えてください。`.bookform iframe` に最低高さ
+（PC 620px / SP 520px）を持たせてあるので、読み込み中もレイアウトが動きません。
+
+差し替えたら、上にある「空席状況の確認とお申し込みは…」の一文と、
+カード内の「別のタブで開きます」は不要になります。
 
 **入力項目は STORES 予約側で設定します。**
 会社名はアンケート機能で追加しています（フリープランはアンケート1問まで）。

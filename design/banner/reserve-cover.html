@@ -1,0 +1,16 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1800px;height:600px;overflow:hidden}
+  /* STORES は左下に協会名を白文字で重ねるため、左側は無地のグリーンにしておく */
+  .c{position:relative;width:1800px;height:600px;overflow:hidden;background:#14512a}
+  .ph{position:absolute;right:0;top:0;width:900px;height:600px;overflow:hidden}
+  .ph img{width:100%;height:100%;object-fit:cover;object-position:30% 18%;display:block}
+  /* 継ぎ目だけを短くグリーンへ溶かす（写真本体は素のまま） */
+  .ph::after{content:"";position:absolute;left:0;top:0;bottom:0;width:300px;
+    background:linear-gradient(90deg,#14512a 0%,rgba(20,81,42,.86) 30%,rgba(20,81,42,0) 100%)}
+</style></head><body>
+<div class="c">
+  <div class="ph"><img src="/home/user/jsoa-lp/assets/images/hero-main.jpg" alt=""></div>
+</div>
+</body></html>

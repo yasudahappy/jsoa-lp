@@ -43,10 +43,6 @@
     <path d="M9 6 24 26 39 6M13 27h22M13 35h22M24 26v16" fill="none" stroke="currentColor"
       stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
-  <symbol id="i-external" viewBox="0 0 24 24">
-    <path d="M14 4h6v6M20 4 12 12M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
-      fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24">
     <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -134,38 +130,29 @@
   <section class="rsec" id="calendar">
     <div class="rwrap">
       <h2 class="rsec__title">日時を選ぶ</h2>
-      <p class="rsec__note">空席状況の確認とお申し込みは、予約カレンダーから行っていただけます。</p>
+      <p class="rsec__note">カレンダーから、ご都合のよい回をお選びください。</p>
 
       <!-- ==========================================================
-           STORES 予約ウィジェットの設置場所
+           STORES 予約の予約カレンダー（iframe 埋め込み）
 
-           いまは STORES 予約の公開ページへ遷移させています。
-           カレンダーをこのページ内に表示したい場合は、STORES 予約の
-           管理画面「カレンダーの統合」で iframe の埋め込みコードを取得し、
-           下の <div class="bookform"> の中身（.bookform__link ごと）を
-           そのコードに差し替えてください。
-           .bookform に最低高さ（PC 620 / SP 520）があるので、
-           読み込み中もレイアウトは動きません。
+           管理画面：サイト ＞ 予約サイト ＞ 予約システムへの埋め込み
+                     ＞ 予約カレンダー で取得したコード。
+
+           予約ページの名称やURLを STORES 側で変更した場合は、
+           埋め込みコードを取り直して src を差し替えてください。
+           高さは reserve.css の .bookform iframe で指定しています
+           （PC 620px / SP 560px）。
 
            入力項目は STORES 予約側で設定済みです。
              会社名 …… アンケート（フリープランは1問まで）
              ご担当者名・メールアドレス・電話番号 …… 標準のお客様情報
-
-           遷移先を変えるときは下の href 1か所だけ書き換えれば済みます。
            ========================================================== -->
       <div class="bookform" id="book-embed">
-        <div class="bookform__link">
-          <p class="bookform__linkTitle">開催中の回から日時をお選びください</p>
-          <p class="bookform__linkText">日時の選択と、会社名・ご担当者名などのご入力は、<br>
-            予約システムのページで続けて行っていただけます。</p>
-          <a class="btn btn--primary btn--lg bookform__btn"
-             href="https://ippanshadanhoujinhou.stores.jp/reserve/honten-cclvvc/1977464"
-             target="_blank" rel="noopener">
-            <span>予約カレンダーを開く</span>
-            <svg class="btn__arrow" aria-hidden="true"><use href="#i-external"/></svg>
-          </a>
-          <p class="bookform__linkNote">別のタブで開きます</p>
-        </div>
+        <iframe src="https://ippanshadanhoujinhou.stores.jp/reserve/honten-cclvvc/widget/calendar"
+                title="説明会の予約カレンダー"></iframe>
+        <p class="bookform__fallback">カレンダーが表示されない場合は、<a
+          href="https://ippanshadanhoujinhou.stores.jp/reserve/honten-cclvvc"
+          target="_blank" rel="noopener">予約ページを直接開いてください</a>。</p>
       </div>
 
       <div class="rfields">

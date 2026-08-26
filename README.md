@@ -55,23 +55,25 @@ STORES 予約の予約ウィジェットを埋め込むための受け皿です�
 - 所要時間：30分 ／ オンライン ／ 参加費無料
 - 予約システム：STORES 予約（フリープラン）
 
-**予約カレンダーへの接続（現状：外部リンク）**
+**予約カレンダー（STORES 予約の iframe 埋め込み）**
 
-いまは STORES 予約の公開ページへ遷移させています。遷移先を変えるときは
-`reserve/index.html` の `.bookform__btn` の `href` 1か所だけです。
+`reserve/index.html` の `<div class="bookform" id="book-embed">` に
+STORES 予約の予約カレンダーを iframe で埋め込んでいます。
 
 ```
-https://ippanshadanhoujinhou.stores.jp/reserve/honten-cclvvc/1977464
+https://ippanshadanhoujinhou.stores.jp/reserve/honten-cclvvc/widget/calendar
 ```
 
-カレンダーをページ内に表示したい場合は、STORES 予約の管理画面
-**「カレンダーの統合」**で iframe の埋め込みコードを取得し、
-`<div class="bookform" id="book-embed">` の中身（`.bookform__link` ごと）を
-そのコードに差し替えてください。`.bookform iframe` に最低高さ
-（PC 620px / SP 520px）を持たせてあるので、読み込み中もレイアウトが動きません。
+コードの取得場所は、管理画面の
+**サイト ＞ 予約サイト ＞ 予約システムへの埋め込み ＞ 予約カレンダー**。
+STORES 側で予約ページの名称やURLを変更したら、コードを取り直して
+`src` と、その下のフォールバックリンクの `href` を差し替えてください。
 
-差し替えたら、上にある「空席状況の確認とお申し込みは…」の一文と、
-カード内の「別のタブで開きます」は不要になります。
+高さは `reserve.css` の `.bookform iframe` で明示しています（PC 620px /
+SP 560px）。読み込み中にレイアウトが動かないようにするためです。
+
+iframe の下に「カレンダーが表示されない場合は…」というリンクを置いています。
+ブラウザの設定でサードパーティ iframe が遮断されても申し込めるようにする保険です。
 
 **入力項目は STORES 予約側で設定します。**
 会社名はアンケート機能で追加しています（フリープランはアンケート1問まで）。

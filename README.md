@@ -17,8 +17,9 @@ assets/images/
   hero-main.webp                同 WebP（PC用・1440w）
   hero-main-sp.webp             同 WebP（SP用・780w）
   reserve-main.jpg              STORES予約のメインイメージ（1200x630）
+  reserve-cover.jpg             STORES予約のサイトカバー画像（1800x600）
 design/reference/               Figma から書き出したデザイン参照用画像（実装には使用しない）
-design/banner/reserve-main.html 予約ページのメインイメージの版下（下記参照）
+design/banner/                  STORES予約に上げる画像の版下（下記参照）
 ```
 
 ビルド工程はありません。`index.html` をそのままブラウザで開けば動作します。
@@ -67,6 +68,22 @@ STORES 予約の予約ウィジェットを埋め込むための受け皿です�
 会社名はアンケート機能で追加しています（フリープランはアンケート1問まで）。
 ご担当者名・メールアドレス・電話番号は標準のお客様情報でまかなえます。
 ページ内の「ご入力いただく項目」の表示は、STORES 予約側の設定と手で揃えてください。
+
+**STORES 予約に上げる画像は2枚あり、設定場所が違います**
+
+| 画像 | 置き場所 | サイズ |
+|---|---|---|
+| `assets/images/reserve-main.jpg` | 予約ページごとの「メインイメージ設定」 | 1200x630 |
+| `assets/images/reserve-cover.jpg` | サイト全体のカバー画像（詳細タブの最上部） | 1800x600 |
+
+どちらも LP の PC ヒーローと同じ構成（左にグリーンの面、右に同じ写真）にして、
+LP から遷移してきた人が同じサイトだと分かるようにしています。
+
+カバー画像には文字を入れていません。STORES が左下に協会名を白文字で重ねるためで、
+その帯は無地のグリーン（#14512a／白文字とのコントラスト比 9.4:1）にしてあります。
+
+作り直すときは版下 `design/banner/reserve-main.html` / `reserve-cover.html` を編集し、
+Playwright でそれぞれのサイズのスクリーンショットを撮り直してください。
 
 LP と違い、このページはヘッダーを SP でも表示します（検索や直リンクで
 このページに直接来る人がいるため）。`<meta name="robots" content="noindex">` を

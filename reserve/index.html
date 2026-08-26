@@ -139,13 +139,18 @@
       <!-- ==========================================================
            STORES 予約への導線
 
-           遷移先は下の href 1か所だけ。予約カレンダーに直接着地する URL が
-           分かったら、ここを差し替えてください。
+           遷移先は下の href 1か所だけ。末尾の数字は STORES 予約の
+           メニューID（JSOA説明会）で、この「メニュー個別URL」に飛ばすと
+           予約タブに直接着地します。/reserve/jsoa だけだと詳細タブに
+           着地してクリックが1回増えるので、メニューIDまで付けています。
+           STORES 側でメニューを作り直したらIDが変わるので、そのときは
+           管理画面の予約タブでURLを取り直して差し替えてください。
 
-           カレンダーを iframe でページ内に表示する方法もありますが、
-           STORES 予約の有料機能です（管理画面の「予約カレンダー」タブに
-           「有料機能お試し中」の表示があります）。実装は git 履歴の
-           コミット b0f07ae に残してあります。
+           カレンダー画面そのものに直接着地させることはできません。
+             ・/widget/calendar は「すべての予約ページ」ドロップダウン付きの
+               管理画面風の素のカレンダーで、顧客向けの画面ではない
+             ・iframe でページ内に表示する方法は STORES 予約の有料機能
+               （実装は git 履歴のコミット b0f07ae に残してあります）
 
            入力項目は STORES 予約側で設定済みです。
              会社名 …… アンケート（フリープランは1問まで）
@@ -157,12 +162,12 @@
           <p class="bookform__linkText">日時の選択と、会社名・ご担当者名などのご入力は、<br>
             予約システムのページで続けて行っていただけます。</p>
           <a class="btn btn--primary btn--lg bookform__btn"
-             href="https://jsoa.stores.jp/reserve/jsoa"
+             href="https://jsoa.stores.jp/reserve/jsoa/1977464"
              target="_blank" rel="noopener">
-            <span>予約カレンダーを開く</span>
+            <span>説明会を予約する</span>
             <svg class="btn__arrow" aria-hidden="true"><use href="#i-external"/></svg>
           </a>
-          <p class="bookform__linkNote">別のタブで開きます</p>
+          <p class="bookform__linkNote">別のタブで STORES 予約が開きます</p>
         </div>
       </div>
 

@@ -7,7 +7,7 @@ Figma「JSOA-LP-Renewal」の **Desktop - FINAL（1440px）** と **Mobile - FIN
 
 ```
 index.html                      LP本体（SVGアイコンはスプライトとして先頭に内包）
-reserve/index.html              説明会予約ページ（STORES 予約ウィジェットの受け皿）
+reserve/index.html              説明会予約ページ（STORES 予約への導線）
 privacy/index.html              プライバシーポリシー
 assets/css/style.css            LPのスタイル（モバイルファースト、768px で PC レイアウトへ）
 assets/css/reserve.css          下層ページ（reserve / privacy）のスタイル
@@ -47,7 +47,7 @@ STORES 予約のページへ直接飛ばしたい場合は、ここをその URL
 
 ## 説明会予約ページ（reserve/index.html）
 
-STORES 予約の予約ウィジェットを埋め込むための受け皿です。LP と同じトークン
+STORES 予約へ送り出す前の説明ページです。LP と同じトークン
 （Noto Sans JP / 緑のパレット / 角丸）で組んでいます。
 
 **説明会の仕様（確定）**
@@ -56,31 +56,26 @@ STORES 予約の予約ウィジェットを埋め込むための受け皿です�
 - 所要時間：45分 ／ オンライン ／ 参加費無料
 - 予約システム：STORES 予約（フリープラン）
 
-**予約カレンダー（STORES 予約の iframe 埋め込み）**
+**予約カレンダーへの導線（STORES 予約へのリンク）**
 
-`reserve/index.html` の `<div class="bookform" id="book-embed">` に
-STORES 予約の予約カレンダーを iframe で埋め込んでいます。
+`reserve/index.html` の `<div class="bookform" id="book-embed">` に、
+STORES 予約へ移動するボタンを置いています。遷移先は、その中の
+`.bookform__btn` の `href` **1か所だけ**です。
 
 ```
-https://jsoa.stores.jp/reserve/jsoa/widget/calendar
+https://jsoa.stores.jp/reserve/jsoa
 ```
 
-コードの取得場所は、管理画面の
-**サイト ＞ 予約サイト ＞ 予約システムへの埋め込み ＞ 予約カレンダー**。
+> **なぜ iframe ではなくリンクなのか**
+> 予約カレンダーの iframe 埋め込みは STORES 予約の**有料機能**です
+> （管理画面の該当タブに「有料機能お試し中」の表示があります）。
+> トライアルが終わると表示されなくなるため、無料で運用できるリンク方式に
+> しています。iframe 版の実装はコミット `b0f07ae` に残してあり、戻す場合の
+> 高さ指定（PC 620px / SP 560px）も `reserve.css` の `.bookform iframe` に
+> 残してあります。
 
-> **注意：予約カレンダーの埋め込みは STORES 予約の有料機能です。**
-> 管理画面のこのタブに「有料機能お試し中」の表示があります。トライアルが
-> 終わると iframe が表示されなくなる可能性があります。無料で運用する場合は、
-> 「予約する」ボタンの埋め込みか、予約ページへのリンクに切り替えてください。
-> リンク方式の実装は git 履歴（`.bookform__link`）に残してあります。
-STORES 側で予約ページの名称やURLを変更したら、コードを取り直して
-`src` と、その下のフォールバックリンクの `href` を差し替えてください。
-
-高さは `reserve.css` の `.bookform iframe` で明示しています（PC 620px /
-SP 560px）。読み込み中にレイアウトが動かないようにするためです。
-
-iframe の下に「カレンダーが表示されない場合は…」というリンクを置いています。
-ブラウザの設定でサードパーティ iframe が遮断されても申し込めるようにする保険です。
+STORES 側で予約ページの名称やURLを変更したら、この `href` を差し替えて
+ください。ボタンは別タブで開きます（`target="_blank"`）。
 
 **入力項目は STORES 予約側で設定します。**
 会社名はアンケート機能で追加しています（フリープランはアンケート1問まで）。

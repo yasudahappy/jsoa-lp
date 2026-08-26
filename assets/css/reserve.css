@@ -133,26 +133,26 @@
   .rsteps__text{margin-top:min(.55vw,8px);font-size:min(1.11vw,16px)}
 }
 
-/* ---------- 8. Jicoo 埋め込み枠 ---------- */
+/* ---------- 8. 予約ウィジェット枠（STORES 予約） ---------- */
 /* 埋め込みコードを入れる前後でレイアウトが動かないよう最低高さを確保する */
-.jicoo{min-height:620px}
-.jicoo iframe{width:100%;border:0}
-.jicoo__placeholder{min-height:620px;display:flex;flex-direction:column;
+.bookform{min-height:620px}
+.bookform iframe{width:100%;border:0}
+.bookform__placeholder{min-height:620px;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
   border:2px dashed var(--card-border);border-radius:var(--radius);
   background:#fbfcfb;color:var(--text-muted);padding:24px}
-.jicoo__phTitle{font-weight:700;color:var(--green)}
-.jicoo__phText{line-height:1.7}
+.bookform__phTitle{font-weight:700;color:var(--green)}
+.bookform__phText{line-height:1.7}
 @media (max-width:767px){
-  .jicoo,.jicoo__placeholder{min-height:520px}
-  .jicoo{margin-top:16px}
-  .jicoo__phTitle{font-size:14px}
-  .jicoo__phText{margin-top:8px;font-size:12px}
+  .bookform,.bookform__placeholder{min-height:520px}
+  .bookform{margin-top:16px}
+  .bookform__phTitle{font-size:14px}
+  .bookform__phText{margin-top:8px;font-size:12px}
 }
 @media (min-width:768px){
-  .jicoo{margin-top:min(1.94vw,28px)}
-  .jicoo__phTitle{font-size:min(1.53vw,22px)}
-  .jicoo__phText{margin-top:min(.83vw,12px);font-size:min(1.11vw,16px)}
+  .bookform{margin-top:min(1.94vw,28px)}
+  .bookform__phTitle{font-size:min(1.53vw,22px)}
+  .bookform__phText{margin-top:min(.83vw,12px);font-size:min(1.11vw,16px)}
 }
 
 /* ---------- 9. 入力項目の案内 ---------- */

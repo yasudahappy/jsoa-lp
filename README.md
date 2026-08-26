@@ -7,7 +7,7 @@ Figma「JSOA-LP-Renewal」の **Desktop - FINAL（1440px）** と **Mobile - FIN
 
 ```
 index.html                      LP本体（SVGアイコンはスプライトとして先頭に内包）
-reserve/index.html              説明会予約ページ（Jicoo ウィジェットの受け皿）
+reserve/index.html              説明会予約ページ（STORES 予約ウィジェットの受け皿）
 assets/css/style.css            LPのスタイル（モバイルファースト、768px で PC レイアウトへ）
 assets/css/reserve.css          予約ページ固有のスタイル（style.css のトークンを流用）
 assets/js/main.js               CTAリンクの一括適用 / SP 追従CTA
@@ -16,7 +16,9 @@ assets/images/
   hero-main.jpg                 ヒーロー画像（フォールバック）
   hero-main.webp                同 WebP（PC用・1440w）
   hero-main-sp.webp             同 WebP（SP用・780w）
+  reserve-main.jpg              STORES予約のメインイメージ（1200x630）
 design/reference/               Figma から書き出したデザイン参照用画像（実装には使用しない）
+design/banner/reserve-main.html 予約ページのメインイメージの版下（下記参照）
 ```
 
 ビルド工程はありません。`index.html` をそのままブラウザで開けば動作します。
@@ -32,7 +34,7 @@ design/reference/               Figma から書き出したデザイン参照用
 ```
 
 現在は同梱の説明会予約ページ（`reserve/index.html`）に向けています。
-Jicoo の予約ページへ直接飛ばしたい場合は、ここを Jicoo の URL に差し替えてください。
+STORES 予約のページへ直接飛ばしたい場合は、ここをその URL に差し替えてください。
 
 ページ内すべての CTA ボタン（ヒーロー / 比較セクション下部 / SP追従バー）と、
 ヘッダー・フッターの「お問い合わせ」が一括で切り替わります。
@@ -43,27 +45,28 @@ Jicoo の予約ページへ直接飛ばしたい場合は、ここを Jicoo の 
 
 ## 説明会予約ページ（reserve/index.html）
 
-Jicoo の予約ウィジェットを埋め込むための受け皿です。LP と同じトークン
+STORES 予約の予約ウィジェットを埋め込むための受け皿です。LP と同じトークン
 （Noto Sans JP / 緑のパレット / 角丸）で組んでいます。
 
-**説明会の開催形式：セミナー形式（1回の開催に複数社が参加）で確定**
+**説明会の仕様（確定）**
 
-このため Jicoo は **Pro プラン以上が必須**です。Free プランはセミナー型の
-予約ページを作成できず（1対1の日程調整のみ）、入力フォームのカスタマイズも
-できないため、2つの理由で足りません。
+- 開催形式：セミナー形式（1回の開催に複数社が参加）
+- 所要時間：30分 ／ オンライン ／ 参加費無料
+- 予約システム：STORES 予約（フリープラン）
 
-**Jicoo の埋め込み手順**
+**埋め込み手順**
 
-1. Jicoo 管理画面 ＞ 予約ページ ＞ **埋め込み用コードを取得**
-2. `reserve/index.html` の `<div class="jicoo" id="jicoo-embed">` の中に貼り付け
-3. 同じ div の中にある `<div class="jicoo__placeholder">…</div>` を削除
+1. STORES 予約の管理画面で予約カレンダーの埋め込みコードを取得
+2. `reserve/index.html` の `<div class="bookform" id="book-embed">` の中に貼り付け
+3. 同じ div の中にある `<div class="bookform__placeholder">…</div>` を削除
 
-`.jicoo` に最低高さ（PC 620px / SP 520px）を持たせてあるので、
+`.bookform` に最低高さ（PC 620px / SP 520px）を持たせてあるので、
 ウィジェットの読み込み中もレイアウトが動きません。
 
-**入力項目（会社名・ご担当者名・お電話番号・メールアドレス）は Jicoo 側で設定します。**
-「入力フォームのカスタマイズ」は Pro プラン以上の機能です（Free では追加できません）。
-ページ内の「ご入力いただく項目」の表示は、Jicoo 側の設定と手で揃えてください。
+**入力項目は STORES 予約側で設定します。**
+会社名はアンケート機能で追加しています（フリープランはアンケート1問まで）。
+ご担当者名・メールアドレス・電話番号は標準のお客様情報でまかなえます。
+ページ内の「ご入力いただく項目」の表示は、STORES 予約側の設定と手で揃えてください。
 
 LP と違い、このページはヘッダーを SP でも表示します（検索や直リンクで
 このページに直接来る人がいるため）。`<meta name="robots" content="noindex">` を

@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="説明会のご予約｜一般社団法人訪問販売適正化推進協会（JSOA）">
 <meta property="og:description" content="第三者相談窓口の仕組みと導入方法をご説明します。ご希望の日時をカレンダーからお選びください。">
-<meta property="og:image" content="../assets/images/hero-main.jpg">
+<meta property="og:image" content="../assets/images/reserve-main.jpg">
 <link rel="icon" href="../assets/images/LOGO.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +73,7 @@
   </section>
 
   <!-- ============ 説明会について ============ -->
-  <!-- TODO: 所要時間・開催形式・費用はクライアント確認後に確定 -->
+  <!-- 所要時間30分・オンライン・参加費無料で確定（STORES予約側の設定と揃えること） -->
   <section class="rsec">
     <div class="rwrap">
       <h2 class="rsec__title">説明会について</h2>
@@ -126,29 +126,28 @@
     </div>
   </section>
 
-  <!-- ============ 予約カレンダー（Jicoo 埋め込み） ============ -->
+  <!-- ============ 予約カレンダー（STORES 予約 埋め込み） ============ -->
   <section class="rsec" id="calendar">
     <div class="rwrap">
       <h2 class="rsec__title">日時を選ぶ</h2>
       <p class="rsec__note">カレンダーが表示されない場合は、お手数ですが再読み込みをお試しください。</p>
 
       <!-- ==========================================================
-           Jicoo 予約ウィジェットの設置場所
+           STORES 予約ウィジェットの設置場所
 
-           Jicoo 管理画面の「予約ページ」＞「埋め込み用コードを取得」で
-           取得したコードを、下の <div class="jicoo"> の中に貼り付けて、
-           プレースホルダの <div class="jicoo__placeholder"> ごと削除して
-           ください。CSS 側の .jicoo は最低高さだけ確保しています。
+           STORES 予約の管理画面で取得した予約カレンダーの埋め込みコードを
+           下の <div class="bookform"> の中に貼り付けて、プレースホルダの
+           <div class="bookform__placeholder"> ごと削除してください。
+           CSS 側の .bookform は最低高さだけ確保しています。
 
-           入力項目（会社名・ご担当者名・電話番号・メールアドレス）は
-           Jicoo 側の「入力フォームのカスタマイズ」で設定します。
-           ※この機能は Pro プラン以上が必要です
+           入力項目は STORES 予約側で設定済みです。
+             会社名 …… アンケート（フリープランは1問まで）
+             ご担当者名・メールアドレス・電話番号 …… 標準のお客様情報
            ========================================================== -->
-      <div class="jicoo" id="jicoo-embed">
-        <div class="jicoo__placeholder">
-          <p class="jicoo__phTitle">予約カレンダー設置予定</p>
-          <p class="jicoo__phText">Jicoo の埋め込みコードをここに貼り付けます。<br>
-            （管理画面 ＞ 予約ページ ＞ 埋め込み用コードを取得）</p>
+      <div class="bookform" id="book-embed">
+        <div class="bookform__placeholder">
+          <p class="bookform__phTitle">予約カレンダー設置予定</p>
+          <p class="bookform__phText">STORES 予約の埋め込みコードをここに貼り付けます。</p>
         </div>
       </div>
 

@@ -6,8 +6,10 @@ Figma「JSOA-LP-Renewal」の **Desktop - FINAL（1440px）** と **Mobile - FIN
 ## ファイル構成
 
 ```
-index.html                      ページ本体（SVGアイコンはスプライトとして先頭に内包）
-assets/css/style.css            スタイル（モバイルファースト、768px で PC レイアウトへ）
+index.html                      LP本体（SVGアイコンはスプライトとして先頭に内包）
+reserve/index.html              説明会予約ページ（Jicoo ウィジェットの受け皿）
+assets/css/style.css            LPのスタイル（モバイルファースト、768px で PC レイアウトへ）
+assets/css/reserve.css          予約ページ固有のスタイル（style.css のトークンを流用）
 assets/js/main.js               CTAリンクの一括適用 / SP 追従CTA
 assets/images/
   LOGO.png                      ロゴ
@@ -25,16 +27,41 @@ design/reference/               Figma から書き出したデザイン参照用
 
 ```html
 <script>
-  window.JSOA_CTA_URL = '';   // ← ここに予約システム / GoogleフォームのURLを入れる
+  window.JSOA_CTA_URL = 'reserve/index.html';   // ← 遷移先はこの1行だけ
 </script>
 ```
+
+現在は同梱の説明会予約ページ（`reserve/index.html`）に向けています。
+Jicoo の予約ページへ直接飛ばしたい場合は、ここを Jicoo の URL に差し替えてください。
 
 ページ内すべての CTA ボタン（ヒーロー / 比較セクション下部 / SP追従バー）と、
 ヘッダー・フッターの「お問い合わせ」が一括で切り替わります。
 外部ドメインの URL を入れた場合は自動的に別タブで開きます。
 
-空のままの場合、ボタンは表示されますがクリックしても遷移しません
+空にした場合、ボタンは表示されますがクリックしても遷移しません
 （ページ先頭に飛んでしまうのを防いでいます）。
+
+## 説明会予約ページ（reserve/index.html）
+
+Jicoo の予約ウィジェットを埋め込むための受け皿です。LP と同じトークン
+（Noto Sans JP / 緑のパレット / 角丸）で組んでいます。
+
+**Jicoo の埋め込み手順**
+
+1. Jicoo 管理画面 ＞ 予約ページ ＞ **埋め込み用コードを取得**
+2. `reserve/index.html` の `<div class="jicoo" id="jicoo-embed">` の中に貼り付け
+3. 同じ div の中にある `<div class="jicoo__placeholder">…</div>` を削除
+
+`.jicoo` に最低高さ（PC 620px / SP 520px）を持たせてあるので、
+ウィジェットの読み込み中もレイアウトが動きません。
+
+**入力項目（会社名・ご担当者名・お電話番号・メールアドレス）は Jicoo 側で設定します。**
+「入力フォームのカスタマイズ」は Pro プラン以上の機能です（Free では追加できません）。
+ページ内の「ご入力いただく項目」の表示は、Jicoo 側の設定と手で揃えてください。
+
+LP と違い、このページはヘッダーを SP でも表示します（検索や直リンクで
+このページに直接来る人がいるため）。`<meta name="robots" content="noindex">` を
+入れてあるので、必要になったら外してください。
 
 ## 未確定のリンク
 
@@ -46,6 +73,7 @@ design/reference/               Figma から書き出したデザイン参照用
 | フッター「プライバシーポリシー」 | `#privacy` | ページの用意 |
 | ヘッダー・フッター「サービス」 | `#service` | 「JSOAへの加入で〜」セクションへ着地（実装済み） |
 | フッター「第三者相談窓口について」 | `#about` | 「企業と消費者の間に〜」セクションへ着地（実装済み） |
+| 予約ページ「プライバシーポリシー」 | `../index.html#privacy` | ページの用意（LPと同じ遷移先） |
 
 ## デザイントークン
 

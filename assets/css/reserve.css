@@ -1,0 +1,179 @@
+@charset "UTF-8";
+/* ==========================================================================
+   JSOA 説明会予約ページ（reserve/index.html）
+   style.css のトークン（色・フォント・角丸）をそのまま使う。
+   PC は min(Xvw, Ypx) で 1440 まで比例、SP は px 固定という書き方も踏襲。
+   LP と違い、このページはヘッダーを SP でも表示する（直接来訪されるため）。
+   ========================================================================== */
+
+/* ---------- 1. 共通ラッパー ---------- */
+/* 予約ページは読み物ではなくフォームなので、LP の 1360 より狭く組む */
+.rwrap{width:100%;max-width:880px;margin-inline:auto;padding-inline:20px}
+@media (min-width:768px){.rwrap{padding-inline:40px}}
+
+/* ---------- 2. ヘッダー ---------- */
+.rheader{background:var(--white);border-bottom:1px solid #e7ece8;
+  position:sticky;top:0;z-index:40}
+.rheader__inner{max-width:1160px;margin-inline:auto;display:flex;
+  align-items:center;justify-content:space-between;gap:12px}
+.rheader__brand{display:flex;align-items:center;gap:8px;min-width:0}
+.rheader__org{font-weight:700;line-height:1.3}
+.rheader__back{display:inline-flex;align-items:center;gap:4px;flex:none;
+  font-weight:700;color:var(--text-muted)}
+.rheader__back:hover{color:var(--green)}
+.rheader__backIcon{flex:none;fill:none;stroke:currentColor}
+@media (max-width:767px){
+  .rheader__inner{height:56px;padding:0 12px}
+  .rheader__brand img{width:34px;height:34px}
+  .rheader__org{font-size:11px}
+  .rheader__back{font-size:11px}
+  .rheader__backIcon{width:12px;height:12px}
+}
+@media (min-width:768px){
+  .rheader__inner{height:min(5.56vw,80px);padding:0 min(2.8vw,40px)}
+  .rheader__brand{gap:min(.83vw,12px)}
+  .rheader__brand img{width:min(3.9vw,56px);height:min(3.9vw,56px)}
+  .rheader__org{font-size:min(1.25vw,18px)}
+  .rheader__back{font-size:var(--fs-nav)}
+  .rheader__backIcon{width:min(1.11vw,16px);height:min(1.11vw,16px)}
+}
+
+/* ---------- 3. ページ見出し ---------- */
+.rhead{background:var(--green-pale);text-align:center}
+.rhead__eyebrow{font-weight:700;color:var(--green)}
+.rhead__title{font-weight:700;line-height:1.2}
+.rhead__lead{color:var(--text-muted);line-height:1.7}
+@media (max-width:767px){
+  .rhead{padding:32px 0 34px}
+  .rhead__eyebrow{font-size:12px}
+  .rhead__title{margin-top:6px;font-size:26px}
+  .rhead__lead{margin-top:14px;font-size:13px}
+}
+@media (min-width:768px){
+  .rhead{padding:min(4.9vw,70px) 0 min(5.2vw,75px)}
+  .rhead__eyebrow{font-size:min(1.25vw,18px)}
+  .rhead__title{margin-top:min(.69vw,10px);font-size:min(3.06vw,44px)}
+  .rhead__lead{margin-top:min(1.53vw,22px);font-size:min(1.25vw,18px)}
+}
+
+/* ---------- 4. セクション ---------- */
+.rsec--tint{background:var(--green-tint)}
+.rsec__title{font-weight:700;line-height:1.3;text-align:center}
+.rsec__note{text-align:center;color:var(--text-muted)}
+@media (max-width:767px){
+  .rsec{padding:34px 0}
+  .rsec__title{font-size:20px}
+  .rsec__note{margin-top:8px;font-size:11px}
+}
+@media (min-width:768px){
+  .rsec{padding:min(4.4vw,63px) 0}
+  .rsec__title{font-size:min(2.22vw,32px)}
+  .rsec__note{margin-top:min(.83vw,12px);font-size:min(1.11vw,16px)}
+}
+
+/* ---------- 5. 説明会の概要（所要時間・形式・費用） ---------- */
+.rmeta{display:grid;text-align:center}
+.rmeta__item{display:flex;flex-direction:column;align-items:center;
+  background:var(--white);border:1px solid var(--card-border);border-radius:var(--radius)}
+.rmeta__icon{display:block;color:var(--green)}
+.rmeta__icon svg{width:100%;height:100%}
+.rmeta__label{color:var(--text-muted)}
+.rmeta__value{font-weight:700}
+@media (max-width:767px){
+  .rmeta{margin-top:18px;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  .rmeta__item{padding:14px 6px}
+  .rmeta__icon{width:26px;height:26px}
+  .rmeta__label{margin-top:8px;font-size:10px}
+  .rmeta__value{margin-top:2px;font-size:14px}
+}
+@media (min-width:768px){
+  .rmeta{margin-top:min(2.15vw,31px);grid-template-columns:repeat(3,minmax(0,1fr));gap:min(1.53vw,22px)}
+  .rmeta__item{padding:min(1.94vw,28px) min(.83vw,12px)}
+  .rmeta__icon{width:min(2.78vw,40px);height:min(2.78vw,40px)}
+  .rmeta__label{margin-top:min(.83vw,12px);font-size:min(1.04vw,15px)}
+  .rmeta__value{margin-top:min(.28vw,4px);font-size:min(1.53vw,22px)}
+}
+
+/* ---------- 6. 箇条書き ---------- */
+.rlist{display:grid}
+.rlist li{display:flex;align-items:flex-start;line-height:1.6}
+.rlist__icon{flex:none;color:var(--green)}
+.rlist__icon svg{width:100%;height:100%}
+@media (max-width:767px){
+  .rlist{margin-top:20px;gap:9px}
+  .rlist li{gap:8px;font-size:13px}
+  .rlist__icon{width:16px;height:16px;margin-top:2px}
+}
+@media (min-width:768px){
+  .rlist{margin-top:min(2.29vw,33px);gap:min(.97vw,14px)}
+  .rlist li{gap:min(.83vw,12px);font-size:min(1.25vw,18px)}
+  .rlist__icon{width:min(1.53vw,22px);height:min(1.53vw,22px);margin-top:min(.14vw,2px)}
+}
+
+/* ---------- 7. ご予約の流れ ---------- */
+.rsteps{display:grid}
+.rsteps__item{background:var(--white);border:1px solid var(--card-border);
+  border-radius:var(--radius);text-align:center}
+.rsteps__num{display:inline-flex;align-items:center;justify-content:center;
+  border-radius:50%;background:var(--green);color:var(--white);font-weight:700;line-height:1}
+.rsteps__title{font-weight:700;line-height:1.3}
+.rsteps__text{color:var(--text-muted);line-height:1.6}
+@media (max-width:767px){
+  .rsteps{margin-top:20px;grid-template-columns:minmax(0,1fr);gap:10px}
+  .rsteps__item{padding:18px 14px}
+  .rsteps__num{width:28px;height:28px;font-size:14px}
+  .rsteps__title{margin-top:9px;font-size:15px}
+  .rsteps__text{margin-top:5px;font-size:12px}
+}
+@media (min-width:768px){
+  .rsteps{margin-top:min(2.29vw,33px);grid-template-columns:repeat(3,minmax(0,1fr));gap:min(1.53vw,22px)}
+  .rsteps__item{padding:min(2.29vw,33px) min(1.25vw,18px)}
+  .rsteps__num{width:min(2.71vw,39px);height:min(2.71vw,39px);font-size:min(1.39vw,20px)}
+  .rsteps__title{margin-top:min(.97vw,14px);font-size:min(1.53vw,22px)}
+  .rsteps__text{margin-top:min(.55vw,8px);font-size:min(1.11vw,16px)}
+}
+
+/* ---------- 8. Jicoo 埋め込み枠 ---------- */
+/* 埋め込みコードを入れる前後でレイアウトが動かないよう最低高さを確保する */
+.jicoo{min-height:620px}
+.jicoo iframe{width:100%;border:0}
+.jicoo__placeholder{min-height:620px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  border:2px dashed var(--card-border);border-radius:var(--radius);
+  background:#fbfcfb;color:var(--text-muted);padding:24px}
+.jicoo__phTitle{font-weight:700;color:var(--green)}
+.jicoo__phText{line-height:1.7}
+@media (max-width:767px){
+  .jicoo,.jicoo__placeholder{min-height:520px}
+  .jicoo{margin-top:16px}
+  .jicoo__phTitle{font-size:14px}
+  .jicoo__phText{margin-top:8px;font-size:12px}
+}
+@media (min-width:768px){
+  .jicoo{margin-top:min(1.94vw,28px)}
+  .jicoo__phTitle{font-size:min(1.53vw,22px)}
+  .jicoo__phText{margin-top:min(.83vw,12px);font-size:min(1.11vw,16px)}
+}
+
+/* ---------- 9. 入力項目の案内 ---------- */
+.rfields{background:var(--green-tint);border-radius:var(--radius)}
+.rfields__title{font-weight:700}
+.rfields__list{display:flex;flex-wrap:wrap}
+.rfields__list li{background:var(--white);border:1px solid var(--card-border);
+  border-radius:999px;font-weight:500}
+.rfields__note{color:var(--text-muted);line-height:1.7}
+.rfields__note a{color:var(--green);text-decoration:underline}
+@media (max-width:767px){
+  .rfields{margin-top:22px;padding:18px 16px}
+  .rfields__title{font-size:14px}
+  .rfields__list{margin-top:12px;gap:7px}
+  .rfields__list li{padding:5px 12px;font-size:12px}
+  .rfields__note{margin-top:14px;font-size:11px}
+}
+@media (min-width:768px){
+  .rfields{margin-top:min(2.71vw,39px);padding:min(2.29vw,33px) min(2.29vw,33px)}
+  .rfields__title{font-size:min(1.39vw,20px)}
+  .rfields__list{margin-top:min(1.11vw,16px);gap:min(.69vw,10px)}
+  .rfields__list li{padding:min(.49vw,7px) min(1.25vw,18px);font-size:min(1.11vw,16px)}
+  .rfields__note{margin-top:min(1.53vw,22px);font-size:min(1.04vw,15px)}
+}

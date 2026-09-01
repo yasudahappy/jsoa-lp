@@ -134,10 +134,11 @@
 }
 
 /* ---------- 8. 予約ウィジェット枠（Jicoo） ---------- */
-/* Jicoo は <div class="jicoo-widget"> にスクリプトが iframe を差し込む。
-   高さは div 側で決まるので、インライン style ではなくここで指定する
-   （Jicoo の既定は 720px 固定。SP は画面が狭く縦に伸びるため増やす）。 */
-.jicoo-widget{width:100%;min-width:0;box-sizing:border-box;
+/* Jicoo は <div class="jicoo-widget"> にスクリプトが iframe を差し込み、
+   中身の高さに合わせて div の height をインラインで書き換える。
+   height をここで指定してもインライン style に負けるので指定しない。
+   min-height は読み込み中の場所取り（レイアウトが飛ぶのを防ぐ）だけの役割。 */
+.jicoo-widget{width:100%;min-width:0;min-height:600px;box-sizing:border-box;
   border:1px solid var(--card-border);border-radius:var(--radius);
   overflow:hidden;background:#fff}
 .jicoo-widget iframe{display:block;width:100%;height:100%;border:0}
@@ -146,12 +147,10 @@
 .bookform__fallback a{color:var(--green);text-decoration:underline}
 
 @media (max-width:767px){
-  .jicoo-widget{height:820px}
   .bookform__fallback{margin-top:12px;font-size:11px}
   .bookform{margin-top:16px}
 }
 @media (min-width:768px){
-  .jicoo-widget{height:720px}
   .bookform__fallback{margin-top:min(1.11vw,16px);font-size:min(1.04vw,15px)}
   .bookform{margin-top:min(1.94vw,28px)}
 }

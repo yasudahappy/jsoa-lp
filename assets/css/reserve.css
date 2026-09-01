@@ -143,42 +143,21 @@
   overflow:hidden;background:#fff}
 .jicoo-widget iframe{display:block;width:100%;height:100%;border:0}
 /* スクリプトが読めなかったときの逃げ道。ウィジェットの下に小さく置く */
-.bookform__fallback{text-align:center;color:var(--text-muted)}
-.bookform__fallback a{color:var(--green);text-decoration:underline}
+.bookform__privacy,.bookform__fallback{text-align:center;color:var(--text-muted);line-height:1.7}
+.bookform__privacy a,.bookform__fallback a{color:var(--green);text-decoration:underline}
 
 @media (max-width:767px){
-  .bookform__fallback{margin-top:12px;font-size:11px}
+  .bookform__privacy{margin-top:14px;font-size:11px}
+  .bookform__fallback{margin-top:10px;font-size:11px}
   .bookform{margin-top:16px}
 }
 @media (min-width:768px){
-  .bookform__fallback{margin-top:min(1.11vw,16px);font-size:min(1.04vw,15px)}
+  .bookform__privacy{margin-top:min(1.53vw,22px);font-size:min(1.04vw,15px)}
+  .bookform__fallback{margin-top:min(.83vw,12px);font-size:min(1.04vw,15px)}
   .bookform{margin-top:min(1.94vw,28px)}
 }
 
-/* ---------- 9. 入力項目の案内 ---------- */
-.rfields{background:var(--green-tint);border-radius:var(--radius)}
-.rfields__title{font-weight:700}
-.rfields__list{display:flex;flex-wrap:wrap}
-.rfields__list li{background:var(--white);border:1px solid var(--card-border);
-  border-radius:999px;font-weight:500}
-.rfields__note{color:var(--text-muted);line-height:1.7}
-.rfields__note a{color:var(--green);text-decoration:underline}
-@media (max-width:767px){
-  .rfields{margin-top:22px;padding:18px 16px}
-  .rfields__title{font-size:14px}
-  .rfields__list{margin-top:12px;gap:7px}
-  .rfields__list li{padding:5px 12px;font-size:12px}
-  .rfields__note{margin-top:14px;font-size:11px}
-}
-@media (min-width:768px){
-  .rfields{margin-top:min(2.71vw,39px);padding:min(2.29vw,33px) min(2.29vw,33px)}
-  .rfields__title{font-size:min(1.39vw,20px)}
-  .rfields__list{margin-top:min(1.11vw,16px);gap:min(.69vw,10px)}
-  .rfields__list li{padding:min(.49vw,7px) min(1.25vw,18px);font-size:min(1.11vw,16px)}
-  .rfields__note{margin-top:min(1.53vw,22px);font-size:min(1.04vw,15px)}
-}
-
-/* ---------- 10. 規約ページ（privacy/index.html） ---------- */
+/* ---------- 9. 規約ページ（privacy/index.html） ---------- */
 .legal__intro{line-height:1.9}
 .legal{counter-reset:legal;display:flex;flex-direction:column;list-style:none;padding:0}
 .legal__item{counter-increment:legal;display:flex;flex-direction:column}

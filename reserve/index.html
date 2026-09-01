@@ -152,6 +152,11 @@
            スクリプトが読み込めなかったときのために、ウィジェットの下に
            予約ページへの直リンクを置いています。
 
+           以前あった「ご入力いただく項目」セクションは、実際のフォームが
+           ここに埋め込まれて役割が重複したため削除しました（コミット
+           241a864 に残っています）。個人情報の利用目的とプライバシー
+           ポリシーへの導線だけは、ウィジェットの直下に移しています。
+
            Jicoo 側の設定（サイトの記載と揃えること）
              所要時間 45分／前後のバッファ15分／時間間隔30分
              受付 月〜金 10:00-19:00・当日から90日間・24時間前まで
@@ -170,21 +175,11 @@
              data-url="https://www.jicoo.com/event_types/-dgOKd6C8EYr/widget"></div>
         <script src="https://www.jicoo.com/widget/event_type.js" async></script>
         <!-- Jicoo widget end -->
+        <p class="bookform__privacy">ご入力いただいた個人情報は、個別説明会のご案内およびご連絡のためにのみ利用します。
+          詳しくは<a href="../privacy/index.html">プライバシーポリシー</a>をご確認ください。</p>
         <p class="bookform__fallback">カレンダーが表示されない場合は
           <a href="https://www.jicoo.com/t/1Y-VENq0-WAB/e/zEO6mR4f"
              target="_blank" rel="noopener">こちらの予約ページ</a>からお申し込みください。</p>
-      </div>
-
-      <div class="rfields">
-        <h3 class="rfields__title">ご入力いただく項目</h3>
-        <ul class="rfields__list">
-          <li>会社名</li>
-          <li>ご担当者名</li>
-          <li>お電話番号</li>
-          <li>メールアドレス</li>
-        </ul>
-        <p class="rfields__note">ご入力いただいた個人情報は、個別説明会のご案内およびご連絡のためにのみ利用します。
-          詳しくは<a href="../privacy/index.html">プライバシーポリシー</a>をご確認ください。</p>
       </div>
     </div>
   </section>

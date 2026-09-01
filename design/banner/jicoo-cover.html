@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<!-- Jicoo 予約ページのカバー画像（1040x282）
+
+     表示時に上下が大きく切られる（横1900pxの枠で高さ170px程度＝
+     画像の中央3分の1しか見えない）。そのため
+       ・文字とロゴは中央±50pxに収める
+       ・写真は使わない（どの位置でも人物の顔が切れるため）
+     という方針で組んでいる。 -->
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1040px;height:282px;overflow:hidden;
+    font-family:"Noto Sans JP","Noto Sans CJK JP",sans-serif}
+  .b{position:relative;width:1040px;height:282px;overflow:hidden;
+    background:linear-gradient(105deg,#0f4423 0%,#14512a 46%,#1d6d38 100%);
+    display:flex;align-items:center;padding-left:64px}
+  /* 右奥の光。帯のどこを切り出しても単調にならないための陰影 */
+  .b::before{content:"";position:absolute;top:-120px;right:-60px;
+    width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.11) 0%,rgba(255,255,255,0) 70%)}
+  .row{position:relative;display:flex;align-items:center;gap:22px}
+  .row img{width:66px;height:66px;display:block;flex:none}
+  .t strong{display:block;font-size:30px;font-weight:700;color:#fff;
+    line-height:1.25;letter-spacing:.01em}
+  .t span{display:block;margin-top:8px;font-size:15px;font-weight:500;
+    color:#c3e2c9;letter-spacing:.05em}
+</style></head><body>
+<div class="b">
+  <div class="row">
+    <img src="../../assets/images/LOGO-white.png" alt="">
+    <div class="t">
+      <strong>一般社団法人訪問販売適正化推進協会</strong>
+      <span>個別説明会のご予約　／　45分・オンライン・無料</span>
+    </div>
+  </div>
+</div>
+</body></html>

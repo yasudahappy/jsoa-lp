@@ -271,15 +271,23 @@ PC は Figma の実寸を `min(Xvw, Ypx)` で表現しており、1440px 以上�
 サイトと同じトークン（Noto Sans JP / `#14512a` / `#1a7c32`）で組んでいます。
 文字はすべて仕上がりから3mm内側の安全領域に収めてあります。
 
+**英語名は `Japan Sales Oversight Association`。** 略称 JSOA は
+ロゴ・ドメイン・サイト全体で確定しているため、英語名は J/S/O/A の4語という
+制約の中で選んでいます。`Oversight`（監督）は第三者機関としての立場を一語で
+示せること、現行ロゴの `JAPAN SALES ___ ASSOCIATION` という並びを保てることが
+決め手です。なおサイト本文に英語のフルネームは一度も登場しません（すべて
+「JSOA」表記）。
+
 **未確定の3点**
 
 - **ドメイン `jsoa.net`** …… メールアドレスから推測したもの。サイトの公開先が
   決まったら表面の `jsoa.net` と裏面のQR・URLを差し替えてください
 - **ロゴ** …… サイトと同じ円形の `LOGO.png` を使っています。名刺案にあった
   盾形のロゴが正式にあるなら差し替えます
-- **英語名** …… ロゴの円周は `JAPAN SALES OPTIMIZE ASSOCIATION`、名刺案の
-  表記は `Japan Salesperson Optimization Association` で食い違っています。
-  どちらが正式か確認が必要です
+- **ロゴ内の英語名** …… 名刺の英語名は **`Japan Sales Oversight Association`**
+  に決定しました。ロゴの円周文字は `JAPAN SALES OPTIMIZE ASSOCIATION` のままで
+  食い違っているので、ロゴ側の差し替えが必要です（`OPTIMIZE` → `OVERSIGHT` の
+  1語のみ。円周のレイアウトはほぼ変わりません）
 
 ## Figma と意図的に変えている箇所
 

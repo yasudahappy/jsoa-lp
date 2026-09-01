@@ -1,36 +1,41 @@
 <!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
 <!-- Jicoo 予約ページのカバー画像（1040x282）
 
-     表示時に上下が大きく切られる（横1900pxの枠で高さ170px程度＝
-     画像の中央3分の1しか見えない）。そのため
-       ・文字とロゴは中央±50pxに収める
-       ・写真は使わない（どの位置でも人物の顔が切れるため）
-     という方針で組んでいる。 -->
+     予約ページ側の枠は約 4.3:1。この画像は 3.69:1 なので、表示時に
+     上下がそれぞれ 7% ほど切られる。安全域は上下20pxを除いた内側。 -->
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{width:1040px;height:282px;overflow:hidden;
     font-family:"Noto Sans JP","Noto Sans CJK JP",sans-serif}
   .b{position:relative;width:1040px;height:282px;overflow:hidden;
-    background:linear-gradient(105deg,#0f4423 0%,#14512a 46%,#1d6d38 100%);
-    display:flex;align-items:center;padding-left:64px}
-  /* 右奥の光。帯のどこを切り出しても単調にならないための陰影 */
-  .b::before{content:"";position:absolute;top:-120px;right:-60px;
-    width:520px;height:520px;border-radius:50%;
-    background:radial-gradient(circle,rgba(255,255,255,.11) 0%,rgba(255,255,255,0) 70%)}
-  .row{position:relative;display:flex;align-items:center;gap:22px}
-  .row img{width:66px;height:66px;display:block;flex:none}
-  .t strong{display:block;font-size:30px;font-weight:700;color:#fff;
+    background:#14512a;display:grid;grid-template-columns:640px 400px}
+  .l{position:relative;display:flex;flex-direction:column;justify-content:center;
+    padding:0 40px 0 60px;
+    background:linear-gradient(105deg,#0f4423 0%,#14512a 100%)}
+  .brand{display:flex;align-items:center;gap:20px}
+  .brand img{width:60px;height:60px;display:block;flex:none}
+  .brand strong{font-size:27px;font-weight:700;color:#fff;
     line-height:1.25;letter-spacing:.01em}
-  .t span{display:block;margin-top:8px;font-size:15px;font-weight:500;
-    color:#c3e2c9;letter-spacing:.05em}
+  .lead{margin-top:20px;font-size:17px;font-weight:500;color:#e4f2e6;
+    line-height:1.5;letter-spacing:.01em}
+  .chips{margin-top:16px;display:flex;gap:9px}
+  .chips li{list-style:none;border:1.5px solid rgba(255,255,255,.42);
+    border-radius:999px;padding:5px 15px;font-size:13px;font-weight:700;
+    color:#fff;letter-spacing:.02em}
+  .r{position:relative;overflow:hidden}
+  .r img{width:100%;height:100%;object-fit:cover;object-position:30% 26%;display:block}
+  .r::after{content:"";position:absolute;inset:0;width:150px;
+    background:linear-gradient(90deg,#14512a 0%,rgba(20,81,42,0) 100%)}
 </style></head><body>
 <div class="b">
-  <div class="row">
-    <img src="../../assets/images/LOGO-white.png" alt="">
-    <div class="t">
-      <strong>一般社団法人訪問販売適正化推進協会</strong>
-      <span>個別説明会のご予約　／　45分・オンライン・無料</span>
+  <div class="l">
+    <div class="brand">
+      <img src="../../assets/images/LOGO-white.png" alt="">
+      <strong>一般社団法人<br>訪問販売適正化推進協会</strong>
     </div>
+    <p class="lead">第三者相談窓口の仕組みを、1対1でご説明します。</p>
+    <ul class="chips"><li>45分</li><li>オンライン</li><li>1対1</li><li>無料</li></ul>
   </div>
+  <div class="r"><img src="../../assets/images/hero-main.jpg" alt=""></div>
 </div>
 </body></html>

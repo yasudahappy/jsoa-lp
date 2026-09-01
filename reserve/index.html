@@ -43,10 +43,6 @@
     <path d="M9 6 24 26 39 6M13 27h22M13 35h22M24 26v16" fill="none" stroke="currentColor"
       stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
-  <symbol id="i-external" viewBox="0 0 24 24">
-    <path d="M14 4h6v6M20 4 12 12M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
-      fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-  </symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24">
     <path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -131,18 +127,26 @@
     </div>
   </section>
 
-  <!-- ============ 予約カレンダー（Jicoo へのリンク） ============ -->
+  <!-- ============ 予約カレンダー（Jicoo ウィジェット埋め込み） ============ -->
   <section class="rsec" id="calendar">
     <div class="rwrap">
       <h2 class="rsec__title">日時を選ぶ</h2>
-      <p class="rsec__note">空き状況の確認とお申し込みは、予約カレンダーから行っていただけます。</p>
+      <p class="rsec__note">空き状況の確認とお申し込みは、下のカレンダーから行っていただけます。</p>
 
       <!-- ==========================================================
            Jicoo への導線
 
-           遷移先は下の href 1か所だけ。Jicoo の予約ページ
-           「JSOA個別説明会」の公開URLです。Jicoo 側でページを作り直すと
-           URLが変わるので、そのときは管理画面から取り直してください。
+           Jicoo の予約ウィジェットをページ内に埋め込んでいます（無料プランで
+           利用可）。コードは Jicoo の予約ページ ＞ 共有する ＞ ウェブサイトに
+           埋め込む で取得。Jicoo 側でページを作り直すと data-url が変わるので、
+           そのときは取り直してください。
+
+           高さはインライン style ではなく reserve.css の .jicoo-widget で
+           指定しています（PC 720px / SP 820px）。日時選択よりゲスト情報の
+           入力画面のほうが縦に長いので、そちらに合わせてあります。
+
+           スクリプトが読み込めなかったときのために、ウィジェットの下に
+           予約ページへの直リンクを置いています。
 
            Jicoo 側の設定（サイトの記載と揃えること）
              所要時間 45分／前後のバッファ15分／時間間隔30分
@@ -157,18 +161,14 @@
              メッセージ …… 任意
            ========================================================== -->
       <div class="bookform" id="book-embed">
-        <div class="bookform__link">
-          <p class="bookform__linkTitle">ご都合のよい日時をお選びください</p>
-          <p class="bookform__linkText">日時の選択と、会社名・ご担当者名などのご入力は、<br>
-            予約システムのページで続けて行っていただけます。</p>
-          <a class="btn btn--primary btn--lg bookform__btn"
-             href="https://www.jicoo.com/t/1Y-VENq0-WAB/e/zEO6mR4f"
-             target="_blank" rel="noopener">
-            <span>個別説明会を予約する</span>
-            <svg class="btn__arrow" aria-hidden="true"><use href="#i-external"/></svg>
-          </a>
-          <p class="bookform__linkNote">別のタブで予約ページが開きます</p>
-        </div>
+        <!-- Jicoo widget begin -->
+        <div class="jicoo-widget"
+             data-url="https://www.jicoo.com/event_types/-dgOKd6C8EYr/widget"></div>
+        <script src="https://www.jicoo.com/widget/event_type.js" async></script>
+        <!-- Jicoo widget end -->
+        <p class="bookform__fallback">カレンダーが表示されない場合は
+          <a href="https://www.jicoo.com/t/1Y-VENq0-WAB/e/zEO6mR4f"
+             target="_blank" rel="noopener">こちらの予約ページ</a>からお申し込みください。</p>
       </div>
 
       <div class="rfields">

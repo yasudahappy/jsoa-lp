@@ -77,7 +77,7 @@
   </section>
 
   <!-- ============ 個別説明会について ============ -->
-  <!-- 所要時間45分・オンライン・1対1・無料（STORES予約側の枠の長さと定員1名の設定に揃えること） -->
+  <!-- 所要時間45分・オンライン・1対1・無料（Jicoo 側の枠の長さと揃えること） -->
   <section class="rsec">
     <div class="rwrap">
       <h2 class="rsec__title">個別説明会について</h2>
@@ -131,31 +131,30 @@
     </div>
   </section>
 
-  <!-- ============ 予約カレンダー（STORES 予約 埋め込み） ============ -->
+  <!-- ============ 予約カレンダー（Jicoo へのリンク） ============ -->
   <section class="rsec" id="calendar">
     <div class="rwrap">
       <h2 class="rsec__title">日時を選ぶ</h2>
       <p class="rsec__note">空き状況の確認とお申し込みは、予約カレンダーから行っていただけます。</p>
 
       <!-- ==========================================================
-           STORES 予約への導線
+           Jicoo への導線
 
-           遷移先は下の href 1か所だけ。末尾の数字は STORES 予約の
-           メニューID（JSOA個別説明会）で、この「メニュー個別URL」に飛ばすと
-           予約タブに直接着地します。/reserve/jsoa だけだと詳細タブに
-           着地してクリックが1回増えるので、メニューIDまで付けています。
-           STORES 側でメニューを作り直したらIDが変わるので、そのときは
-           管理画面の予約タブでURLを取り直して差し替えてください。
+           遷移先は下の href 1か所だけ。Jicoo の予約ページ
+           「JSOA個別説明会」の公開URLです。Jicoo 側でページを作り直すと
+           URLが変わるので、そのときは管理画面から取り直してください。
 
-           カレンダー画面そのものに直接着地させることはできません。
-             ・/widget/calendar は「すべての予約ページ」ドロップダウン付きの
-               管理画面風の素のカレンダーで、顧客向けの画面ではない
-             ・iframe でページ内に表示する方法は STORES 予約の有料機能
-               （実装は git 履歴のコミット b0f07ae に残してあります）
+           Jicoo 側の設定（サイトの記載と揃えること）
+             所要時間 45分／前後のバッファ15分／時間間隔30分
+             受付 月〜金 10:00-19:00・当日から90日間・24時間前まで
+             キャンセル・日程変更 前日まで（確定メールのボタンから）
+             Google カレンダー連携で空き時間を自動判定
+             Google Meet の URL を予約時に自動発行
 
-           入力項目は STORES 予約側で設定済みです。
-             会社名 …… アンケート（フリープランは1問まで）
-             ご担当者名・メールアドレス・電話番号 …… 標準のお客様情報
+           入力項目は Jicoo 側で設定済みです。
+             お名前・メールアドレス …… 固定項目
+             会社名・お電話番号 …… 追加項目（固定の会社名は非表示）
+             メッセージ …… 任意
            ========================================================== -->
       <div class="bookform" id="book-embed">
         <div class="bookform__link">
@@ -163,12 +162,12 @@
           <p class="bookform__linkText">日時の選択と、会社名・ご担当者名などのご入力は、<br>
             予約システムのページで続けて行っていただけます。</p>
           <a class="btn btn--primary btn--lg bookform__btn"
-             href="https://jsoa.stores.jp/reserve/jsoa/1977464"
+             href="https://www.jicoo.com/t/1Y-VENq0-WAB/e/zEO6mR4f"
              target="_blank" rel="noopener">
             <span>個別説明会を予約する</span>
             <svg class="btn__arrow" aria-hidden="true"><use href="#i-external"/></svg>
           </a>
-          <p class="bookform__linkNote">別のタブで STORES 予約が開きます</p>
+          <p class="bookform__linkNote">別のタブで予約ページが開きます</p>
         </div>
       </div>
 

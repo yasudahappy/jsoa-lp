@@ -1,0 +1,86 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<!-- JSOA 名刺 表面
+     縦型 仕上がり 55×91mm ／ 塗り足し 3mm ／ 350dpi
+     カンバス 841×1336px（塗り足し込み）
+       仕上がり線 …… 内側 41px
+       安全領域   …… さらに内側 41px（文字はこの内側に収める）
+     文字サイズは pt 換算（350dpi では 1pt = 4.861px）でコメントに併記 -->
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:841px;height:1336px;overflow:hidden;background:#fff;
+    font-family:"Noto Sans JP","Noto Sans CJK JP",sans-serif;
+    color:#1f2937;-webkit-font-smoothing:antialiased}
+  .safe{position:absolute;left:82px;top:82px;width:677px;height:1172px;
+    display:flex;flex-direction:column;justify-content:space-between}
+
+  /* --- ロゴ＋ワードマーク --- */
+  .lock{display:flex;align-items:center;gap:22px}
+  .lock img{width:118px;height:118px;display:block;flex:none}
+  .wm{font-size:72px;font-weight:900;line-height:1;color:#14512a;letter-spacing:.06em}
+  .wm-en{margin-top:8px;font-size:18px;font-weight:500;color:#6f7b74;letter-spacing:.03em}
+
+  /* --- 法人名 --- */
+  .org{margin-top:0}
+  .org-pre{font-size:29px;font-weight:500;color:#3f4a44;letter-spacing:.04em}
+  .org-name{margin-top:8px;font-size:47px;font-weight:700;letter-spacing:.02em}
+
+  /* --- 罫線（左に緑のアクセント） --- */
+  .rule{position:relative;height:2px;background:#dde2df;margin:34px 0 30px}
+  .rule::before{content:"";position:absolute;left:0;top:0;width:104px;height:2px;background:#1a7c32}
+
+  /* --- 氏名 --- */
+  .role{font-size:27px;font-weight:500;color:#3f4a44;letter-spacing:.06em}
+  .name{margin-top:10px;font-size:66px;font-weight:700;letter-spacing:.12em}
+  .name-en{margin-top:10px;font-size:27px;font-weight:500;color:#1a7c32;letter-spacing:.1em}
+
+  /* --- 連絡先 --- */
+  .contact{display:flex;flex-direction:column;gap:13px}
+  .row{display:flex;align-items:center;gap:16px;font-size:29px;letter-spacing:.01em}
+  .row svg{width:28px;height:28px;flex:none}
+  .addr{margin-top:22px;padding-top:22px;border-top:2px solid #eceeed;
+    display:flex;gap:15px;align-items:flex-start}
+  .addr svg{width:28px;height:28px;flex:none;margin-top:3px}
+  .addr p{font-size:26px;line-height:1.5;letter-spacing:.01em}
+</style></head><body>
+<div class="safe">
+  <div class="lock">
+    <img src="../../assets/images/LOGO.png" alt="">
+    <div>
+      <div class="wm">JSOA</div>
+      <div class="wm-en">Japan Salesperson Optimization Association</div>
+    </div>
+  </div>
+
+  <div class="mid">
+    <div class="org">
+      <p class="org-pre">一般社団法人</p>
+      <p class="org-name">訪問販売適正化推進協会</p>
+    </div>
+
+    <div class="rule"></div>
+
+    <p class="role">代表理事</p>
+    <p class="name">亀井　航太</p>
+    <p class="name-en">KOTA KAMEI</p>
+  </div>
+
+  <div class="contact">
+    <div class="row">
+      <svg viewBox="0 0 24 24" fill="#1a7c32"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+      <span>070-8441-8039</span>
+    </div>
+    <div class="row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a7c32" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 6.5L21 6"/></svg>
+      <span>info@jsoa.net</span>
+    </div>
+    <div class="row">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a7c32" stroke-width="2"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4M12 2.8c2.6 2.6 3.9 6 3.9 9.2s-1.3 6.6-3.9 9.2c-2.6-2.6-3.9-6-3.9-9.2S9.4 5.4 12 2.8z"/></svg>
+      <span>jsoa.net</span>
+    </div>
+    <div class="addr">
+      <svg viewBox="0 0 24 24" fill="#1a7c32"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></svg>
+      <p>〒220-0004<br>神奈川県横浜市西区北幸二丁目10番48号<br>むつみビル3階</p>
+    </div>
+  </div>
+</div>
+</body></html>

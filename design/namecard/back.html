@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="UTF-8">
+<!-- JSOA 名刺 裏面
+     縦型 仕上がり 55×91mm ／ 塗り足し 3mm ／ 350dpi
+     カンバス 841×1336px（塗り足し込み）
+       仕上がり線 …… 内側 41px ／ 安全領域 …… さらに内側 41px
+     背景は塗り足しいっぱいまで敷く（断裁ズレで白フチが出ないように） -->
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:841px;height:1336px;overflow:hidden;
+    font-family:"Noto Sans JP","Noto Sans CJK JP",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .bg{position:absolute;inset:0;
+    background:linear-gradient(158deg,#0f4423 0%,#14512a 48%,#1d6d38 100%)}
+  /* 右上の光。単調な面を避けるためだけの弱い陰影 */
+  .bg::after{content:"";position:absolute;top:-260px;right:-200px;
+    width:900px;height:900px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.10) 0%,rgba(255,255,255,0) 70%)}
+  .safe{position:absolute;left:82px;top:82px;width:677px;height:1172px;
+    display:flex;flex-direction:column;align-items:center;
+    justify-content:space-between;text-align:center;color:#fff}
+
+  .mark img{width:150px;height:150px;display:block;margin:0 auto}
+  .mark .wm{margin-top:18px;font-size:78px;font-weight:900;line-height:1;letter-spacing:.08em}
+
+  .msg{width:100%}
+  .msg hr{border:0;height:1px;background:rgba(255,255,255,.42);margin:0 auto 40px;width:78%}
+  .msg h2{font-size:50px;font-weight:700;line-height:1.55;letter-spacing:.02em}
+  .msg p{margin-top:26px;font-size:26px;font-weight:500;line-height:1.75;
+    color:#c8e4ce;letter-spacing:.02em}
+
+  .qr{display:flex;flex-direction:column;align-items:center}
+  .qr .panel{width:236px;height:236px;background:#fff;border-radius:14px;
+    display:flex;align-items:center;justify-content:center}
+  .qr .panel img{width:190px;height:190px;display:block}
+  .qr .cap{margin-top:18px;font-size:25px;font-weight:500;letter-spacing:.03em}
+  .qr .url{margin-top:6px;font-size:24px;font-weight:700;color:#c8e4ce;letter-spacing:.04em}
+</style></head><body>
+<div class="bg"></div>
+<div class="safe">
+  <div class="mark">
+    <img src="../../assets/images/LOGO-white.png" alt="">
+    <div class="wm">JSOA</div>
+  </div>
+
+  <div class="msg">
+    <hr>
+    <h2>訪問販売のトラブルから、<br>企業と消費者を守る。</h2>
+    <p>私たちは、健全な取引と安心できる社会のために、<br>訪問販売の適正化を推進します。</p>
+  </div>
+
+  <div class="qr">
+    <div class="panel"><img src="qr.png" alt=""></div>
+    <p class="cap">JSOA 公式サイト</p>
+    <p class="url">jsoa.net</p>
+  </div>
+</div>
+</body></html>

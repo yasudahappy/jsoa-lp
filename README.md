@@ -261,6 +261,26 @@ PC は Figma の実寸を `min(Xvw, Ypx)` で表現しており、1440px 以上�
 **約物は詰めていません**（`font-feature-settings: palt` を使っていません）。Figma の実測幅が
 「字数 × フォントサイズ」と一致するため、詰めると全体が Figma より狭くなります。
 
+## 名刺（design/namecard/）
+
+縦型 55×91mm ／ 塗り足し3mm ／ 350dpi。版下は `front.html` / `back.html`、
+プレビューは `preview-front.png` / `preview-back.png`（どちらも塗り足し込みの
+841×1336px）。裏面のQRは `qr.png`（`https://jsoa.net/`・誤り訂正M）で、
+`design/namecard/qr.png` を作り直すときは segno で生成してください。
+
+サイトと同じトークン（Noto Sans JP / `#14512a` / `#1a7c32`）で組んでいます。
+文字はすべて仕上がりから3mm内側の安全領域に収めてあります。
+
+**未確定の3点**
+
+- **ドメイン `jsoa.net`** …… メールアドレスから推測したもの。サイトの公開先が
+  決まったら表面の `jsoa.net` と裏面のQR・URLを差し替えてください
+- **ロゴ** …… サイトと同じ円形の `LOGO.png` を使っています。名刺案にあった
+  盾形のロゴが正式にあるなら差し替えます
+- **英語名** …… ロゴの円周は `JAPAN SALES OPTIMIZE ASSOCIATION`、名刺案の
+  表記は `Japan Salesperson Optimization Association` で食い違っています。
+  どちらが正式か確認が必要です
+
 ## Figma と意図的に変えている箇所
 
 | 箇所 | Figma | 実装 | 理由 |

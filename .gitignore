@@ -1,2 +1,6 @@
 .DS_Store
 node_modules/
+
+# 検証時のスクリーンショット出力
+undefined/
+shots/

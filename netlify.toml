@@ -1,0 +1,30 @@
+# Netlify の設定。管理画面で設定しなくても、この内容が使われます。
+# ビルド不要の静的サイトなので、リポジトリのルートをそのまま公開します。
+
+[build]
+  publish = "."
+  command = ""
+
+# セキュリティ関連のヘッダー。
+# Jicoo の予約ウィジェットを iframe で読み込んでいるので、
+# frame-src を塞ぐような指定は入れていません。
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+
+# 画像とCSS/JSは長めにキャッシュ。差し替えたらファイル名を変えるか、
+# Netlify 側のデプロイで自動的に更新されます。
+[[headers]]
+  for = "/assets/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+# 予約ページは検索結果に出さない方針（HTML側にも noindex を入れています）
+[[headers]]
+  for = "/reserve/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

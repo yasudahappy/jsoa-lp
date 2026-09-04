@@ -263,26 +263,47 @@ PC は Figma の実寸を `min(Xvw, Ypx)` で表現しており、1440px 以上�
 
 ## 公開（ホスティング）
 
+**公開済み： https://jsoa.net/**（HTTPS・証明書は Let's Encrypt 自動発行）
+
 ビルド不要の静的サイトです。`netlify.toml` にNetlify用の設定を入れてあります
 （公開ディレクトリ＝リポジトリのルート、ビルドコマンドなし、セキュリティヘッダー、
 `/reserve/` の noindex）。Netlify 以外を使う場合は、このファイルは無視されます。
 
-**ドメイン `jsoa.net` の状況**
+**現在の構成**
 
-- 登録は協会が保有（`info@jsoa.net` の Google Workspace が同ドメインで稼働中）
-- 現在の向き先は Squarespace（`198.185.159.144` / www は `.145`）で、
-  中身は「準備中」のプレースホルダのみ
-- **ネームサーバーは移さない方針。** A / CNAME だけ差し替えれば、
-  MX・SPF・DKIM に触れずに済み、メールが止まるリスクを避けられます
+| 項目 | 値 |
+|---|---|
+| ホスティング | Netlify（サイト名 `euphonious-lollipop-c4b523`） |
+| 本番URL | `https://jsoa.net/` |
+| `www.jsoa.net` | `jsoa.net` へリダイレクト |
+| ドメイン登録・DNS | Squarespace（ネームサーバーは移していません） |
+| メール | Google Workspace（`info@jsoa.net`）— DNS移行では触っていません |
 
-**手順の要点**
+**DNS（Squarespace のカスタムレコード）**
 
-1. 現在のDNSレコードを控える（戻せるようにする）
-2. Netlify にリポジトリを接続 → 仮URLで公開・確認（DNSは触らない）
-3. Netlify にカスタムドメインを追加 → 指定された値を確認
-4. Squarespace 側の A / CNAME のみ差し替え
-5. HTTPS証明書の自動発行を確認
-6. Squarespace の**サイト契約のみ**解約（**ドメイン登録は解約しない**）
+```
+A      @     1時間   75.2.60.5                                  ← Netlify
+CNAME  www   1時間   euphonious-lollipop-c4b523.netlify.app     ← Netlify
+```
+
+移行前のレコードは `docs/dns-jsoa-net.md` に控えてあります。
+`MX` と `TXT`（SPF・DKIM）は**触っていません**。とくに DKIM
+（`google._domainkey`）は管理画面で値が省略表示され全文を控えられないため、
+**編集も削除もしないでください**（メールの到達性が落ちます）。
+
+**やってはいけないこと**
+
+- Squarespace の**ドメイン登録の解約**（`info@jsoa.net` ごと止まります）
+- ネームサーバーの変更（Netlify DNS / Cloudflare へ移すと MX・SPF・DKIM の
+  再設定が必要になります）
+
+**残っている作業**
+
+- **現在の本番はzipアップロード（Netlify Drop）で配信しています。**
+  このリポジトリへの push は本番に反映されません。GitHubリポジトリを
+  Netlify に接続すると、以後は push で自動公開されます（同時に
+  「Powered by Netlify」バッジも消えます）
+- 長期的にはGitHubリポジトリとNetlifyの所有者を協会側に移す
 
 ## ロゴ（design/logo/）
 
@@ -340,14 +361,12 @@ python3 design/logo/build.py     → SVG を書き出す
 決め手です。なおサイト本文に英語のフルネームは一度も登場しません（すべて
 「JSOA」表記）。
 
-**未確定の3点**
+**以前の未確定事項は解消済みです**
 
-- **ドメイン `jsoa.net`** …… メールアドレスから推測したもの。サイトの公開先が
-  決まったら表面の `jsoa.net` と裏面のQR・URLを差し替えてください
-- **ロゴ内の英語名** …… 名刺の英語名は **`Japan Sales Oversight Association`**
-  に決定しました。ロゴの円周文字は `JAPAN SALES OPTIMIZE ASSOCIATION` のままで
-  食い違っているので、ロゴ側の差し替えが必要です（`OPTIMIZE` → `OVERSIGHT` の
-  1語のみ。円周のレイアウトはほぼ変わりません）
+- **ドメイン `jsoa.net`** …… サイトを公開済み。表面のURLと裏面のQR
+  （`https://jsoa.net/`）はどちらも有効です
+- **ロゴ内の英語名** …… ロゴを再構築し、円周の英語名を
+  `JAPAN SALES OVERSIGHT ASSOCIATION` に統一しました
 
 ## Figma と意図的に変えている箇所
 

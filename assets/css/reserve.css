@@ -78,7 +78,9 @@
 .rmeta__icon{display:block;color:var(--green)}
 .rmeta__icon svg{width:100%;height:100%}
 .rmeta__label{color:var(--text-muted)}
-.rmeta__value{font-weight:700}
+/* 「オンライン1対1」が「オンライン1対 / 1」で折り返さないよう、
+   改行位置を HTML の <wbr> だけに限定する */
+.rmeta__value{font-weight:700;word-break:keep-all}
 @media (max-width:767px){
   .rmeta{margin-top:18px;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
   .rmeta__item{padding:14px 6px}

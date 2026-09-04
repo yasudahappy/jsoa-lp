@@ -37,6 +37,7 @@ a{color:inherit;text-decoration:none}
   --green-footer:#3f8f48;     /* フッター */
   --green-pale:#e8f5e9;       /* ヒーロー左パネル・メリットカード */
   --green-tint:#f5f8f6;       /* 比較セクション右パネル・CTA帯 */
+  --green-edge:#8dc63f;       /* SPの左右フチのライン（Figmaにはない追加） */
   --orange:#ff8903;           /* 見出しの強調 */
   --orange-chart:#fe7200;     /* グラフ見出し */
   --orange-bar:#fe8109;       /* グラフ・大きな数字・アイコン */
@@ -88,6 +89,21 @@ a{color:inherit;text-decoration:none}
 }
 
 /* ---------- 3. Base ---------- */
+/* SP だけ、画面の左右に細い黄緑のラインを引いて全体を締める。
+   Figma にはない追加（クライアントのご要望）。position:fixed なので
+   スクロールしても途切れず、ページの端に一本通って見える。
+   z-index はスティッキーCTA（50）より下。CTA帯は画面に浮いている
+   要素なので、その上を線が横切ると貼り付けたように見える。
+   PC は左右の余白が広く、線を引くと逆に間延びして見えるため入れていない。 */
+@media (max-width:767px){
+  body::before,body::after{
+    content:"";position:fixed;top:0;bottom:0;width:3px;
+    background:var(--green-edge);z-index:40;pointer-events:none;
+  }
+  body::before{left:0}
+  body::after{right:0}
+}
+
 body{
   font-family:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
   font-size:var(--fs-body);font-weight:400;line-height:1.6;

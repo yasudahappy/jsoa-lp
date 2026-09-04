@@ -133,6 +133,22 @@
   .rsteps__text{margin-top:min(.55vw,8px);font-size:min(1.11vw,16px)}
 }
 
+/* 「ご予約の流れ」の下に置く注意書き。Jicoo の注意事項から移してきたもの */
+.rnotes{display:grid;list-style:none}
+.rnotes li{position:relative;color:var(--text-muted);line-height:1.7}
+.rnotes li::before{content:"";position:absolute;left:0;border-radius:50%;background:var(--green)}
+.rnotes a{color:var(--green);text-decoration:underline}
+@media (max-width:767px){
+  .rnotes{margin-top:14px;gap:6px}
+  .rnotes li{padding-left:14px;font-size:12px}
+  .rnotes li::before{top:9px;width:4px;height:4px}
+}
+@media (min-width:768px){
+  .rnotes{margin-top:min(1.53vw,22px);gap:min(.55vw,8px)}
+  .rnotes li{padding-left:min(1.11vw,16px);font-size:min(1.04vw,15px)}
+  .rnotes li::before{top:min(.76vw,11px);width:min(.35vw,5px);height:min(.35vw,5px)}
+}
+
 /* ---------- 8. 予約ウィジェット枠（Jicoo） ---------- */
 /* Jicoo は <div class="jicoo-widget"> にスクリプトが iframe を差し込み、
    中身の高さに合わせて div の height をインラインで書き換える。

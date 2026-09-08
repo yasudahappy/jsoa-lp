@@ -335,17 +335,12 @@ body{
 .tri-node--jsoa{font-size:50px;fill:var(--green-jsoa)}
 .tri-label{font-size:24px;fill:var(--text)}
 
-.vflow{margin-top:34px;text-align:center;display:flex;flex-direction:column;align-items:center}
-.vflow__node{font-size:24px;font-weight:700;line-height:1.3}
-.vflow__node--jsoa{color:var(--green-jsoa);font-size:32px}
-.vflow__label{font-size:16px;line-height:1.35}
-.vflow__arrow{display:block;width:1px;height:16px;background:var(--text);position:relative;margin:5px 0}
-.vflow__arrow::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
-  border:5px solid transparent;border-top-color:var(--text);border-bottom:0}
-
-.flowsec__text{text-align:center;margin-inline:auto}
-@media (max-width:767px){.vflow{margin-top:43px;gap:0}
-  .vflow__arrow{margin:7px 0}}
+/* SPの三角図。viewBox 幅 354 = SPのコンテナ幅なので 1単位 = 1px。
+   文字サイズの数値はそのまま画面上の px と一致する */
+.trisp{width:100%;margin-top:34px;height:auto}
+.trisp-node{font-size:17px;font-weight:700;fill:var(--text)}
+.trisp-node--jsoa{font-size:24px;fill:var(--green-jsoa)}
+.trisp-label{font-size:12px;fill:var(--text)}
 @media (max-width:767px){.flowsec__text{margin-top:38px;font-size:12px;line-height:1.17}}
 @media (min-width:768px){
   .flowsec__text{margin-top:min(1.67vw,24px);font-size:min(1.667vw,24px);line-height:1.21;

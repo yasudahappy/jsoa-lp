@@ -289,20 +289,43 @@
         <text class="tri-label" x="300" y="334" text-anchor="middle">企業に連携</text>
       </svg>
 
-      <!-- SP: 縦フロー -->
-      <div class="vflow sp-only">
-        <p class="vflow__node">企業</p>
-        <span class="vflow__arrow" aria-hidden="true"></span>
-        <p class="vflow__label">相談窓口を案内</p>
-        <span class="vflow__arrow" aria-hidden="true"></span>
-        <p class="vflow__node">消費者</p>
-        <span class="vflow__arrow" aria-hidden="true"></span>
-        <p class="vflow__label">JSOAへ相談</p>
-        <span class="vflow__arrow" aria-hidden="true"></span>
-        <p class="vflow__node vflow__node--jsoa">JSOA</p>
-        <span class="vflow__arrow" aria-hidden="true"></span>
-        <p class="vflow__label">必要に応じて<br>企業に連携</p>
-      </div>
+      <!-- SP: 三角図 -->
+      <!-- PCと同じ三角形。viewBox は SP のコンテナ幅（354）に合わせてあり、
+           表示上 1単位 = 1px になるので、文字サイズはそのまま px として読める。
+
+           PCとの違いは矢印が3本（PCは4本）で、「第三者として対応」を
+           省いている点。SPでは右辺に2本の線とラベルを並べる幅がなく、
+           どのラベルがどの矢印のものか分からなくなる。省いた1本は
+           図の下の本文で説明している。省く前の縦フロー版も同じ3本だった。
+
+           ラベルは三角形の内側に置いている（外側には幅がない）。
+           それぞれ対応する辺のすぐ内側に寄せて、どの矢印の説明かが
+           分かるようにしている。 -->
+      <svg class="trisp sp-only" viewBox="0 0 354 272" role="img" aria-labelledby="triSpTitle">
+        <title id="triSpTitle">企業から消費者へJSOAを案内し、消費者はJSOAへ相談、JSOAは必要に応じて企業と連携する関係図</title>
+        <defs>
+          <marker id="ahsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+            <path d="M0 0 10 5 0 10z" fill="#000"/>
+          </marker>
+        </defs>
+
+        <text class="trisp-node" x="4" y="46">企業</text>
+        <text class="trisp-node" x="350" y="46" text-anchor="end">消費者</text>
+        <text class="trisp-node trisp-node--jsoa" x="177" y="262" text-anchor="middle">JSOA</text>
+
+        <!-- 企業 → 消費者 -->
+        <text class="trisp-label" x="177" y="14" text-anchor="middle">相談窓口を案内</text>
+        <line x1="46" y1="39" x2="291" y2="39" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
+
+        <!-- 消費者 → JSOA -->
+        <line x1="330" y1="62" x2="218" y2="232" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
+        <text class="trisp-label" x="266" y="144" text-anchor="end">JSOAへ相談</text>
+
+        <!-- JSOA → 企業 -->
+        <line x1="136" y1="232" x2="24" y2="62" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
+        <text class="trisp-label" x="120" y="172">必要に応じて</text>
+        <text class="trisp-label" x="120" y="190">企業に連携</text>
+      </svg>
 
       <p class="flowsec__text">企業様から消費者へJSOAを第三者相談窓口としてご<br>案内いただきます。<br>消費者からの相談をJSOAが受け付け、必要に応じて<br>企業様と連携しながら問題解決をサポートします。</p>
     </div>

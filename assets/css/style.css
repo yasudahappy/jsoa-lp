@@ -341,6 +341,9 @@ body{
 .trisp-node{font-size:17px;font-weight:700;fill:var(--text)}
 .trisp-node--jsoa{font-size:24px;fill:var(--green-jsoa)}
 .trisp-label{font-size:12px;fill:var(--text)}
+/* 手で改行を入れている段落なので中央揃え（Figma もそうなっている）。
+   指定が漏れていて PC・SP ともに左寄せになっていた */
+.flowsec__text{text-align:center}
 @media (max-width:767px){.flowsec__text{margin-top:38px;font-size:12px;line-height:1.17}}
 @media (min-width:768px){
   .flowsec__text{margin-top:min(1.67vw,24px);font-size:min(1.667vw,24px);line-height:1.21;

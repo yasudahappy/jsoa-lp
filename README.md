@@ -374,7 +374,18 @@ python3 design/logo/build.py     → SVG を書き出す
 
 ## 名刺（design/namecard/）
 
-縦型 55×91mm ／ 塗り足し3mm ／ 350dpi。版下は `front.html` / `back.html`、
+縦型 55×91mm ／ 塗り足し3mm ／ 350dpi。**表面は2種類あります。**
+
+| 版下 | 肩書き・氏名 | 入稿用PDF |
+|---|---|---|
+| `front.html` | 代表理事　亀井　航太 | `JSOA-namecard.pdf` |
+| `front-yasuda.html` | Founder　安田　海斗 | `JSOA-namecard-yasuda.pdf` |
+
+裏面（`back.html`）は共通です。連絡先・住所も両者同じで、違うのは肩書きと
+氏名の3行だけです。もう1人ぶん作るときは `front.html` をコピーして
+`.role` / `.name` / `.name-en` の3箇所を差し替えてください。
+
+版下は `front.html` / `back.html`、
 プレビューは `preview-front.png` / `preview-back.png`（どちらも塗り足し込みの
 841×1336px）。裏面のQRは `qr.png`（`https://jsoa.net/`・誤り訂正M）で、
 `design/namecard/qr.png` を作り直すときは segno で生成してください。

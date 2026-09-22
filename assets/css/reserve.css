@@ -33,7 +33,7 @@
   .rheader__inner{height:min(5.56vw,80px);padding:0 min(2.8vw,40px)}
   .rheader__brand{gap:min(.83vw,12px)}
   .rheader__brand img{width:min(3.9vw,56px);height:min(3.9vw,56px)}
-  .rheader__org{font-size:min(1.25vw,18px)}
+  .rheader__org{font-size:min(1.062vw,15.3px)}
   .rheader__back{font-size:var(--fs-nav)}
   .rheader__backIcon{width:min(1.11vw,16px);height:min(1.11vw,16px)}
 }
@@ -51,9 +51,9 @@
 }
 @media (min-width:768px){
   .rhead{padding:min(4.9vw,70px) 0 min(5.2vw,75px)}
-  .rhead__eyebrow{font-size:min(1.25vw,18px)}
-  .rhead__title{margin-top:min(.69vw,10px);font-size:min(3.06vw,44px)}
-  .rhead__lead{margin-top:min(1.53vw,22px);font-size:min(1.25vw,18px)}
+  .rhead__eyebrow{font-size:min(1.062vw,15.3px)}
+  .rhead__title{margin-top:min(.69vw,10px);font-size:min(2.601vw,37.4px)}
+  .rhead__lead{margin-top:min(1.53vw,22px);font-size:min(1.062vw,15.3px)}
 }
 
 /* ---------- 4. セクション ---------- */
@@ -67,8 +67,8 @@
 }
 @media (min-width:768px){
   .rsec{padding:min(4.4vw,63px) 0}
-  .rsec__title{font-size:min(2.22vw,32px)}
-  .rsec__note{margin-top:min(.83vw,12px);font-size:min(1.11vw,16px)}
+  .rsec__title{font-size:min(1.887vw,27.2px)}
+  .rsec__note{margin-top:min(.83vw,12px);font-size:min(0.944vw,13.6px)}
 }
 
 /* ---------- 5. 説明会の概要（所要時間・形式・費用） ---------- */
@@ -92,8 +92,8 @@
   .rmeta{margin-top:min(2.15vw,31px);grid-template-columns:repeat(3,minmax(0,1fr));gap:min(1.53vw,22px)}
   .rmeta__item{padding:min(1.94vw,28px) min(.83vw,12px)}
   .rmeta__icon{width:min(2.78vw,40px);height:min(2.78vw,40px)}
-  .rmeta__label{margin-top:min(.83vw,12px);font-size:min(1.04vw,15px)}
-  .rmeta__value{margin-top:min(.28vw,4px);font-size:min(1.53vw,22px)}
+  .rmeta__label{margin-top:min(.83vw,12px);font-size:min(0.884vw,12.8px)}
+  .rmeta__value{margin-top:min(.28vw,4px);font-size:min(1.3vw,18.7px)}
 }
 
 /* ---------- 6. 箇条書き ---------- */
@@ -108,7 +108,7 @@
 }
 @media (min-width:768px){
   .rlist{margin-top:min(2.29vw,33px);gap:min(.97vw,14px)}
-  .rlist li{gap:min(.83vw,12px);font-size:min(1.25vw,18px)}
+  .rlist li{gap:min(.83vw,12px);font-size:min(1.062vw,15.3px)}
   .rlist__icon{width:min(1.53vw,22px);height:min(1.53vw,22px);margin-top:min(.14vw,2px)}
 }
 
@@ -130,9 +130,9 @@
 @media (min-width:768px){
   .rsteps{margin-top:min(2.29vw,33px);grid-template-columns:repeat(3,minmax(0,1fr));gap:min(1.53vw,22px)}
   .rsteps__item{padding:min(2.29vw,33px) min(1.25vw,18px)}
-  .rsteps__num{width:min(2.71vw,39px);height:min(2.71vw,39px);font-size:min(1.39vw,20px)}
-  .rsteps__title{margin-top:min(.97vw,14px);font-size:min(1.53vw,22px)}
-  .rsteps__text{margin-top:min(.55vw,8px);font-size:min(1.11vw,16px)}
+  .rsteps__num{width:min(2.71vw,39px);height:min(2.71vw,39px);font-size:min(1.181vw,17px)}
+  .rsteps__title{margin-top:min(.97vw,14px);font-size:min(1.3vw,18.7px)}
+  .rsteps__text{margin-top:min(.55vw,8px);font-size:min(0.944vw,13.6px)}
 }
 
 /* 「ご予約の流れ」の下に置く注意書き。Jicoo の注意事項から移してきたもの */
@@ -147,7 +147,7 @@
 }
 @media (min-width:768px){
   .rnotes{margin-top:min(1.53vw,22px);gap:min(.55vw,8px)}
-  .rnotes li{padding-left:min(1.11vw,16px);font-size:min(1.04vw,15px)}
+  .rnotes li{padding-left:min(1.11vw,16px);font-size:min(0.884vw,12.8px)}
   .rnotes li::before{top:min(.76vw,11px);width:min(.35vw,5px);height:min(.35vw,5px)}
 }
 
@@ -170,8 +170,8 @@
   .bookform{margin-top:16px}
 }
 @media (min-width:768px){
-  .bookform__privacy{margin-top:min(1.53vw,22px);font-size:min(1.04vw,15px)}
-  .bookform__fallback{margin-top:min(.83vw,12px);font-size:min(1.04vw,15px)}
+  .bookform__privacy{margin-top:min(1.53vw,22px);font-size:min(0.884vw,12.8px)}
+  .bookform__fallback{margin-top:min(.83vw,12px);font-size:min(0.884vw,12.8px)}
   .bookform{margin-top:min(1.94vw,28px)}
 }
 
@@ -202,12 +202,12 @@
   .legal__date{margin-top:32px;font-size:12px}
 }
 @media (min-width:768px){
-  .legal__intro{font-size:min(1.11vw,16px)}
+  .legal__intro{font-size:min(0.944vw,13.6px)}
   .legal{margin-top:min(2.71vw,39px);gap:min(2.71vw,39px)}
-  .legal__title{font-size:min(1.39vw,20px)}
-  .legal__item p{margin-top:min(.83vw,12px);font-size:min(1.11vw,16px)}
-  .legal__bullets{margin-top:min(.69vw,10px);gap:min(.28vw,4px);font-size:min(1.11vw,16px)}
+  .legal__title{font-size:min(1.181vw,17px)}
+  .legal__item p{margin-top:min(.83vw,12px);font-size:min(0.944vw,13.6px)}
+  .legal__bullets{margin-top:min(.69vw,10px);gap:min(.28vw,4px);font-size:min(0.944vw,13.6px)}
   .legal__contact{margin-top:min(.97vw,14px);grid-template-columns:auto 1fr;
-    gap:min(.55vw,8px) min(1.94vw,28px);font-size:min(1.11vw,16px)}
-  .legal__date{margin-top:min(3.5vw,50px);font-size:min(1.04vw,15px)}
+    gap:min(.55vw,8px) min(1.94vw,28px);font-size:min(0.944vw,13.6px)}
+  .legal__date{margin-top:min(3.5vw,50px);font-size:min(0.884vw,12.8px)}
 }

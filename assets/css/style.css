@@ -111,8 +111,6 @@ body{
 }
 .container{width:100%;max-width:calc(var(--container) + var(--gutter)*2);margin-inline:auto;padding-inline:var(--gutter)}
 .pc-only{display:none}
-.pcard__br{display:none}
-@media (min-width:768px){.pcard__br{display:inline}}
 @media (min-width:768px){
   .sp-only{display:none !important}
   .pc-only{display:block}
@@ -215,24 +213,28 @@ body{
 .pcard__icon svg{width:100%;height:100%}
 .pcard__title{font-size:var(--fs-card4);font-weight:700;line-height:var(--lh-card4)}
 .pcard__note{font-size:var(--fs-card4note);line-height:var(--lh-card4note)}
-/* SP: 枠の中にアイコン・見出し・補足すべてを収める（Figma: 330x160） */
+/* メリット3枚（.mcards）と対になる形。アイコンは枠の外、枠の中に
+   見出しと補足を入れる。角丸なし・枠線なしのベタ面で、色だけ
+   オレンジ系（メリット側は緑系）にして「課題」と「解決」を対比させる。
+   Figma は白地＋枠線＋角丸で、補足は枠の外にあった。 */
 @media (max-width:767px){
   .pcards{margin-top:40px;gap:13px;grid-template-columns:minmax(0,1fr)}
-  .pcard{position:relative;width:330px;max-width:100%;margin-inline:auto;min-height:160px;
-    border:1px solid var(--card-border);border-radius:var(--radius);background:var(--white);
-    padding:24px 16px 18px;text-align:center}
+  .pcard{position:relative;width:330px;max-width:100%;margin-inline:auto;
+    background:var(--cream-tint);padding:18px 16px 20px;text-align:center}
   .pcard__icon{position:absolute;left:13px;top:18px;width:48px;height:48px}
-  .pcard__note{margin-top:21px}
+  .pcard__box{padding-left:46px}
+  .pcard__note{margin-top:14px}
 }
-/* PC: アイコンは枠の上、補足は枠の下（Figma: 枠 319x280 / gap 28） */
 @media (min-width:768px){
   .pcards{margin-top:min(7.8vw,112px);grid-template-columns:repeat(4,1fr);gap:min(1.94vw,28px)}
   .pcard{height:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
   .pcard__icon{width:min(4.17vw,60px);height:min(4.17vw,60px);margin-bottom:min(.76vw,11px)}
-  .pcard__box{width:100%;flex:none;height:min(19.4vw,280px);
-    display:flex;align-items:center;justify-content:center;padding:min(1.4vw,20px);
-    border:1px solid var(--card-border);border-radius:var(--radius);background:var(--white)}
-  .pcard__note{margin-top:min(2.43vw,35px);white-space:nowrap}
+  /* 高さは内容に合わせ、4枚はグリッドが伸ばして揃える */
+  .pcard__box{width:100%;flex:1;background:var(--cream-tint);
+    display:flex;flex-direction:column;
+    padding:min(1.46vw,21px) min(1.11vw,16px) min(1.94vw,28px)}
+  /* 補足は枠の下端に揃える。見出しの行数が違っても高さが揃う */
+  .pcard__note{margin-top:auto;padding-top:min(2.2vw,32px)}
 }
 
 /* ---------- 9. 相談件数ブロック（Figma: 1260x692） ---------- */
@@ -349,7 +351,7 @@ body{
 .trisp{width:100%;margin-top:34px;height:auto}
 .trisp-node{font-size:17px;font-weight:700;fill:var(--text)}
 .trisp-node--jsoa{font-size:24px;fill:var(--green-jsoa)}
-.trisp-label{font-size:12px;fill:var(--text)}
+.trisp-label{font-size:13px;fill:var(--text)}
 /* 手で改行を入れている段落なので中央揃え（Figma もそうなっている）。
    指定が漏れていて PC・SP ともに左寄せになっていた */
 .flowsec__text{text-align:center}

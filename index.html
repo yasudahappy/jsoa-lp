@@ -182,23 +182,23 @@
       <ul class="pcards">
         <li class="pcard">
           <span class="pcard__icon"><svg><use href="#i-clock"/></svg></span>
-          <div class="pcard__box"><h3 class="pcard__title">営業時間外に<br>対応できない</h3></div>
-          <p class="pcard__note">休日の解約相談などに<br>すぐ対応できない</p>
+          <div class="pcard__box"><h3 class="pcard__title">営業時間外に<br>対応できない</h3>
+            <p class="pcard__note">休日の解約相談などに<br>すぐ対応できない</p></div>
         </li>
         <li class="pcard">
           <span class="pcard__icon"><svg><use href="#i-hourglass"/></svg></span>
-          <div class="pcard__box"><h3 class="pcard__title">対応が<br>長期化する</h3></div>
-          <p class="pcard__note">クレーム対応が長引き<br>社員の時間と負担が増える</p>
+          <div class="pcard__box"><h3 class="pcard__title">対応が<br>長期化する</h3>
+            <p class="pcard__note">クレーム対応が長引き<br>社員の時間と負担が増える</p></div>
         </li>
         <li class="pcard">
           <span class="pcard__icon"><svg><use href="#i-chat"/></svg></span>
-          <div class="pcard__box"><h3 class="pcard__title">消費者<br class="pc-only pcard__br">センター<br>への相談</h3></div>
-          <p class="pcard__note">小さな行き違いから<br>外部への相談につながることも</p>
+          <div class="pcard__box"><h3 class="pcard__title">消費者センター<br>への相談</h3>
+            <p class="pcard__note">小さな行き違いから<br>外部への相談につながることも</p></div>
         </li>
         <li class="pcard">
           <span class="pcard__icon"><svg><use href="#i-gov"/></svg></span>
-          <div class="pcard__box"><h3 class="pcard__title">行政対応<br>へ発展</h3></div>
-          <p class="pcard__note">相談が重なることで<br>行政対応へ発展する可能性も</p>
+          <div class="pcard__box"><h3 class="pcard__title">行政対応<br>へ発展</h3>
+            <p class="pcard__note">相談が重なることで<br>行政対応へ発展する可能性も</p></div>
         </li>
       </ul>
 
@@ -290,48 +290,43 @@
       </svg>
 
       <!-- SP: 三角図 -->
-      <!-- PCと同じ三角形。viewBox は SP のコンテナ幅（354）に合わせてあり、
-           表示上 1単位 = 1px になるので、文字サイズはそのまま px として読める。
+      <!-- PCと同じ三角形。viewBox 幅 354 は SP のコンテナ幅と同じなので
+           表示上 1単位 = 1px になり、文字サイズはそのまま px として読める。
+
+           ラベルは三角形の「外側」に置いている。内側に置くと、三角形を
+           PC と同じ横長の形にしたときに置き場所がなく、形を縦長に崩す
+           しかなくなるため。外側なら左下・右下の余白がそのまま使える。
+
+           三角形の縦横比は PC（高さ÷幅 ≒ 0.33）に合わせて約0.37。
+           以前は 0.66 で、PC と別物の形に見えていた。
 
            PCとの違いは矢印が3本（PCは4本）で、「第三者として対応」を
-           省いている点。SPでは右辺に2本の線とラベルを並べる幅がなく、
-           どのラベルがどの矢印のものか分からなくなる。省いた1本は
-           図の下の本文で説明している。省く前の縦フロー版も同じ3本だった。
-
-           ラベルは三角形の内側に置いている（外側には幅がない）。
-           それぞれ対応する辺のすぐ内側に寄せて、どの矢印の説明かが
-           分かるようにしている。
-
-           置ける高さは限られる。三角形の内側の幅は下にいくほど狭くなり、
-           上下の中央では上辺の半分（約153）しかない。左右のラベルは
-           合わせて約162必要なので、中央付近には並べられない。
-           そのため上から1/4あたり（内側の幅 約216）に左右を並べ、
-           2行の左ラベルと1行の右ラベルの上下中心を揃えている。
-           文言を長くするときは、ここが破綻しないか確認すること。 -->
-      <svg class="trisp sp-only" viewBox="0 0 354 272" role="img" aria-labelledby="triSpTitle">
-        <title id="triSpTitle">企業から消費者へJSOAを案内し、消費者はJSOAへ相談、JSOAは必要に応じて企業と連携する関係図</title>
+           省いている点。SPでは右辺に2本の線とラベルを並べる幅がない。
+           省いた1本は図の下の本文で説明している。 -->
+      <svg class="trisp sp-only" viewBox="0 0 354 196" role="img" aria-labelledby="triSpTitle">
+        <title id="triSpTitle">企業から消費者へJSOAを案内し、消費者はJSOAへお申し出、JSOAは必要に応じて企業と連携する関係図</title>
         <defs>
           <marker id="ahsp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
             <path d="M0 0 10 5 0 10z" fill="#000"/>
           </marker>
         </defs>
 
-        <text class="trisp-node" x="4" y="46">企業</text>
-        <text class="trisp-node" x="350" y="46" text-anchor="end">消費者</text>
-        <text class="trisp-node trisp-node--jsoa" x="177" y="262" text-anchor="middle">JSOA</text>
+        <text class="trisp-node" x="4" y="44">企業</text>
+        <text class="trisp-node" x="350" y="44" text-anchor="end">消費者</text>
+        <text class="trisp-node trisp-node--jsoa" x="177" y="180" text-anchor="middle">JSOA</text>
 
         <!-- 企業 → 消費者 -->
-        <text class="trisp-label" x="177" y="14" text-anchor="middle">受付窓口を案内</text>
-        <line x1="46" y1="39" x2="291" y2="39" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
+        <text class="trisp-label" x="177" y="15" text-anchor="middle">受付窓口を案内</text>
+        <line x1="46" y1="37" x2="291" y2="37" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
 
         <!-- 消費者 → JSOA -->
-        <line x1="330" y1="62" x2="218" y2="232" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
-        <text class="trisp-label" x="284" y="113" text-anchor="end">JSOAへお申し出</text>
+        <line x1="330" y1="58" x2="218" y2="152" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
+        <text class="trisp-label" x="346" y="140" text-anchor="end">JSOAへお申し出</text>
 
         <!-- JSOA → 企業 -->
-        <line x1="136" y1="232" x2="24" y2="62" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
-        <text class="trisp-label" x="76" y="104">必要に応じて</text>
-        <text class="trisp-label" x="76" y="122">企業に連携</text>
+        <line x1="136" y1="152" x2="24" y2="58" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
+        <text class="trisp-label" x="8" y="131">必要に応じて</text>
+        <text class="trisp-label" x="8" y="149">企業に連携</text>
       </svg>
 
       <p class="flowsec__text">企業様から消費者へJSOAを第三者の受付窓口としてご<br>案内いただきます。<br>消費者からのお申し出をJSOAが受け付け、<br>内容を記録して企業様へお伝えします。</p>

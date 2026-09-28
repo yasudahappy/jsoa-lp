@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>JSOA 加盟店ご案内資料</title>
+<!-- =====================================================================
+     JSOA 加盟店ご案内資料（PDF版）
+
+     A4横（297×210mm）12ページ。1スライド＝1ページで、等倍で組んである
+     ので印刷しても縮尺がかからない。文字はベクターのまま出る。
+
+     セクション構成は元の営業資料（加盟店ご案内資料）を踏襲し、
+     中身と文言はサイト（jsoa.net）と法務チェック（LP文言 差し替え原稿
+     第2版）に合わせてある。デザイントークンはサイトの style.css と同じ。
+
+     PDF化: node design/deck/build.js
+     ===================================================================== -->
+<style>
+  @page{size:A4 landscape;margin:0}
+  *{box-sizing:border-box;margin:0;padding:0}
+  ul,ol{list-style:none}
+  :root{
+    --g-dark:#14512a; --g:#1a7c32; --g-h2:#0f6d30; --g-card:#2e7d32;
+    --g-icon:#14ae5c; --g-jsoa:#21c560; --g-after:#045d10;
+    --pale:#e8f5e9; --tint:#f5f8f6; --cream:#fdf5ed; --cream-tint:#fef8f2;
+    --orange:#fe8109; --orange-strong:#fe5400;
+    --text:#111; --muted:#4a4a4a; --line:#dfe4e1;
+  }
+  body{font-family:"Noto Sans JP","Noto Sans CJK JP",sans-serif;
+    color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;
+    background:#8a938d}
+  .sprite{display:none}
+  svg{display:block}
+  /* アイコン用の span は inline のままだと width/height が効かない。
+     .ico-gap はサイトの style.css にあるルールで、スプライトと一緒に必要 */
+  .card__icon,.pcard__icon,.svc__icon,.stat__icon,.flow__ic,.chart__title svg,.warn svg{display:block}
+  .ico-gap{fill:none;stroke:var(--icon-gap,#fff)}
+
+  /* ---------- スライドの器 ---------- */
+  .slide{position:relative;width:297mm;height:210mm;overflow:hidden;
+    background:#fff;page-break-after:always;break-after:page;
+    display:flex;flex-direction:column}
+  .slide:last-child{page-break-after:auto;break-after:auto}
+  @media screen{.slide{margin:0 auto 8mm;box-shadow:0 2mm 6mm rgba(0,0,0,.25)}}
+
+  /* ---------- 見出し帯 ---------- */
+  .head{flex:none;height:19mm;padding:0 13mm 0 10mm;
+    display:flex;align-items:center;gap:5mm;
+    background:linear-gradient(90deg,#e7f0e9 0%,#eef5f0 55%,#f4f8f5 100%)}
+  .head__mark{width:7mm;height:7mm;border-radius:1.6mm;background:#cfe2d5;flex:none}
+  .head__title{font-size:15pt;font-weight:700;color:var(--g-h2);letter-spacing:.06em}
+  .head__logo{margin-left:auto;width:12mm;height:12mm}
+  .head__logo img{width:100%;height:100%;object-fit:contain}
+
+  .body{flex:1;padding:8mm 13mm 0;display:flex;flex-direction:column;min-height:0}
+  /* 中身が少ないページは、見出し・本体・締めの3ブロックを上下に散らす */
+  .body--spread{justify-content:space-between;padding-bottom:8mm}
+  .lead{font-size:11.5pt;font-weight:700;line-height:1.5}
+  .lead em{font-style:normal;color:var(--g-h2)}
+
+  .foot{flex:none;height:9mm;padding:0 13mm;display:flex;align-items:center;
+    justify-content:flex-end;gap:6mm;font-size:7pt;color:#9aa49d;letter-spacing:.04em}
+
+  /* ---------- 1. 表紙 ---------- */
+  .cover{background:linear-gradient(135deg,#e4efe7 0%,#eff6f1 45%,#f7faf8 100%);
+    padding:0;justify-content:center}
+  .cover__logo{position:absolute;top:12mm;right:14mm;width:22mm;height:22mm}
+  .cover__logo img{width:100%;height:100%;object-fit:contain}
+  .cover__inner{padding:0 24mm}
+  .cover__to{font-size:13pt;font-weight:700;letter-spacing:.08em}
+  .cover__title{margin-top:9mm;font-size:40pt;font-weight:900;color:var(--g-dark);
+    letter-spacing:.1em;line-height:1.15}
+  .cover__rule{margin-top:8mm;width:46mm;height:1.2mm;background:var(--g);border-radius:1mm}
+  .cover__meta{margin-top:9mm;font-size:11pt;color:var(--muted);line-height:2}
+  .cover__band{position:absolute;left:0;right:0;bottom:0;height:5mm;
+    background:linear-gradient(90deg,var(--g-dark),var(--g) 60%,var(--g-jsoa))}
+
+  /* ---------- 2. 目次 ---------- */
+  .agenda{flex-direction:row;padding:0}
+  .agenda__side{width:74mm;flex:none;background:linear-gradient(160deg,#1f7a3d,#14512a);
+    color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3mm}
+  .agenda__side b{font-size:24pt;font-weight:700;letter-spacing:.22em}
+  .agenda__side span{font-size:10pt;letter-spacing:.3em;opacity:.85}
+  .agenda__list{flex:1;padding:16mm 18mm;display:flex;flex-direction:column;justify-content:center;gap:5.2mm}
+  .agenda__row{display:flex;align-items:baseline;gap:6mm}
+  .agenda__no{font-size:17pt;font-weight:700;color:var(--g-dark);width:14mm;flex:none}
+  .agenda__name{font-size:13pt;font-weight:700;color:var(--g-h2);letter-spacing:.08em;white-space:nowrap}
+  .agenda__dots{flex:1;border-bottom:.3mm dotted #b9c5bd;transform:translateY(-1mm)}
+  .agenda__p{font-size:9.5pt;color:#8c968f;width:10mm;text-align:right;flex:none}
+
+  /* ---------- 3. 代表挨拶 ---------- */
+  .rep{display:grid;grid-template-columns:1fr 78mm;gap:10mm;flex:1;min-height:0}
+  .rep__quote{font-size:15pt;font-weight:700;line-height:1.55}
+  .rep__quote b{color:var(--g-h2)}
+  .rep__body{margin-top:6mm;display:flex;flex-direction:column;gap:3.4mm;
+    font-size:9.5pt;line-height:1.85;color:var(--muted)}
+  .rep__photo{position:relative;align-self:end;height:100%;display:flex;
+    flex-direction:column;justify-content:flex-end}
+  .rep__photo img{width:100%;flex:1;min-height:0;object-fit:cover;object-position:50% 8%;
+    border-radius:4mm 4mm 0 0;display:block}
+  .rep__name{margin-top:4mm;display:flex;align-items:baseline;justify-content:flex-end;gap:4mm}
+  .rep__role{font-size:10pt;font-weight:700}
+  .rep__jp{font-size:21pt;font-weight:700;letter-spacing:.14em;color:var(--g-dark)}
+  .rep__en{font-size:8pt;color:#9aa49d;text-align:right;letter-spacing:.1em}
+
+  /* ---------- 共通：3カラムのカード ---------- */
+  .cards3{margin-top:auto;margin-bottom:6mm;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
+  .card{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .card__icon{width:13mm;height:13mm;margin-bottom:3mm;color:var(--g-icon)}
+  .card__icon svg{width:100%;height:100%}
+  .card__box{width:100%;flex:1;background:var(--pale);padding:5mm 4mm 6mm;
+    display:flex;flex-direction:column}
+  .card__title{font-size:12pt;font-weight:700;color:var(--g-card);line-height:1.3}
+  .card__text{margin-top:4mm;font-size:9pt;line-height:1.65;color:var(--muted)}
+
+  /* ---------- 4. 当協会の役割（三角図） ---------- */
+  .role{flex:1;display:flex;flex-direction:column;min-height:0}
+  .tri{width:214mm;margin:7mm auto 0;display:block}
+  .tri-node{font-size:30px;font-weight:700;fill:#111}
+  .tri-node--jsoa{font-size:46px;fill:var(--g-jsoa)}
+  .tri-label{font-size:20px;fill:#111}
+
+  /* ---------- 5. 市場背景 ---------- */
+  .stat{margin-top:5mm;flex:1;display:grid;grid-template-columns:82mm 1fr;gap:9mm;min-height:0}
+  .stat__panel{background:var(--cream);border-radius:3mm;padding:7mm 6mm;
+    display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center}
+  .stat__icon{width:11mm;height:11mm;color:var(--orange)}
+  .stat__icon svg{width:100%;height:100%}
+  .stat__label{margin-top:3mm;font-size:9pt;color:var(--muted);line-height:1.6}
+  .stat__fig{margin-top:3mm;display:flex;align-items:baseline;gap:2mm}
+  .stat__num{font-size:44pt;font-weight:700;color:var(--orange);line-height:1}
+  .stat__unit{font-size:17pt;font-weight:700}
+  .stat__note{margin-top:4mm;font-size:9pt;line-height:1.7;color:var(--muted)}
+  .stat__note b{color:var(--orange-strong)}
+
+  .chart{display:flex;flex-direction:column;min-height:0}
+  .chart__title{display:flex;align-items:center;gap:2.5mm;font-size:11pt;font-weight:700;color:var(--orange-strong)}
+  .chart__title svg{width:7mm;height:7mm;color:var(--orange)}
+  .chart__badge{margin-left:1mm;padding:.6mm 2.6mm;border-radius:6mm;background:var(--orange);
+    color:#fff;font-size:7.5pt;font-weight:700}
+  .plot{margin-top:5mm;flex:1;display:grid;grid-template-columns:8mm 1fr;
+    grid-template-rows:1fr 6mm;min-height:0}
+  .yaxis{position:relative;font-size:7.5pt;color:#9aa49d}
+  .yaxis span{position:absolute;right:1.5mm;transform:translateY(50%);bottom:calc(var(--p)*1%)}
+  .area{position:relative;border-left:.3mm solid #e3d9cd;border-bottom:.3mm solid #e3d9cd}
+  .grid{position:absolute;inset:0}
+  .grid i{position:absolute;left:0;right:0;bottom:calc(var(--p)*1%);border-top:.25mm dashed #efe4d6}
+  .bars{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:space-around;padding:0 2mm}
+  .bars li{width:13mm;display:flex;flex-direction:column;align-items:center;height:calc(var(--v)*10%)}
+  .bars b{font-size:8.5pt;font-weight:700;margin-bottom:1.5mm;white-space:nowrap}
+  .bars b small{font-size:6.5pt;font-weight:700}
+  .bars i{flex:1;width:100%;background:var(--orange);display:block}
+  .bars .cur b{color:var(--orange-strong)}
+  .xaxis{grid-column:2;display:flex;justify-content:space-around;padding:2mm 2mm 0;
+    font-size:8pt;color:var(--muted)}
+  .xaxis li{width:13mm;text-align:center}
+  .xaxis .cur{font-weight:700;color:var(--orange-strong)}
+  .source{margin-top:3mm;font-size:7.5pt;color:#9aa49d;text-align:right}
+  .warn{margin-top:4mm;background:var(--cream-tint);border:.3mm solid #f6ddc2;border-radius:2mm;
+    padding:3.5mm 5mm;display:flex;align-items:center;gap:4mm;font-size:9.5pt;font-weight:700}
+  .warn svg{width:8mm;height:8mm;flex:none;color:var(--orange)}
+  .warn b{color:var(--orange-strong)}
+
+  /* ---------- 6. 課題提起 ---------- */
+  .cards4{margin-top:6mm;display:grid;grid-template-columns:repeat(4,1fr);gap:6mm}
+  .pcard{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .pcard__icon{width:12mm;height:12mm;margin-bottom:2.5mm;color:var(--orange)}
+  .pcard__icon svg{width:100%;height:100%}
+  .pcard__box{width:100%;flex:1;background:var(--cream-tint);padding:5mm 3.5mm 5mm;
+    display:flex;flex-direction:column}
+  .pcard__title{font-size:12pt;font-weight:700;line-height:1.3}
+  .pcard__note{margin-top:auto;padding-top:4mm;font-size:8.5pt;line-height:1.6;color:var(--muted)}
+  .band{margin-top:6mm;background:linear-gradient(90deg,#1f7a3d,#14512a);color:#fff;
+    border-radius:2mm;padding:4mm 8mm;text-align:center;font-size:11pt;font-weight:700}
+
+  /* ---------- 7. サービス概要 ---------- */
+  .svc{margin-top:5mm;display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+  .svc__item{min-height:54mm;border:.3mm solid var(--line);border-radius:2mm;overflow:hidden;display:flex;flex-direction:column}
+  .svc__head{background:linear-gradient(120deg,#2e8b4c,#1a7c32);color:#fff;
+    padding:3.5mm 4mm;font-size:11pt;font-weight:700;line-height:1.35;
+    display:flex;align-items:center;justify-content:space-between;gap:3mm;min-height:16mm}
+  .svc__no{font-size:20pt;font-weight:700;opacity:.4;line-height:1}
+  .svc__body{flex:1;padding:5mm 4mm;display:flex;flex-direction:column;align-items:center;
+    text-align:center;gap:3mm}
+  .svc__icon{width:12mm;height:12mm;color:var(--g-icon)}
+  .svc__icon svg{width:100%;height:100%}
+  .svc__text{font-size:9pt;line-height:1.7;color:var(--muted)}
+
+  .steps{margin-top:auto;margin-bottom:8mm}
+  .steps__cap{text-align:center;font-size:10.5pt;font-weight:700}
+  .steps__cap b{color:var(--g-h2)}
+  .steps__row{margin-top:4mm;display:flex;align-items:stretch;gap:3mm}
+  .step{flex:1;background:var(--pale);border-radius:2mm;padding:3.5mm 3mm;text-align:center}
+  .step--on{background:var(--g-dark);color:#fff}
+  .step__no{font-size:7.5pt;font-weight:700;letter-spacing:.14em;opacity:.7}
+  .step__t{margin-top:1.5mm;font-size:9.5pt;font-weight:700;line-height:1.4}
+  .step__s{margin-top:1mm;font-size:7.5pt;opacity:.85}
+  .step__arrow{align-self:center;font-size:12pt;color:var(--g);font-weight:700}
+
+  /* ---------- 8. 専門家体制 ---------- */
+  .experts{margin-top:5mm;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
+  .expert{border:.4mm solid var(--g);border-radius:4mm;padding:8mm 4mm;background:#fff;
+    min-height:54mm;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:4mm;text-align:center}
+  .expert__ic{width:15mm;height:15mm;color:var(--g);display:block}
+  .expert__ic svg{width:100%;height:100%}
+  .expert b{font-size:13pt;font-weight:700;color:var(--g-dark)}
+  .expert span{display:block;margin-top:2mm;font-size:9pt;color:var(--muted);line-height:1.6}
+  .escal{margin-top:5mm;background:var(--pale);border-radius:2mm;padding:4mm 6mm;
+    text-align:center;font-size:9.5pt;font-weight:700;color:var(--g-dark)}
+  .subhead{margin-top:2mm;display:flex;align-items:center;gap:2.5mm;font-size:11pt;font-weight:700}
+  .subhead::before{content:"";width:3mm;height:3mm;background:var(--g);border-radius:.5mm}
+  .prog{margin-top:4mm;display:grid;grid-template-columns:1fr 1fr;gap:7mm}
+  .prog__item{background:#f5f7f6;border-radius:2mm;padding:5mm}
+  .prog__t{font-size:12pt;font-weight:700;color:var(--g-dark)}
+  .prog__tag{display:inline-block;margin-top:2.5mm;background:var(--g-dark);color:#fff;
+    border-radius:1mm;padding:1mm 3mm;font-size:8pt;font-weight:700}
+  .prog__x{margin-top:3mm;font-size:9pt;line-height:1.7;color:var(--muted)}
+
+  /* ---------- 9. 活用事例 ---------- */
+  .voices{margin:auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
+  .voice{border:.3mm solid var(--line);border-radius:3mm;padding:7mm 6mm;display:flex;flex-direction:column}
+  .voice__badge{align-self:flex-start;background:var(--pale);color:var(--g-h2);
+    border-radius:8mm;padding:1.2mm 4mm;font-size:8pt;font-weight:700}
+  .voice__t{margin-top:4mm;font-size:12pt;font-weight:700;color:var(--g-h2);line-height:1.4}
+  .voice__x{margin-top:3.5mm;flex:1;font-size:9.5pt;line-height:1.75;color:var(--muted)}
+  .voice__m{margin-top:4mm;padding-top:3mm;border-top:.3mm solid var(--line);
+    font-size:8pt;color:#8c968f}
+
+  /* ---------- 10. メリット ---------- */
+  .merit{margin-top:5mm;flex:1;display:grid;grid-template-columns:1fr 1fr;gap:7mm;min-height:0}
+  .merit__col{border-radius:2mm;overflow:hidden;display:flex;flex-direction:column}
+  .merit__head{padding:3.5mm;text-align:center;font-size:12pt;font-weight:700;color:#fff}
+  .merit__col--c .merit__head{background:linear-gradient(90deg,#2e8b4c,#14512a)}
+  .merit__col--s .merit__head{background:linear-gradient(90deg,#f08b2a,#d9600d)}
+  .merit__list{flex:1;padding:8mm 7mm;display:flex;flex-direction:column;justify-content:space-evenly;gap:4mm}
+  .merit__col--c .merit__list{background:#f2f8f4}
+  .merit__col--s .merit__list{background:#fef6ef}
+  .merit__li{display:flex;gap:4mm;align-items:flex-start}
+  .merit__ic{width:9mm;height:9mm;flex:none;display:block}
+  .merit__col--c .merit__ic{color:var(--g);--icon-gap:#f2f8f4}
+  .merit__col--s .merit__ic{color:var(--orange);--icon-gap:#fef6ef}
+  .merit__ic svg{width:100%;height:100%}
+  .merit__tx{font-size:11pt;font-weight:700;line-height:1.5}
+  .merit__tx span{display:block;font-weight:400;font-size:9pt;color:var(--muted);margin-top:.8mm}
+  .merit__col--c .merit__tx em{font-style:normal;color:var(--g-h2)}
+  .merit__col--s .merit__tx em{font-style:normal;color:var(--orange-strong)}
+
+  /* ---------- 11. 料金と流れ ---------- */
+  .fee{margin-top:5mm;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
+  .fee__item{text-align:center}
+  .fee__cap{background:var(--g-dark);color:#fff;border-radius:8mm;padding:2mm;
+    font-size:10.5pt;font-weight:700}
+  .fee__v{margin-top:5mm;min-height:14mm;display:flex;align-items:flex-end;
+    justify-content:center;font-size:16pt;font-weight:700;color:var(--g-dark)}
+  .fee__v b{font-size:30pt}
+  .flow{margin-top:0}
+  .flow__row{margin-top:4mm;display:flex;align-items:stretch;gap:3mm}
+  .flow__i{flex:1;border:.35mm dashed var(--g);border-radius:2mm;padding:4mm 3mm;text-align:center}
+  .flow__n{font-size:15pt;font-weight:700;color:var(--g-dark)}
+  .flow__ic{width:10mm;height:10mm;margin:3mm auto;color:var(--g)}
+  .flow__ic svg{width:100%;height:100%}
+  .flow__t{font-size:10pt;font-weight:700}
+  .flow__s{margin-top:1mm;font-size:8pt;color:var(--muted)}
+
+  /* ---------- 12. お問い合わせ ---------- */
+  .contact{justify-content:center;background:linear-gradient(135deg,#e4efe7 0%,#f2f8f4 60%,#fafcfb 100%)}
+  .contact__inner{padding:0 26mm}
+  .contact__msg{font-size:17pt;font-weight:700;color:var(--g-dark);line-height:1.7}
+  .contact__msg span{display:inline-block;border-bottom:.6mm solid var(--g);padding-bottom:1.5mm}
+  .contact__grid{margin-top:12mm;display:grid;grid-template-columns:1fr 1fr;gap:16mm}
+  .contact__card{background:#fff;border-radius:3mm;padding:7mm;text-align:center;
+    box-shadow:0 1mm 3mm rgba(20,81,42,.08)}
+  .contact__t{border-radius:8mm;padding:2mm;font-size:11pt;font-weight:700;color:#fff}
+  .contact__card--a .contact__t{background:var(--g)}
+  .contact__card--b .contact__t{background:#d9600d}
+  .contact__qr{margin:5mm auto 0;width:32mm;height:32mm}
+  .contact__qr img{width:100%;height:100%}
+  .contact__u{margin-top:3mm;font-size:9pt;color:var(--muted);word-break:break-all}
+  .contact__band{position:absolute;left:0;right:0;bottom:0;height:5mm;
+    background:linear-gradient(90deg,var(--g-dark),var(--g) 60%,var(--g-jsoa))}
+</style>
+</head>
+<body>
+
+<!-- アイコンはサイト（index.html）のスプライトをそのまま使っている -->
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-clock" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="21.2" fill="none" stroke="currentColor" stroke-width="5.6"/>
+    <path d="M24 0v9.5M24 38.5V48M0 24h9.5M38.5 24H48" stroke="currentColor" stroke-width="4.4"/>
+    <path d="M24 13.5v11h8.6" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-hourglass" viewBox="0 0 48 48">
+    <rect x="0" y="0" width="48" height="5" rx="1.6" fill="currentColor"/>
+    <rect x="0" y="43" width="48" height="5" rx="1.6" fill="currentColor"/>
+    <path d="M6.4 5V15C6.4 20 11.2 23 11.2 25.5 11.2 28 6.4 31 6.4 36V43H41.6V36C41.6 31 36.8 28 36.8 25.5 36.8 23 41.6 20 41.6 15V5Z" fill="currentColor"/>
+    <path d="M12 4.6V15C12 20 17.6 23 24 23 30.4 23 36 20 36 15V4.6Z" fill="#fff"/>
+  </symbol>
+  <symbol id="i-chat" viewBox="0 0 48 48">
+    <rect x="2.8" y="2.8" width="42.4" height="32" fill="none" stroke="currentColor" stroke-width="5.6"/>
+    <path d="M2.8 32.5H17.5L4.5 47.5Z" fill="currentColor"/>
+    <rect x="11.2" y="19.2" width="5.2" height="4.4" rx="1" fill="currentColor"/>
+    <rect x="21.6" y="19.2" width="5.6" height="4.4" rx="1" fill="currentColor"/>
+    <rect x="32" y="19.2" width="5.6" height="4.4" rx="1" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-gov" viewBox="0 0 48 48">
+    <path d="M24 3 45.4 15.8H2.6Z" fill="currentColor" stroke="currentColor" stroke-width="4.6" stroke-linejoin="round"/>
+    <rect x="6.4" y="19.8" width="4.6" height="17.8" fill="currentColor"/>
+    <rect x="16.7" y="19.8" width="4.6" height="17.8" fill="currentColor"/>
+    <rect x="27" y="19.8" width="4.6" height="17.8" fill="currentColor"/>
+    <rect x="37.3" y="19.8" width="4.6" height="17.8" fill="currentColor"/>
+    <rect x="4.8" y="37.6" width="38.4" height="4.6" fill="currentColor"/>
+    <rect x="0" y="42.4" width="48" height="5.6" rx="2.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-chartup" viewBox="0 0 46 49">
+    <rect x="0" y="40" width="13" height="9" fill="currentColor"/>
+    <rect x="16.5" y="31" width="13" height="18" fill="currentColor"/>
+    <rect x="33" y="20" width="13" height="29" fill="currentColor"/>
+    <path d="M1.7 35C12.5 32.5 23.5 24.5 33.5 12" fill="none" stroke="currentColor" stroke-width="3.8" stroke-linecap="round"/>
+    <path d="M45.5 1.5 39 15.5 29 5.5z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-headset" viewBox="0 0 60 60">
+    <path d="M8.6 22A21.5 21.5 0 0 1 30 2.1A21.5 21.5 0 0 1 51.4 22" fill="none"
+      stroke="currentColor" stroke-width="4.7"/>
+    <path d="M7 18h8.5a3 3 0 0 1 3 3v20a3 3 0 0 1-3 3H7a7 7 0 0 1-7-7V25a7 7 0 0 1 7-7z" fill="currentColor"/>
+    <path d="M53 18h-8.5a3 3 0 0 0-3 3v20a3 3 0 0 0 3 3H53a7 7 0 0 0 7-7V25a7 7 0 0 0-7-7z" fill="currentColor"/>
+    <path d="M50.5 42.5C50.5 50 46.5 54.5 34 54" fill="none" stroke="currentColor"
+      stroke-width="5.6" stroke-linecap="round"/>
+    <circle cx="29.5" cy="53.5" r="6" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-headset-sm" viewBox="0 0 58 57">
+    <path d="M6.6 27A21.4 21.4 0 0 1 27.8 2.5A21.4 21.4 0 0 1 49 27" fill="none"
+      stroke="currentColor" stroke-width="4.8"/>
+    <path d="M6 22h7a3 3 0 0 1 3 3v15a3 3 0 0 1-3 3H6a6 6 0 0 1-6-6V28a6 6 0 0 1 6-6z" fill="currentColor"/>
+    <path d="M51 22h-6.5a3 3 0 0 0-3 3v15a3 3 0 0 0 3 3H51a6 6 0 0 0 6-6V28a6 6 0 0 0-6-6z" fill="currentColor"/>
+    <path d="M47 41.5C47 46.5 44.5 51 36 51.3" fill="none" stroke="currentColor"
+      stroke-width="5" stroke-linecap="round"/>
+    <circle cx="28.5" cy="51" r="5.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 45 45">
+    <circle cx="22.5" cy="22.5" r="22.5" fill="currentColor"/>
+    <path d="M11 22.8 18.9 30.2 34.2 15" fill="none" stroke="#fff" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-shield" viewBox="0 0 60 60">
+    <path d="M30-1.33 3.1 7.7Q0 8.67 0 12V34C0 45.5 12.8 56.4 30 60.6 47.2 56.4 60 45.5 60 34V12Q60 8.67 56.9 7.7Z" fill="currentColor"/>
+    <path class="ico-gap" d="M30-2v63" stroke-width="5.2"/>
+    <path class="ico-gap" d="M-2 27.6 30 17.8 62 27.6" stroke-width="4.6"/>
+  </symbol>
+  <symbol id="i-handshake" viewBox="0 0 56 40">
+    <path d="M26.6 36.9C28.5 34.7 28.0 32.5 25.5 32.5C24.3 32.5 23.6 33.1 22.3 35.1C21.6 36.2 21.5 36.6 22.1 37.2C23.1 38.3 25.5 38.2 26.6 36.9ZM34.1 36.6C34.6 35.7 35.4 35.0 36.4 34.8C37.6 34.6 38.0 34.2 38.0 33.5C38.0 33.0 37.8 32.5 37.5 32.5C37.2 32.5 37.0 32.3 37.0 32.0C37.0 31.3 39.5 31.4 39.5 32.1C39.6 32.6 39.6 32.6 39.8 32.1C40.0 31.8 40.4 31.5 40.8 31.5C41.7 31.5 41.8 28.2 40.9 27.9C40.5 27.7 40.4 27.5 40.6 27.2C40.8 27.0 41.4 27.3 41.9 27.9C42.7 28.8 43.0 28.9 44.2 28.4C46.1 27.5 46.4 26.0 44.8 24.7C44.1 24.1 43.5 23.4 43.5 23.3C43.5 22.8 41.1 20.5 40.6 20.5C40.4 20.5 38.9 19.2 37.2 17.6C30.9 11.8 30.4 11.5 28.6 13.1C24.8 16.5 21.0 20.4 21.0 20.9C21.0 21.3 22.9 23.5 25.2 25.9C27.6 28.2 29.5 30.4 29.5 30.7C29.5 30.9 30.0 31.6 30.6 32.1C31.4 32.8 31.5 33.2 31.1 33.4C30.8 33.5 30.5 34.0 30.5 34.5C30.5 35.1 30.3 35.5 30.0 35.5C29.7 35.5 29.5 36.1 29.5 36.8C29.5 37.9 29.7 38.0 31.4 38.0C32.9 38.0 33.4 37.7 34.1 36.6ZM20.7 34.9C21.1 34.5 21.9 33.8 22.7 33.3C25.0 31.5 24.3 29.0 21.5 29.0C20.5 29.0 17.5 31.6 17.5 32.5C17.5 33.0 19.4 35.4 19.9 35.5C20.0 35.5 20.4 35.2 20.7 34.9ZM18.3 30.3C18.9 29.6 19.5 28.8 19.5 28.5C19.5 28.2 19.7 28.0 20.0 28.0C20.7 28.0 20.6 26.5 19.8 25.7C18.7 24.6 17.1 24.9 15.5 26.5C13.9 28.1 13.5 30.7 14.6 31.2C16.0 31.7 17.1 31.4 18.3 30.3ZM13.3 27.3C13.7 26.9 14.0 26.3 14.0 26.0C14.0 25.7 14.2 25.5 14.4 25.5C15.3 25.5 15.9 23.2 15.3 22.4C14.3 21.1 12.6 21.3 11.0 23.0C9.4 24.5 8.9 27.0 10.2 27.0C10.7 27.0 11.0 27.2 11.0 27.5C11.0 28.2 12.5 28.1 13.3 27.3ZM48.2 19.9C50.3 17.8 52.4 16.0 52.8 16.0C53.4 16.0 54.5 14.5 54.5 13.6C54.5 13.1 54.0 12.4 53.5 12.0C53.0 11.6 52.5 11.0 52.5 10.6C52.5 10.3 52.0 9.4 51.4 8.8C49.6 6.8 49.0 6.1 49.0 5.6C49.0 5.4 48.5 4.9 48.0 4.5C47.5 4.1 47.0 3.5 47.0 3.2C47.0 2.3 44.7 1.4 43.6 1.7C43.0 1.9 42.5 2.3 42.5 2.5C42.5 2.8 42.2 3.0 41.8 3.0C41.3 3.0 41.0 3.2 41.0 3.5C41.0 3.8 40.3 4.0 39.5 4.0C38.7 4.0 38.0 3.8 38.0 3.5C38.0 3.2 37.3 3.0 36.4 3.0C35.4 3.0 34.5 2.8 34.2 2.6C34.0 2.3 32.7 1.9 31.3 1.5C29.5 1.0 28.8 1.0 28.4 1.4C28.1 1.7 27.5 2.0 27.1 2.0C26.2 2.0 18.2 10.1 17.8 11.5C17.4 12.7 19.5 15.0 21.0 15.0C21.7 15.0 23.2 13.9 24.8 12.2C26.2 10.7 27.7 9.5 28.0 9.5C28.3 9.5 28.5 9.3 28.5 9.0C28.5 8.7 29.2 8.5 30.0 8.5C30.8 8.5 31.5 8.7 31.5 9.0C31.5 9.3 31.7 9.5 32.0 9.5C32.5 9.5 34.3 10.9 36.8 13.4C37.7 14.3 38.6 15.0 38.8 15.0C38.9 15.0 39.6 15.5 40.2 16.1C40.9 16.7 42.3 17.9 43.3 18.8C44.3 19.6 45.4 20.5 45.7 20.9C46.4 21.7 46.3 21.7 48.2 19.9ZM7.4 17.0C7.5 16.4 7.8 16.0 8.1 16.0C8.3 16.0 8.5 15.7 8.5 15.2C8.5 14.8 8.7 14.5 9.0 14.5C9.3 14.5 9.5 14.2 9.5 13.8C9.5 13.3 9.7 13.0 9.9 13.0C10.2 13.0 10.8 12.2 11.3 11.2C11.8 10.3 12.4 9.5 12.6 9.5C12.8 9.5 13.0 9.2 13.0 8.8C13.0 8.3 13.2 8.0 13.5 8.0C13.8 8.0 14.0 7.6 14.0 7.2C14.0 6.7 14.5 6.0 15.0 5.5C16.1 4.6 15.9 3.0 14.7 3.0C14.3 3.0 14.0 2.8 14.0 2.5C14.0 2.2 13.6 2.0 13.0 2.0C12.4 2.0 12.0 1.8 12.0 1.5C12.0 0.5 10.7 1.1 9.1 2.8C8.2 3.7 7.5 4.9 7.5 5.3C7.5 5.7 7.3 6.0 7.1 6.0C6.9 6.0 6.3 6.7 5.8 7.6C5.2 8.5 4.4 9.6 3.9 10.1C3.4 10.5 3.0 11.2 3.0 11.7C3.0 12.1 2.8 12.5 2.5 12.5C1.4 12.5 2.1 14.6 3.6 16.2C5.5 18.2 7.0 18.5 7.4 17.0Z" fill="currentColor" fill-rule="evenodd"/>
+  </symbol>
+  <symbol id="i-building" viewBox="0 0 52 58">
+    <path d="M14 1h24v19h10v32h3v6H1v-6h3V20h10z" fill="currentColor"/>
+    <g fill="#fff">
+      <rect x="20" y="7" width="3.5" height="4"/><rect x="29" y="7" width="3.5" height="4"/>
+      <rect x="20" y="16" width="3.5" height="4"/><rect x="29" y="16" width="3.5" height="4"/>
+      <rect x="10" y="26" width="3.5" height="4"/><rect x="20" y="26" width="3.5" height="4"/>
+      <rect x="29" y="26" width="3.5" height="4"/><rect x="38.5" y="26" width="3.5" height="4"/>
+      <rect x="10" y="35" width="3.5" height="4"/><rect x="20" y="35" width="3.5" height="4"/>
+      <rect x="29" y="35" width="3.5" height="4"/><rect x="38.5" y="35" width="3.5" height="4"/>
+      <rect x="10" y="44" width="3.5" height="4"/><rect x="38.5" y="44" width="3.5" height="4"/>
+      <rect x="22" y="45" width="8.5" height="13"/>
+    </g>
+  </symbol>
+  <symbol id="i-person" viewBox="0 0 48 53">
+    <circle cx="24" cy="13" r="12.5" fill="currentColor"/>
+    <path d="M1 52V41a23 12 0 0 1 46 0v11z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-alert" viewBox="0 0 45 44">
+    <circle cx="22.5" cy="22" r="22" fill="currentColor"/>
+    <rect x="20" y="9" width="5" height="17" rx="2.5" fill="#fff"/>
+    <circle cx="22.5" cy="31.5" r="2.7" fill="#fff"/>
+  </symbol>
+  <symbol id="i-warning" viewBox="0 0 53 49">
+    <path d="M26.5 4 49 45.4H4z" fill="currentColor" stroke="currentColor" stroke-width="4.2" stroke-linejoin="round"/>
+    <rect x="24.3" y="15" width="4.4" height="16" rx="2.2" fill="#fff"/>
+    <circle cx="26.5" cy="37.5" r="2.7" fill="#fff"/>
+  </symbol>
+  <symbol id="i-doc" viewBox="0 0 48 48">
+    <path d="M10 4h19l9 9v31H10z" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M28 4v10h10" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="round"/>
+    <path d="M17 24h14M17 32h14" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-shield-check" viewBox="0 0 39 47">
+    <path d="M19.5 2 38.5 9v15.5c0 10-8 18.1-19 21.9C8.5 42.6.5 34.5.5 24.5V9z" fill="currentColor"/>
+    <path d="M10 22.8 17.6 29.8 30.6 15.6" fill="none" stroke="#fff" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-arrow" viewBox="0 0 48 48">
+    <path d="M8 24h30m-9-10 10 10-10 10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="i-chevron" viewBox="0 0 48 48">
+    <path d="M19 12l14 12-14 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
+
+<!-- ============ 1. 表紙 ============ -->
+<section class="slide cover">
+  <div class="cover__logo"><img src="../../assets/images/LOGO.png" alt=""></div>
+  <div class="cover__inner">
+    <p class="cover__to">XXXX株式会社　御中</p>
+    <h1 class="cover__title">加盟店ご案内資料</h1>
+    <div class="cover__rule"></div>
+    <p class="cover__meta">2026/00/00<br>一般社団法人 訪問販売適正化推進協会（JSOA）</p>
+  </div>
+  <div class="cover__band"></div>
+</section>
+
+<!-- ============ 2. 目次 ============ -->
+<section class="slide agenda">
+  <div class="agenda__side"><b>AGENDA</b><span>目次</span></div>
+  <div class="agenda__list">
+    <div class="agenda__row"><span class="agenda__no">01</span><span class="agenda__name">企業概要</span><span class="agenda__dots"></span><span class="agenda__p">P3</span></div>
+    <div class="agenda__row"><span class="agenda__no">02</span><span class="agenda__name">市場背景</span><span class="agenda__dots"></span><span class="agenda__p">P5</span></div>
+    <div class="agenda__row"><span class="agenda__no">03</span><span class="agenda__name">サービス</span><span class="agenda__dots"></span><span class="agenda__p">P7</span></div>
+    <div class="agenda__row"><span class="agenda__no">04</span><span class="agenda__name">活用事例</span><span class="agenda__dots"></span><span class="agenda__p">P9</span></div>
+    <div class="agenda__row"><span class="agenda__no">05</span><span class="agenda__name">メリット</span><span class="agenda__dots"></span><span class="agenda__p">P10</span></div>
+    <div class="agenda__row"><span class="agenda__no">06</span><span class="agenda__name">料金と流れ</span><span class="agenda__dots"></span><span class="agenda__p">P11</span></div>
+    <div class="agenda__row"><span class="agenda__no">07</span><span class="agenda__name">お問い合わせ</span><span class="agenda__dots"></span><span class="agenda__p">P12</span></div>
+  </div>
+</section>
+
+<!-- ============ 3. 代表挨拶 ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">代表挨拶</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body">
+    <div class="rep">
+      <div>
+        <p class="rep__quote">「利他と信頼」を運営の軸に、<br><b>透明性の高い仕組み</b>で加盟店の運営を支えます。</p>
+        <div class="rep__body">
+          <p>消費者と企業の間に立ち、お申し出を正確に受け止めること。それが私たちの役割です。</p>
+          <p>現代の情報化社会において、訪問販売に関するトラブルは複雑化・多様化しています。高齢化社会の進展とともに、高齢者の方を対象とした訪問販売も増えており、適切な情報提供と、第三者の受付窓口の重要性がますます高まっています。</p>
+          <p>私たちは第三者機関として、感情的な対立が生まれる前にお申し出をお受けし、うかがった内容を正確に記録して販売店へお伝えします。法律上の判断や、販売店との交渉を行うことはありません。中立の窓口としての役割に徹することが、健全な訪問販売業界の発展につながると考えております。</p>
+          <p>まずは当協会にご連絡ください。安心できる取引環境の実現に向けて、今後も尽力してまいります。</p>
+        </div>
+      </div>
+      <div class="rep__photo">
+        <img src="img/rep.jpg" alt="代表理事 亀井航太">
+        <div class="rep__name"><span class="rep__role">代表理事</span><span class="rep__jp">亀井　航太</span></div>
+        <p class="rep__en">Kota Kamei</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>3</span></div>
+</section>
+
+<!-- ============ 4. 当協会の役割 ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">当協会の役割</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body role">
+    <p class="lead">販売店と消費者の間に立つ<em>第三者の受付窓口</em>として、中立的な立場でお申し出をお受けします。</p>
+
+    <!-- サイト（index.html）の三角図と同じ構成。文言は法務チェック後のもの -->
+    <svg class="tri" viewBox="0 0 1000 340" role="img" aria-label="企業から消費者へJSOAを案内し、消費者はJSOAへお申し出、JSOAは必要に応じて企業と連携する関係図">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M0 0 10 5 0 10z" fill="#111"/>
+        </marker>
+      </defs>
+      <text class="tri-node" x="14" y="72">企業</text>
+      <text class="tri-node" x="986" y="72" text-anchor="end">消費者</text>
+      <text class="tri-node tri-node--jsoa" x="500" y="308" text-anchor="middle">JSOA</text>
+
+      <text class="tri-label" x="500" y="30" text-anchor="middle">受付窓口を案内</text>
+      <line x1="90" y1="60" x2="880" y2="60" stroke="#111" stroke-width="2.4" marker-end="url(#ah)"/>
+
+      <line x1="920" y1="96" x2="575" y2="262" stroke="#111" stroke-width="2.4" marker-end="url(#ah)"/>
+      <text class="tri-label" x="742" y="172" text-anchor="end">JSOAへお申し出</text>
+      <line x1="612" y1="272" x2="952" y2="108" stroke="#111" stroke-width="2.4" marker-end="url(#ah)"/>
+      <text class="tri-label" x="766" y="216">第三者として対応</text>
+
+      <line x1="425" y1="262" x2="80" y2="96" stroke="#111" stroke-width="2.4" marker-end="url(#ah)"/>
+      <text class="tri-label" x="206" y="172" text-anchor="end">必要に応じて</text>
+      <text class="tri-label" x="206" y="198" text-anchor="end">企業に連携</text>
+    </svg>
+
+    <div class="cards3">
+      <div class="card"><span class="card__icon"><svg><use href="#i-gov"/></svg></span>
+        <div class="card__box"><h3 class="card__title">設立の目的</h3>
+          <p class="card__text">訪問販売に関するお申し出を、第三者の立場で受け止めることを目的として設立されました。</p></div></div>
+      <div class="card"><span class="card__icon"><svg><use href="#i-check"/></svg></span>
+        <div class="card__box"><h3 class="card__title">事実にもとづく受付</h3>
+          <p class="card__text">うかがった内容を事実に沿って正確に記録し、販売店へお伝えします。法律上の判断は行いません。</p></div></div>
+      <div class="card"><span class="card__icon"><svg><use href="#i-shield"/></svg></span>
+        <div class="card__box"><h3 class="card__title">専門家による監修体制</h3>
+          <p class="card__text">行政・警察・法務、各分野の専門家による監修体制を整えています。</p></div></div>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>4</span></div>
+</section>
+
+<!-- ============ 5. 市場背景 ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body">
+    <p class="lead">訪問販売のトラブルは、<em>決して他人事ではありません。</em></p>
+    <div class="stat">
+      <div class="stat__panel">
+        <span class="stat__icon"><svg><use href="#i-chartup"/></svg></span>
+        <p class="stat__label">2024年度の「訪問販売」に関する<br>消費生活相談件数</p>
+        <p class="stat__fig"><span class="stat__num">7.9</span><span class="stat__unit">万件</span></p>
+        <p class="stat__note">今も年間 <b>約7.9万件</b> の相談が<br>寄せられています。</p>
+      </div>
+      <div class="chart">
+        <p class="chart__title"><svg><use href="#i-chartup"/></svg>訪問販売に関する消費生活相談件数の推移<span class="chart__badge">過去5年</span></p>
+        <div class="plot">
+          <div class="yaxis"><span style="--p:100">10</span><span style="--p:80">8</span><span style="--p:60">6</span><span style="--p:40">4</span><span style="--p:20">2</span><span style="--p:0">0</span></div>
+          <div class="area">
+            <div class="grid"><i style="--p:100"></i><i style="--p:80"></i><i style="--p:60"></i><i style="--p:40"></i><i style="--p:20"></i></div>
+            <ul class="bars">
+              <li style="--v:7.6"><b>7.6<small>万件</small></b><i></i></li>
+              <li style="--v:7.8"><b>7.8<small>万件</small></b><i></i></li>
+              <li style="--v:7.0"><b>7.0<small>万件</small></b><i></i></li>
+              <li style="--v:7.5"><b>7.5<small>万件</small></b><i></i></li>
+              <li class="cur" style="--v:7.9"><b>7.9<small>万件</small></b><i></i></li>
+            </ul>
+          </div>
+          <ul class="xaxis"><li>2020年度</li><li>2021年度</li><li>2022年度</li><li>2023年度</li><li class="cur">2024年度</li></ul>
+        </div>
+        <p class="source">出典：消費者庁「特定商取引に関する消費生活相談の状況」（PIO-NET・販売購入形態別）</p>
+      </div>
+    </div>
+    <div class="warn"><svg><use href="#i-warning"/></svg>
+      <p>件数は高止まりしており、相談が重なることで<b>行政対応</b>に発展するリスクが高まっています。</p></div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>5</span></div>
+</section>
+
+<!-- ============ 6. 課題提起 ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">課題提起</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body body--spread">
+    <p class="lead">訪問販売の消費者対応に、<em>こんなリスクを抱えていませんか？</em></p>
+    <div class="cards4">
+      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-clock"/></svg></span>
+        <div class="pcard__box"><h3 class="pcard__title">営業時間外に<br>対応できない</h3>
+          <p class="pcard__note">休日の解約相談などに<br>すぐ対応できない</p></div></div>
+      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-hourglass"/></svg></span>
+        <div class="pcard__box"><h3 class="pcard__title">対応が<br>長期化する</h3>
+          <p class="pcard__note">クレーム対応が長引き<br>社員の時間と負担が増える</p></div></div>
+      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-chat"/></svg></span>
+        <div class="pcard__box"><h3 class="pcard__title">消費者センター<br>への相談</h3>
+          <p class="pcard__note">小さな行き違いから<br>外部への相談につながることも</p></div></div>
+      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-gov"/></svg></span>
+        <div class="pcard__box"><h3 class="pcard__title">行政対応<br>へ発展</h3>
+          <p class="pcard__note">相談が重なることで<br>行政対応へ発展する可能性も</p></div></div>
+    </div>
+    <p class="band">こうした「守り」を、外部の専門機関にお任せいただくという選択肢を、私たちはご提案しています。</p>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>6</span></div>
+</section>
+
+<!-- ============ 7. サービス概要 ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">サービス概要</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body">
+    <p class="lead">お申し出の受付から法務支援、改善支援まで、<em>加盟店の運営を支える3つのサービス</em>を提供しています。</p>
+    <div class="svc">
+      <div class="svc__item">
+        <div class="svc__head"><span>解約のお申し出の<br>一次受付と通知</span><span class="svc__no">1</span></div>
+        <div class="svc__body"><span class="svc__icon"><svg><use href="#i-headset"/></svg></span>
+          <p class="svc__text">解約に関するお申し出は、<br>当協会が一次受付いたします。</p></div>
+      </div>
+      <div class="svc__item">
+        <div class="svc__head"><span>顧問陣による<br>法務・行政連携</span><span class="svc__no">2</span></div>
+        <div class="svc__body"><span class="svc__icon"><svg><use href="#i-person"/></svg></span>
+          <p class="svc__text">法務・行政・営業分野の専門家が<br>連携し対応します。</p></div>
+      </div>
+      <div class="svc__item">
+        <div class="svc__head"><span>改善支援</span><span class="svc__no">3</span></div>
+        <div class="svc__body"><span class="svc__icon"><svg><use href="#i-chartup"/></svg></span>
+          <p class="svc__text">レポートとセミナーで、<br>現場の改善を後押しします。</p></div>
+      </div>
+    </div>
+    <div class="steps">
+      <p class="steps__cap">解約のご連絡は、<b>当協会が一次受付</b>いたします。</p>
+      <div class="steps__row">
+        <div class="step"><p class="step__no">STEP 1</p><p class="step__t">お客様から<br>解約のご連絡</p></div>
+        <span class="step__arrow">»</span>
+        <div class="step step--on"><p class="step__no">STEP 2</p><p class="step__t">協会窓口が<br>一次受付</p><p class="step__s">（事実確認のみ）</p></div>
+        <span class="step__arrow">»</span>
+        <div class="step"><p class="step__no">STEP 3</p><p class="step__t">内容を記録</p></div>
+        <span class="step__arrow">»</span>
+        <div class="step"><p class="step__no">STEP 4</p><p class="step__t">加盟店様へ<br>速やかにご連絡</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>7</span></div>
+</section>
+
+<!-- ============ 8. 専門家体制とサポートプログラム ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">専門家体制とサポートプログラム</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body body--spread">
+    <p class="lead">法務・行政・営業分野の専門家が連携し、<em>受付体制とリスク対策</em>を支えます。</p>
+    <div class="experts">
+      <div class="expert"><span class="expert__ic"><svg><use href="#i-gov"/></svg></span><div><b>消費者庁OB</b><span>特商法・行政処分の基準を監修</span></div></div>
+      <div class="expert"><span class="expert__ic"><svg><use href="#i-shield"/></svg></span><div><b>警察OB</b><span>悪質トラブル対応を指導</span></div></div>
+      <div class="expert"><span class="expert__ic"><svg><use href="#i-person"/></svg></span><div><b>提携弁護士</b><span>法的な対応が必要な案件を担当</span></div></div>
+    </div>
+    <p class="escal">一次対応の中で法的な紛争に発展する可能性が確認された場合は、提携弁護士へ速やかにエスカレーションいたします。</p>
+    <p class="subhead">サポート体制</p>
+    <div class="prog">
+      <div class="prog__item"><p class="prog__t">キャンセル分析レポート</p><span class="prog__tag">年2回・加盟店様毎</span>
+        <p class="prog__x">キャンセルのご理由を統計化し、自社の傾向を協会平均と比較いただけます。</p></div>
+      <div class="prog__item"><p class="prog__t">特商法オンラインセミナー</p><span class="prog__tag">3ヶ月に1回・任意参加</span>
+        <p class="prog__x">現場の営業担当者様が、最新の法規制を学べる任意参加の講座です。</p></div>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>8</span></div>
+</section>
+
+<!-- ============ 9. 活用事例 ============ -->
+<!-- 掲載内容はすべてダミーです。サイト（index.html）の「加盟店の声」と同じ扱い。
+     実在する加盟店の声に差し替えるまで、対外配布の前に確認すること。 -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">活用事例</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body">
+    <p class="lead">第三者の受付窓口を、<em>現場でどのように活用いただいているか</em>をご紹介します。</p>
+    <div class="voices">
+      <div class="voice">
+        <p class="voice__badge">住宅リフォーム工事</p>
+        <p class="voice__t">「窓口のために<br>人を増やさずに済みました」</p>
+        <p class="voice__x">お申し出のたびに手が止まり、専任を置くか検討していました。一次受付をお任せできるようになり、増員せずに体制を整えられています。対応の記録が残るため、社内での状況把握もしやすくなりました。</p>
+        <p class="voice__m">従業員35名規模</p>
+      </div>
+      <div class="voice">
+        <p class="voice__badge">浄水器の販売</p>
+        <p class="voice__t">「つながらない時間が<br>なくなりました」</p>
+        <p class="voice__x">休業日のご連絡は翌営業日までお待たせしていました。早く手続きを済ませたいお客様が外部の窓口へお問い合わせになることもあり、内容以前に「連絡がつかない」ことが問題になっていました。いまは第三者の受付窓口が受け止めます。</p>
+        <p class="voice__m">従業員15名規模</p>
+      </div>
+      <div class="voice">
+        <p class="voice__badge">太陽光発電設備の販売</p>
+        <p class="voice__t">「ご説明の機会を<br>持てるようになりました」</p>
+        <p class="voice__x">ご契約後に不安を感じたお客様がご家族などにお話しになり、「とりあえずキャンセルした方がいい」となって、ご説明する機会のないままお手続きに至ることがありました。第三者の受付窓口をご案内できるようになり、まずお申し出をお受けできるようになっています。</p>
+        <p class="voice__m">従業員20名規模</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>9</span></div>
+</section>
+
+<!-- ============ 10. 加盟店のメリット ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">加盟店のメリット</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body">
+    <p class="lead">加盟することで、<em>お申し出を早い段階で受け止められる体制</em>が整います。</p>
+    <div class="merit">
+      <div class="merit__col merit__col--c">
+        <p class="merit__head">コンプライアンス面</p>
+        <div class="merit__list">
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-shield"/></svg></span>
+            <p class="merit__tx"><em>行政処分リスクへの備え</em><span>最新法規の継続学習</span></p></div>
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-headset"/></svg></span>
+            <p class="merit__tx">解約の<em>お申し出の一次受付</em><span>中立の第三者が受け付けます</span></p></div>
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-doc"/></svg></span>
+            <p class="merit__tx"><em>初動対応の記録が残る</em><span>社内の体制整備につながります</span></p></div>
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-person"/></svg></span>
+            <p class="merit__tx">法的紛争時の<em>専門家による即時バックアップ</em></p></div>
+        </div>
+      </div>
+      <div class="merit__col merit__col--s">
+        <p class="merit__head">営業面</p>
+        <div class="merit__list">
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-doc"/></svg></span>
+            <p class="merit__tx">名刺・契約書への<em>協会ロゴ／連絡先の記載</em></p></div>
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-check"/></svg></span>
+            <p class="merit__tx"><em>お申し出の早期把握</em><span>業務負担の軽減につながります</span></p></div>
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-headset"/></svg></span>
+            <p class="merit__tx"><em>受付窓口を増やせる</em><span>言い出しにくいお申し出もお受けします</span></p></div>
+          <div class="merit__li"><span class="merit__ic"><svg><use href="#i-chartup"/></svg></span>
+            <p class="merit__tx">業界内での<em>取り組み実績の蓄積</em></p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>10</span></div>
+</section>
+
+<!-- ============ 11. 料金体系と加盟の流れ ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">料金体系と加盟の流れ</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body body--spread">
+    <p class="lead">費用負担を抑えながら<em>安心してご利用いただけます。</em></p>
+    <div class="fee">
+      <div class="fee__item"><p class="fee__cap">加盟料（1口）</p><p class="fee__v">月額<b>10</b>万円</p></div>
+      <div class="fee__item"><p class="fee__cap">初期費用</p><p class="fee__v"><b>0</b>円</p></div>
+      <div class="fee__item"><p class="fee__cap">お支払いタイミング</p><p class="fee__v">翌月末払い</p></div>
+    </div>
+    <div class="flow">
+      <p class="subhead">加盟までの流れ</p>
+      <div class="flow__row">
+        <div class="flow__i"><p class="flow__n">01</p><span class="flow__ic"><svg><use href="#i-doc"/></svg></span>
+          <p class="flow__t">お申し込み</p><p class="flow__s">フォーム or 個別説明会</p></div>
+        <div class="flow__i"><p class="flow__n">02</p><span class="flow__ic"><svg><use href="#i-check"/></svg></span>
+          <p class="flow__t">審査</p><p class="flow__s">実績・体制を確認</p></div>
+        <div class="flow__i"><p class="flow__n">03</p><span class="flow__ic"><svg><use href="#i-handshake"/></svg></span>
+          <p class="flow__t">契約締結</p><p class="flow__s">内容にご同意のうえ</p></div>
+        <div class="flow__i"><p class="flow__n">04</p><span class="flow__ic"><svg><use href="#i-shield"/></svg></span>
+          <p class="flow__t">ロゴ・電話番号発行</p><p class="flow__s">名刺・契約書へ反映</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>11</span></div>
+</section>
+
+<!-- ============ 12. お問い合わせ ============ -->
+<section class="slide contact">
+  <div class="contact__inner">
+    <p class="contact__msg"><span>業界の健全な発展を、ともに目指す加盟店を募集しています。</span><br><br><span>まずはお気軽にご連絡ください。</span></p>
+    <div class="contact__grid">
+      <div class="contact__card contact__card--a">
+        <p class="contact__t">個別説明会のご予約</p>
+        <div class="contact__qr"><img src="img/qr-reserve.png" alt=""></div>
+        <p class="contact__u">https://jsoa.net/reserve/</p>
+      </div>
+      <div class="contact__card contact__card--b">
+        <p class="contact__t">協会サイト</p>
+        <div class="contact__qr"><img src="img/qr-site.png" alt=""></div>
+        <p class="contact__u">https://jsoa.net/</p>
+      </div>
+    </div>
+  </div>
+  <div class="contact__band"></div>
+</section>
+
+</body>
+</html>

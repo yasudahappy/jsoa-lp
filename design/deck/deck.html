@@ -199,6 +199,19 @@
   .mrow__k span{display:block;margin-top:1.5mm;font-size:8.5pt;font-weight:400;color:#8c968f}
   .mrow__v{font-size:10.5pt;line-height:1.8;color:var(--muted)}
   .mrow__v b{color:var(--text)}
+  .mrow__big{font-size:16pt;font-weight:900;color:var(--orange-strong);margin:0 .6mm}
+
+  /* 市場背景③：引用パネル＋処分件数グラフ */
+  .qpanel{background:var(--cream);border-radius:3mm;padding:7mm 6mm;
+    display:flex;flex-direction:column;justify-content:center}
+  .qpanel__k{font-size:9pt;font-weight:700;color:var(--orange-strong);letter-spacing:.06em}
+  .qpanel__q{margin-top:4mm;font-size:10pt;line-height:1.85;font-weight:500}
+  .qpanel__q b{color:var(--orange-strong)}
+  .qpanel__src{margin-top:4mm;font-size:7.5pt;color:#9aa49d;line-height:1.6}
+  /* こちらは --v をそのまま％で使う（相談件数のグラフは 10 倍していた） */
+  .chart--count .bars li{height:calc(var(--v)*1%)}
+  .chart__lead{margin-top:3mm;font-size:9.5pt;line-height:1.7;color:var(--muted)}
+  .chart__lead b{color:var(--orange-strong);font-weight:700}
   .mrow--hot{background:var(--cream-tint)}
   .mrow--hot .mrow__k{color:var(--orange-strong)}
   .note{margin-top:5mm;font-size:8pt;color:#9aa49d;line-height:1.7}
@@ -525,106 +538,121 @@
   <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>4</span></div>
 </section>
 
-<!-- ============ 5. 市場背景①：法改正の動き ============ -->
-<!-- 出典：消費者庁「デジタル取引・特定商取引法等検討会」
-     https://www.caa.go.jp/policies/policy/consumer_transaction/meeting_materials/review_meeting_005
-     中間取りまとめ（令和8年9月10日公表）
-     ※政府サイトはこの作業環境から直接開けないため、記載は検索結果の要約に
-       もとづく。配布前に一次資料と突き合わせること。 -->
+<!-- ============ 5. 市場背景①：規制の歴史 ============ -->
+<!-- 出典
+     ・消費者庁「法改正」 https://www.no-trouble.caa.go.jp/revision/
+     ・消費者庁「平成28年特定商取引法の改正について」
+       https://www.caa.go.jp/policies/policy/consumer_transaction/amendment/2016
+     ・経済産業省 北海道経済産業局「2022年6月から電磁的記録によるクーリング・オフが可能に」
+       https://www.hkd.meti.go.jp/hokih/20220615/index.htm
+     ※caa.go.jp はこの作業環境から開けないため、記載は検索結果の要約にもとづく。
+       配布前に一次資料と突き合わせること。 -->
 <section class="slide">
-  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　法改正の動き</span>
+  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　規制は50年かけて厳しくなってきた</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
   <div class="body">
-    <p class="lead">訪問販売は、いま<em>ルールが見直されている最中</em>です。</p>
+    <p class="lead">訪問販売のルールは、<em>一つずつ逃げ道が塞がれてきました。</em></p>
     <div class="mrows">
       <div class="mrow">
-        <p class="mrow__k">検討会の設置<span>令和8年1月22日 第1回</span></p>
-        <p class="mrow__v">消費者庁に<b>「デジタル取引・特定商取引法等検討会」</b>が設置されました。設置の背景として、<b>訪問販売や連鎖販売取引など、近年被害が増加している取引への対応</b>が挙げられています。</p>
+        <p class="mrow__k">訪問販売法の制定<span>昭和51年（1976年）</span></p>
+        <p class="mrow__v">訪問販売を対象とした法律が初めて置かれ、<b>クーリング・オフ</b>の制度が設けられました。</p>
+      </div>
+      <div class="mrow">
+        <p class="mrow__k">平成20年改正<span>平成21年12月 施行</span></p>
+        <p class="mrow__v"><b>指定商品制が廃止</b>され、原則としてすべての商品・役務が規制の対象になりました。あわせて<b>再勧誘の禁止</b>と、<b>過量販売の解除権</b>（通常必要とされる量を著しく超える契約は、1年以内なら解除できる）が設けられています。</p>
       </div>
       <div class="mrow mrow--hot">
-        <p class="mrow__k">中間取りまとめの公表<span>令和8年9月10日</span></p>
-        <p class="mrow__v">同検討会の<b>中間取りまとめが公表</b>されました。訪問販売については、勧誘のあり方や、勧誘を行った者をどう特定するかが論点として取り上げられています。</p>
+        <p class="mrow__k">平成28年改正<span>平成29年12月 施行</span></p>
+        <p class="mrow__v"><b>業務禁止命令が新設されました。</b>業務停止命令を受けた法人の<b>役員や使用人が、新しく法人を立ち上げて同種の業務を始めることを禁じられます</b>。処分が、法人だけでなく個人に届くようになった改正です。</p>
       </div>
       <div class="mrow">
-        <p class="mrow__k">論点の例<span>中間取りまとめより</span></p>
-        <p class="mrow__v"><b>勧誘者の特定を厳格にする方向</b>が示されています。不当な勧誘を行った者には直罰が科され、民事上の損害賠償責任の主体にもなり得るため、<b>告げる氏名は戸籍上の氏名を基本とすべき</b>とされています。再勧誘規制のあり方も論点に含まれています。</p>
-      </div>
-      <div class="mrow">
-        <p class="mrow__k">事業者への意味</p>
-        <p class="mrow__v">検討が進めば、<b>現場の運用（名乗り方・記録の残し方・再訪のルール）を見直す必要</b>が出てきます。現時点で体制を整えておくことが、改正後の対応コストを抑えることにつながります。</p>
+        <p class="mrow__k">令和3年改正<span>令和4年6月 施行</span></p>
+        <p class="mrow__v"><b>クーリング・オフの電子化。</b>書面のほか、メールや事業者のウェブフォームでも通知できるようになりました。<b>書面のみに限定する特約は消費者に不利な特約として無効</b>とされています。</p>
       </div>
     </div>
-    <p class="note">出典：消費者庁「デジタル取引・特定商取引法等検討会」中間取りまとめ（令和8年9月10日公表）および同検討会の公表資料</p>
+    <div class="sumline">
+      <span class="sumline__ic"><svg><use href="#i-gov"/></svg></span>
+      <p>そして令和8年9月、見直しの中間取りまとめが公表。<b>厳しくなる流れは、いまも続いています。</b></p>
+    </div>
   </div>
   <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>5</span></div>
 </section>
 
-<!-- ============ 6. 市場背景②：行政処分のリスク ============ -->
-<!-- 件数は入れていない。一次資料（消費者庁 執行状況）を開けなかったため、
-     検証できない数字は載せない方針。件数を入れる場合は
-     https://www.no-trouble.caa.go.jp/action/ の数字を確認して追記すること。 -->
+<!-- ============ 6. 市場背景②：相談は会社を通らない ============ -->
+<!-- 相談件数はサイト（index.html）のグラフと同じ数字。直すときは両方直すこと。
+     出典：消費者庁「特定商取引に関する消費生活相談の状況」（PIO-NET・販売購入形態別）
+     ※販売購入形態別の内訳は未確認。配布前に
+       https://www.kokusen.go.jp/news/data/n-20250806_3.html で確認すること。 -->
 <section class="slide">
-  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　行政処分のリスク</span>
+  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　いま、消費者は会社に言わない</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
   <div class="body">
-    <p class="lead">行政処分は、<em>法人だけでなく役員個人にも及びます。</em></p>
+    <p class="lead">解約の話は、<em>会社を通らずに外へ出ています。</em></p>
     <div class="mrows">
       <div class="mrow">
-        <p class="mrow__k">業務停止命令<span>特定商取引法</span></p>
-        <p class="mrow__v">一定期間、<b>訪問販売に関する業務の全部または一部が停止</b>されます。停止のあいだ、その業務での売上は立ちません。</p>
+        <p class="mrow__k">連絡のハードルが<br>法律で下がった<span>令和4年6月〜</span></p>
+        <p class="mrow__v">クーリング・オフは<b>メールやウェブフォームでも通知できます</b>。書面のみに限定する特約は無効ですから、<b>事業者の側に、連絡の方法を絞る手立てはありません</b>。思い立ったその場で送れる状態です。</p>
       </div>
       <div class="mrow mrow--hot">
-        <p class="mrow__k">業務禁止命令<span>役員個人が対象になり得る</span></p>
-        <p class="mrow__v">法人への処分とあわせて、<b>その法人の役員個人に対して、同種の業務を新たに始めることを禁じる命令</b>が出されることがあります。会社を替えても続く点が、法人への処分と大きく違います。</p>
-      </div>
-      <div class="mrow mrow--hot">
-        <p class="mrow__k">公表</p>
-        <p class="mrow__v">処分を行った消費者庁・経済産業局・都道府県は、<b>事業者名と処分内容を公表</b>します。公表された情報は検索で残り続けます。</p>
+        <p class="mrow__k">「訪問＝警戒」が<br>前提になった</p>
+        <p class="mrow__v">訪問販売をめぐる報道が続いたことで、消費者は<b>事業者の説明を待たずに、第三者に確かめる</b>ようになりました。ご家族やご親戚に相談され、「とりあえずキャンセルしたほうがいい」と勧められる場面が増えています。</p>
       </div>
       <div class="mrow">
-        <p class="mrow__k">指示</p>
-        <p class="mrow__v">停止までは至らない場合でも、<b>業務の運営方法の改善を指示</b>されることがあります。指示に従わない場合は、さらに重い処分の対象になります。</p>
+        <p class="mrow__k">相談は、外に出ている<span>2024年度</span></p>
+        <p class="mrow__v">訪問販売に関する消費生活相談は、いまも年間<b class="mrow__big">約7.9万件</b>。会社に一度も連絡が来ないまま、<b>消費生活センターや第三者に話が届いています</b>。</p>
       </div>
     </div>
-    <p class="note">処分の権限は消費者庁・地方経済産業局・都道府県にあります。処分事例は消費者庁「特定商取引法ガイド」の執行状況で公表されています。</p>
+    <div class="sumline">
+      <span class="sumline__ic"><svg><use href="#i-chat"/></svg></span>
+      <p><b>会社に一本も来ないまま、外で話が進みます。</b>お申し出があったことを、事業者が知るのは後になってからです。</p>
+    </div>
   </div>
   <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>6</span></div>
 </section>
 
-<!-- ============ 7. 市場背景③：相談の実態 ============ -->
+<!-- ============ 7. 市場背景③：その一本が時間を奪う ============ -->
+<!-- 処分件数：消費者庁「特定商取引法ガイド」執行状況の各年度ページの検索結果件数
+     https://www.no-trouble.caa.go.jp/action/
+     2021年度81／2022年度94／2023年度132／2024年度116／2025年度80（合計503）
+     ※法人への業務停止命令・指示と、役員個人への業務禁止命令が別々の行として
+       数えられている。「処分を受けた事業者の数」ではない点に注意。
+     ※件数は増加していない（2023年度がピーク）。「増えている」とは書かないこと。
+     ※社名・個人名は出さない方針。公表情報だが、他社の処分を名指しする資料にしない。
+     聞き取り調査のくだりは運営会社周辺で実際に起きた事例。行政の運用方針として
+     断定しないよう「当協会が把握している事例では」で始めている。 -->
 <section class="slide">
-  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　相談の実態</span>
+  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　その一本が、時間を奪う</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
   <div class="body">
-    <p class="lead">訪問販売のトラブルは、<em>決して他人事ではありません。</em></p>
+    <p class="lead">外に出た相談は記録として残り、<em>調査の入口になります。</em></p>
     <div class="stat">
-      <div class="stat__panel">
-        <span class="stat__icon"><svg><use href="#i-chartup"/></svg></span>
-        <p class="stat__label">2024年度の「訪問販売」に関する<br>消費生活相談件数</p>
-        <p class="stat__fig"><span class="stat__num">7.9</span><span class="stat__unit">万件</span></p>
-        <p class="stat__note">今も年間 <b>約7.9万件</b> の相談が<br>寄せられています。</p>
+      <div class="qpanel">
+        <p class="qpanel__k">行政処分は、こう始まる</p>
+        <p class="qpanel__q">特定商取引法における行政執行は、一般に、<b>PIO-NETに蓄積されている消費生活相談情報</b>や消費者等からの申出等を<b>端緒として調査を開始</b>し、消費者からの被害聴取、事業者に対する報告徴収・立入検査等の行政調査の結果、特商法に違反する行為があると認められる場合に、<b>行政処分と事業者名の公表</b>を行う</p>
+        <p class="qpanel__src">内閣府 消費者委員会「消費者行政における執行力の充実に関する提言」（平成29年8月）より</p>
       </div>
-      <div class="chart">
-        <p class="chart__title"><svg><use href="#i-chartup"/></svg>訪問販売に関する消費生活相談件数の推移<span class="chart__badge">過去5年</span></p>
+      <div class="chart chart--count">
+        <p class="chart__title"><svg><use href="#i-warning"/></svg>特定商取引法にもとづく処分件数<span class="chart__badge">過去5年</span></p>
         <div class="plot">
-          <div class="yaxis"><span style="--p:100">10</span><span style="--p:80">8</span><span style="--p:60">6</span><span style="--p:40">4</span><span style="--p:20">2</span><span style="--p:0">0</span></div>
+          <div class="yaxis"><span style="--p:100">150</span><span style="--p:66.7">100</span><span style="--p:33.3">50</span><span style="--p:0">0</span></div>
           <div class="area">
-            <div class="grid"><i style="--p:100"></i><i style="--p:80"></i><i style="--p:60"></i><i style="--p:40"></i><i style="--p:20"></i></div>
+            <div class="grid"><i style="--p:66.7"></i><i style="--p:33.3"></i></div>
             <ul class="bars">
-              <li style="--v:7.6"><b>7.6<small>万件</small></b><i></i></li>
-              <li style="--v:7.8"><b>7.8<small>万件</small></b><i></i></li>
-              <li style="--v:7.0"><b>7.0<small>万件</small></b><i></i></li>
-              <li style="--v:7.5"><b>7.5<small>万件</small></b><i></i></li>
-              <li class="cur" style="--v:7.9"><b>7.9<small>万件</small></b><i></i></li>
+              <li style="--v:54"><b>81<small>件</small></b><i></i></li>
+              <li style="--v:62.7"><b>94<small>件</small></b><i></i></li>
+              <li style="--v:88"><b>132<small>件</small></b><i></i></li>
+              <li style="--v:77.3"><b>116<small>件</small></b><i></i></li>
+              <li style="--v:53.3"><b>80<small>件</small></b><i></i></li>
             </ul>
           </div>
-          <ul class="xaxis"><li>2020年度</li><li>2021年度</li><li>2022年度</li><li>2023年度</li><li class="cur">2024年度</li></ul>
+          <ul class="xaxis"><li>2021年度</li><li>2022年度</li><li>2023年度</li><li>2024年度</li><li>2025年度</li></ul>
         </div>
-        <p class="source">出典：消費者庁「特定商取引に関する消費生活相談の状況」（PIO-NET・販売購入形態別）</p>
+        <p class="chart__lead">5年間で<b>503件</b>。どの年度にも、<b>代表取締役個人に対する業務禁止命令</b>が含まれています。</p>
+        <p class="source">出典：消費者庁「特定商取引法ガイド」執行状況（国及び都道府県における処分事業者／法人・役員個人への処分を含む）</p>
       </div>
     </div>
-    <div class="warn"><svg><use href="#i-warning"/></svg>
-      <p>件数は高止まりしており、相談が重なることで<b>行政対応</b>に発展するリスクが高まっています。</p></div>
+    <div class="warn"><svg><use href="#i-hourglass"/></svg>
+      <p>当協会が把握している事例では、<b>処分に至らない段階でも</b>、相談が集まったというだけで事業者が呼ばれ、聞き取りとやり取りが長く続きます。<b>処分の前に、時間と人手が奪われます。</b></p></div>
   </div>
   <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>7</span></div>
 </section>

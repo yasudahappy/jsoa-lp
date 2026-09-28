@@ -192,12 +192,15 @@ body{
 .problems{padding-top:min(7.8vw,112px);padding-bottom:min(3.1vw,44px)}
 .flowsec{padding-top:min(3.1vw,45px);padding-bottom:min(4.9vw,70px)}
 .merits{padding-top:min(4.9vw,71px);padding-bottom:min(3.9vw,56px)}
-.compare{padding-top:min(3.96vw,57px);padding-bottom:min(1.88vw,27px)}
+.compare{padding-top:min(3.96vw,57px);padding-bottom:min(3.9vw,56px)}
+/* 加盟店の声。CTA帯をこのセクションの末尾に置いているので、下の余白は詰める */
+.voices{padding-top:min(4.2vw,60px);padding-bottom:min(1.88vw,27px)}
 @media (max-width:767px){
   .problems{padding-top:46px;padding-bottom:19px}
   .flowsec{padding-top:19px;padding-bottom:30px}
   .merits{padding-top:48px;padding-bottom:48px}
-  .compare{padding-top:45px;padding-bottom:14px}
+  .compare{padding-top:45px;padding-bottom:40px}
+  .voices{padding-top:44px;padding-bottom:14px}
 }
 
 /* ---------- 8. 4枚カード（お悩み） ---------- */
@@ -530,6 +533,37 @@ body{
     padding:min(.42vw,6px) min(1.32vw,19px) min(.42vw,6px) min(1.18vw,17px);
     border-radius:9px;font-size:min(1.3vw,18.7px)}
   .cmp__resultIcon{width:min(3.33vw,48px);height:min(3.33vw,48px)}
+}
+
+/* ---------- 14.5 加盟店の声（Figma にはない追加セクション） ---------- */
+/* メリット3枚（.mcards）と同じ3カラムだが、こちらは「声」なので
+   カードの中身は 業種バッジ → 見出し → 本文 → 属性 の順。
+   カード高さは中身に合わせて伸ばし、3枚の高さは grid で揃えている。 */
+.vcards{display:grid}
+.vcard{background:var(--white);border:1px solid var(--card-border);
+  border-radius:var(--radius);display:flex;flex-direction:column}
+.vcard__badge{align-self:flex-start;background:var(--green-pale);color:var(--green-h2);
+  font-weight:700;line-height:1.2;border-radius:999px}
+.vcard__title{font-weight:700;line-height:1.4;color:var(--green-h2)}
+.vcard__text{color:var(--text-muted);line-height:1.7;flex:1}
+.vcard__meta{color:var(--text-muted);line-height:1.4;
+  border-top:1px solid var(--card-border)}
+@media (max-width:767px){
+  .vcards{margin-top:22px;grid-template-columns:minmax(0,1fr);gap:12px}
+  .vcard{padding:18px 16px}
+  .vcard__badge{padding:4px 12px;font-size:11px}
+  .vcard__title{margin-top:12px;font-size:17px}
+  .vcard__text{margin-top:9px;font-size:13px}
+  .vcard__meta{margin-top:14px;padding-top:11px;font-size:11px}
+}
+@media (min-width:768px){
+  .vcards{margin-top:min(2.8vw,40px);grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:min(1.7vw,24px)}
+  .vcard{padding:min(2.2vw,32px) min(1.7vw,24px)}
+  .vcard__badge{padding:min(.35vw,5px) min(1.04vw,15px);font-size:min(1.042vw,15px)}
+  .vcard__title{margin-top:min(1.25vw,18px);font-size:min(1.528vw,22px)}
+  .vcard__text{margin-top:min(.9vw,13px);font-size:min(1.181vw,17px)}
+  .vcard__meta{margin-top:min(1.5vw,22px);padding-top:min(1.1vw,16px);font-size:min(.972vw,14px)}
 }
 
 /* ---------- 15. CTA帯（Figma: 1356x157 / #f4f8f6） ---------- */

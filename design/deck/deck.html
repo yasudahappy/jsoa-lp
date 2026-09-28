@@ -81,7 +81,7 @@
     color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3mm}
   .agenda__side b{font-size:24pt;font-weight:700;letter-spacing:.22em}
   .agenda__side span{font-size:10pt;letter-spacing:.3em;opacity:.85}
-  .agenda__list{flex:1;padding:16mm 18mm;display:flex;flex-direction:column;justify-content:center;gap:5.2mm}
+  .agenda__list{flex:1;padding:14mm 18mm;display:flex;flex-direction:column;justify-content:center;gap:4.4mm}
   .agenda__row{display:flex;align-items:baseline;gap:6mm}
   .agenda__no{font-size:17pt;font-weight:700;color:var(--g-dark);width:14mm;flex:none}
   .agenda__name{font-size:13pt;font-weight:700;color:var(--g-h2);letter-spacing:.08em;white-space:nowrap}
@@ -89,33 +89,47 @@
   .agenda__p{font-size:9.5pt;color:#8c968f;width:10mm;text-align:right;flex:none}
 
   /* ---------- 3. 代表挨拶 ---------- */
-  .rep{display:grid;grid-template-columns:1fr 78mm;gap:10mm;flex:1;min-height:0}
-  .rep__quote{font-size:15pt;font-weight:700;line-height:1.55}
+  /* 元の営業資料の配置に合わせている。写真は白背景の正規データなので、
+     切り抜かずに白いカードのまま置き、背後に緑の面を少しずらして敷く */
+  .rep{display:grid;grid-template-columns:1fr 78mm;gap:12mm;flex:1;min-height:0}
+  .rep__quote{font-size:16pt;font-weight:700;line-height:1.6}
   .rep__quote b{color:var(--g-h2)}
-  .rep__body{margin-top:6mm;display:flex;flex-direction:column;gap:3.4mm;
-    font-size:9.5pt;line-height:1.85;color:var(--muted)}
-  .rep__photo{position:relative;align-self:end;height:100%;display:flex;
-    flex-direction:column;justify-content:flex-end}
-  .rep__photo img{width:100%;flex:1;min-height:0;object-fit:cover;object-position:50% 8%;
-    border-radius:4mm 4mm 0 0;display:block}
-  .rep__name{margin-top:4mm;display:flex;align-items:baseline;justify-content:flex-end;gap:4mm}
-  .rep__role{font-size:10pt;font-weight:700}
-  .rep__jp{font-size:21pt;font-weight:700;letter-spacing:.14em;color:var(--g-dark)}
-  .rep__en{font-size:8pt;color:#9aa49d;text-align:right;letter-spacing:.1em}
+  .rep__body{margin-top:8mm;display:flex;flex-direction:column;gap:4mm;
+    font-size:10pt;line-height:1.95;color:var(--muted)}
+  .rep__photo{align-self:end;width:100%;margin-bottom:4mm}
+  /* 緑のパネルは写真だけの背面に敷く。氏名まで含めると下にはみ出すため枠を分けた */
+  .rep__frame{position:relative}
+  .rep__frame::before{content:"";position:absolute;left:-5mm;bottom:-5mm;
+    width:58mm;height:62mm;border-radius:4mm;background:linear-gradient(160deg,#2e8b4c,#14512a)}
+  .rep__frame img{position:relative;width:100%;display:block;border-radius:4mm;
+    box-shadow:0 1mm 4mm rgba(20,81,42,.16)}
+  .rep__name{margin-top:8mm;display:flex;align-items:baseline;
+    justify-content:flex-end;gap:5mm}
+  .rep__role{font-size:11pt;font-weight:700}
+  .rep__jp{font-size:23pt;font-weight:700;letter-spacing:.08em;color:var(--g-dark)}
+  .rep__en{position:relative;margin-top:1mm;font-size:9pt;color:#9aa49d;
+    text-align:right;letter-spacing:.12em}
 
   /* ---------- 共通：3カラムのカード ---------- */
-  .cards3{margin-top:auto;margin-bottom:6mm;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
+  /* サイトのカードと同じくらいの比率にしたいので、横幅に上限を置く */
+  .cards3{margin-top:7mm;margin-bottom:4mm;width:232mm;margin-inline:auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:9mm}
   .card{display:flex;flex-direction:column;align-items:center;text-align:center}
   .card__icon{width:13mm;height:13mm;margin-bottom:3mm;color:var(--g-icon)}
   .card__icon svg{width:100%;height:100%}
-  .card__box{width:100%;flex:1;background:var(--pale);padding:5mm 4mm 6mm;
+  .card__box{width:100%;flex:1;background:var(--pale);padding:6mm 5mm 7mm;
     display:flex;flex-direction:column}
   .card__title{font-size:12pt;font-weight:700;color:var(--g-card);line-height:1.3}
   .card__text{margin-top:4mm;font-size:9pt;line-height:1.65;color:var(--muted)}
 
   /* ---------- 4. 当協会の役割（三角図） ---------- */
   .role{flex:1;display:flex;flex-direction:column;min-height:0}
-  .tri{width:214mm;margin:7mm auto 0;display:block}
+  .tri{width:196mm;margin:5mm auto 0;display:block}
+  /* 三角図とカードは1つのかたまりとして中央に置く。
+     space-between のままだと図とカードの間が開きすぎるため */
+  .role{justify-content:flex-start}
+  .role .tri{margin-top:auto}
+  .role .cards3{margin-top:9mm;margin-bottom:auto}
   .tri-node{font-size:30px;font-weight:700;fill:#111}
   .tri-node--jsoa{font-size:46px;fill:var(--g-jsoa)}
   .tri-label{font-size:20px;fill:#111}
@@ -161,41 +175,59 @@
   .warn svg{width:8mm;height:8mm;flex:none;color:var(--orange)}
   .warn b{color:var(--orange-strong)}
 
-  /* ---------- 6. 課題提起 ---------- */
-  .cards4{margin-top:6mm;display:grid;grid-template-columns:repeat(4,1fr);gap:6mm}
-  .pcard{display:flex;flex-direction:column;align-items:center;text-align:center}
-  .pcard__icon{width:12mm;height:12mm;margin-bottom:2.5mm;color:var(--orange)}
-  .pcard__icon svg{width:100%;height:100%}
-  .pcard__box{width:100%;flex:1;background:var(--cream-tint);padding:5mm 3.5mm 5mm;
-    display:flex;flex-direction:column}
-  .pcard__title{font-size:12pt;font-weight:700;line-height:1.3}
-  .pcard__note{margin-top:auto;padding-top:4mm;font-size:8.5pt;line-height:1.6;color:var(--muted)}
-  .band{margin-top:6mm;background:linear-gradient(90deg,#1f7a3d,#14512a);color:#fff;
-    border-radius:2mm;padding:4mm 8mm;text-align:center;font-size:11pt;font-weight:700}
+  /* ---------- 6. 課題提起（横長の帯を4本） ---------- */
+  .risks{margin:auto 0;display:flex;flex-direction:column;gap:4mm}
+  .risk{display:flex;align-items:center;gap:7mm;background:var(--cream-tint);
+    padding:5mm 8mm;border-left:2mm solid var(--orange)}
+  .risk__ic{width:13mm;height:13mm;flex:none;color:var(--orange);display:block}
+  .risk__ic svg{width:100%;height:100%}
+  .risk__t{width:62mm;flex:none;font-size:14pt;font-weight:700;line-height:1.35}
+  .risk__x{font-size:10.5pt;line-height:1.7;color:var(--muted)}
+  .sumline{margin-top:6mm;display:flex;align-items:center;gap:5mm;
+    border-top:.5mm solid var(--g);padding-top:5mm}
+  .sumline__ic{width:11mm;height:11mm;flex:none;color:var(--g);display:block}
+  .sumline__ic svg{width:100%;height:100%}
+  .sumline p{font-size:13pt;font-weight:700;line-height:1.5}
+  .sumline b{color:var(--g-h2)}
+
+  /* ---------- 市場背景②③（法改正・行政処分） ---------- */
+  .mrows{margin-top:6mm;flex:1;display:flex;flex-direction:column;
+         justify-content:space-around;gap:4.5mm;min-height:0}
+  .mrow{display:flex;gap:7mm;align-items:center;background:#f6f9f7;
+    border-radius:2mm;padding:6mm 7mm}
+  .mrow__k{width:44mm;flex:none;font-size:11pt;font-weight:700;color:var(--g-dark);line-height:1.4}
+  .mrow__k span{display:block;margin-top:1.5mm;font-size:8.5pt;font-weight:400;color:#8c968f}
+  .mrow__v{font-size:10.5pt;line-height:1.8;color:var(--muted)}
+  .mrow__v b{color:var(--text)}
+  .mrow--hot{background:var(--cream-tint)}
+  .mrow--hot .mrow__k{color:var(--orange-strong)}
+  .note{margin-top:5mm;font-size:8pt;color:#9aa49d;line-height:1.7}
 
   /* ---------- 7. サービス概要 ---------- */
-  .svc{margin-top:5mm;display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
-  .svc__item{min-height:54mm;border:.3mm solid var(--line);border-radius:2mm;overflow:hidden;display:flex;flex-direction:column}
+  .svc{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+  .svc__item{min-height:64mm;border:.3mm solid var(--line);border-radius:2mm;overflow:hidden;display:flex;flex-direction:column}
   .svc__head{background:linear-gradient(120deg,#2e8b4c,#1a7c32);color:#fff;
     padding:3.5mm 4mm;font-size:11pt;font-weight:700;line-height:1.35;
     display:flex;align-items:center;justify-content:space-between;gap:3mm;min-height:16mm}
   .svc__no{font-size:20pt;font-weight:700;opacity:.4;line-height:1}
-  .svc__body{flex:1;padding:5mm 4mm;display:flex;flex-direction:column;align-items:center;
+  .svc__body{flex:1;padding:7mm 4mm;display:flex;flex-direction:column;align-items:center;
     text-align:center;gap:3mm}
   .svc__icon{width:12mm;height:12mm;color:var(--g-icon)}
   .svc__icon svg{width:100%;height:100%}
-  .svc__text{font-size:9pt;line-height:1.7;color:var(--muted)}
+  .svc__text{font-size:10pt;font-weight:500;line-height:1.7;color:var(--ink)}
 
-  .steps{margin-top:auto;margin-bottom:8mm}
-  .steps__cap{text-align:center;font-size:10.5pt;font-weight:700}
+  .steps{margin-top:11mm;margin-bottom:auto}
+  .steps__cap{text-align:center;font-size:12pt;font-weight:700}
   .steps__cap b{color:var(--g-h2)}
-  .steps__row{margin-top:4mm;display:flex;align-items:stretch;gap:3mm}
-  .step{flex:1;background:var(--pale);border-radius:2mm;padding:3.5mm 3mm;text-align:center}
+  .steps__row{margin-top:5mm;display:flex;align-items:stretch;gap:3.5mm}
+  .step{flex:1;background:var(--pale);border-radius:2mm;padding:6.5mm 3mm;text-align:center;
+        display:flex;flex-direction:column;justify-content:center}
   .step--on{background:var(--g-dark);color:#fff}
-  .step__no{font-size:7.5pt;font-weight:700;letter-spacing:.14em;opacity:.7}
-  .step__t{margin-top:1.5mm;font-size:9.5pt;font-weight:700;line-height:1.4}
-  .step__s{margin-top:1mm;font-size:7.5pt;opacity:.85}
-  .step__arrow{align-self:center;font-size:12pt;color:var(--g);font-weight:700}
+  .step--on .step__no{color:#a8d8b4}
+  .step__no{font-size:9pt;font-weight:700;letter-spacing:.14em;color:var(--g-h2)}
+  .step__t{margin-top:2mm;font-size:11.5pt;font-weight:700;line-height:1.45}
+  .step__s{margin-top:1.5mm;font-size:8.5pt;opacity:.9}
+  .step__arrow{align-self:center;font-size:15pt;color:var(--g);font-weight:700}
 
   /* ---------- 8. 専門家体制 ---------- */
   .experts{margin-top:5mm;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
@@ -205,7 +237,7 @@
   .expert__ic{width:15mm;height:15mm;color:var(--g);display:block}
   .expert__ic svg{width:100%;height:100%}
   .expert b{font-size:13pt;font-weight:700;color:var(--g-dark)}
-  .expert span{display:block;margin-top:2mm;font-size:9pt;color:var(--muted);line-height:1.6}
+  .expert div span{display:block;margin-top:2mm;font-size:9pt;color:var(--muted);line-height:1.6}
   .escal{margin-top:5mm;background:var(--pale);border-radius:2mm;padding:4mm 6mm;
     text-align:center;font-size:9.5pt;font-weight:700;color:var(--g-dark)}
   .subhead{margin-top:2mm;display:flex;align-items:center;gap:2.5mm;font-size:11pt;font-weight:700}
@@ -249,10 +281,13 @@
   /* ---------- 11. 料金と流れ ---------- */
   .fee{margin-top:5mm;display:grid;grid-template-columns:repeat(3,1fr);gap:7mm}
   .fee__item{text-align:center}
-  .fee__cap{background:var(--g-dark);color:#fff;border-radius:8mm;padding:2mm;
-    font-size:10.5pt;font-weight:700}
-  .fee__v{margin-top:5mm;min-height:14mm;display:flex;align-items:flex-end;
-    justify-content:center;font-size:16pt;font-weight:700;color:var(--g-dark)}
+  .fee__cap{background:var(--g-dark);color:#fff;border-radius:8mm;padding:2.6mm;
+    font-size:12pt;font-weight:700}
+  /* 数字と単位でベースラインを共有させる（以前は行の高さで中央寄せにしていて
+     数字だけ上にずれて見えていた）。イラストを置かないぶん大きく取る */
+  .fee__v{margin-top:7mm;display:flex;align-items:baseline;justify-content:center;
+    font-size:22pt;font-weight:900;color:var(--g-dark);line-height:1}
+  .fee__v b{font-size:44pt;font-weight:900;line-height:1}
   .fee__v b{font-size:30pt}
   .flow{margin-top:0}
   .flow__row{margin-top:4mm;display:flex;align-items:stretch;gap:3mm}
@@ -265,16 +300,15 @@
 
   /* ---------- 12. お問い合わせ ---------- */
   .contact{justify-content:center;background:linear-gradient(135deg,#e4efe7 0%,#f2f8f4 60%,#fafcfb 100%)}
-  .contact__inner{padding:0 26mm}
-  .contact__msg{font-size:17pt;font-weight:700;color:var(--g-dark);line-height:1.7}
+  .contact__inner{padding:0 26mm;text-align:center}
+  .contact__msg{font-size:17pt;font-weight:700;color:var(--g-dark);line-height:1.8}
   .contact__msg span{display:inline-block;border-bottom:.6mm solid var(--g);padding-bottom:1.5mm}
-  .contact__grid{margin-top:12mm;display:grid;grid-template-columns:1fr 1fr;gap:16mm}
-  .contact__card{background:#fff;border-radius:3mm;padding:7mm;text-align:center;
+  .contact__grid{margin-top:14mm;display:flex;justify-content:center}
+  .contact__card{width:96mm;background:#fff;border-radius:3mm;padding:9mm;text-align:center;
     box-shadow:0 1mm 3mm rgba(20,81,42,.08)}
   .contact__t{border-radius:8mm;padding:2mm;font-size:11pt;font-weight:700;color:#fff}
-  .contact__card--a .contact__t{background:var(--g)}
-  .contact__card--b .contact__t{background:#d9600d}
-  .contact__qr{margin:5mm auto 0;width:32mm;height:32mm}
+  .contact__card--b .contact__t{background:var(--g)}
+  .contact__qr{margin:6mm auto 0;width:44mm;height:44mm}
   .contact__qr img{width:100%;height:100%}
   .contact__u{margin-top:3mm;font-size:9pt;color:var(--muted);word-break:break-all}
   .contact__band{position:absolute;left:0;right:0;bottom:0;height:5mm;
@@ -411,11 +445,12 @@
   <div class="agenda__list">
     <div class="agenda__row"><span class="agenda__no">01</span><span class="agenda__name">企業概要</span><span class="agenda__dots"></span><span class="agenda__p">P3</span></div>
     <div class="agenda__row"><span class="agenda__no">02</span><span class="agenda__name">市場背景</span><span class="agenda__dots"></span><span class="agenda__p">P5</span></div>
-    <div class="agenda__row"><span class="agenda__no">03</span><span class="agenda__name">サービス</span><span class="agenda__dots"></span><span class="agenda__p">P7</span></div>
-    <div class="agenda__row"><span class="agenda__no">04</span><span class="agenda__name">活用事例</span><span class="agenda__dots"></span><span class="agenda__p">P9</span></div>
-    <div class="agenda__row"><span class="agenda__no">05</span><span class="agenda__name">メリット</span><span class="agenda__dots"></span><span class="agenda__p">P10</span></div>
-    <div class="agenda__row"><span class="agenda__no">06</span><span class="agenda__name">料金と流れ</span><span class="agenda__dots"></span><span class="agenda__p">P11</span></div>
-    <div class="agenda__row"><span class="agenda__no">07</span><span class="agenda__name">お問い合わせ</span><span class="agenda__dots"></span><span class="agenda__p">P12</span></div>
+    <div class="agenda__row"><span class="agenda__no">03</span><span class="agenda__name">課題提起</span><span class="agenda__dots"></span><span class="agenda__p">P8</span></div>
+    <div class="agenda__row"><span class="agenda__no">04</span><span class="agenda__name">サービス</span><span class="agenda__dots"></span><span class="agenda__p">P9</span></div>
+    <div class="agenda__row"><span class="agenda__no">05</span><span class="agenda__name">活用事例</span><span class="agenda__dots"></span><span class="agenda__p">P11</span></div>
+    <div class="agenda__row"><span class="agenda__no">06</span><span class="agenda__name">メリット</span><span class="agenda__dots"></span><span class="agenda__p">P12</span></div>
+    <div class="agenda__row"><span class="agenda__no">07</span><span class="agenda__name">料金と流れ</span><span class="agenda__dots"></span><span class="agenda__p">P13</span></div>
+    <div class="agenda__row"><span class="agenda__no">08</span><span class="agenda__name">お問い合わせ</span><span class="agenda__dots"></span><span class="agenda__p">P14</span></div>
   </div>
 </section>
 
@@ -435,7 +470,7 @@
         </div>
       </div>
       <div class="rep__photo">
-        <img src="img/rep.jpg" alt="代表理事 亀井航太">
+        <div class="rep__frame"><img src="img/rep-white.jpg" alt="代表理事 亀井航太"></div>
         <div class="rep__name"><span class="rep__role">代表理事</span><span class="rep__jp">亀井　航太</span></div>
         <p class="rep__en">Kota Kamei</p>
       </div>
@@ -448,7 +483,7 @@
 <section class="slide">
   <div class="head"><span class="head__mark"></span><span class="head__title">当協会の役割</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
-  <div class="body role">
+  <div class="body body--spread role">
     <p class="lead">販売店と消費者の間に立つ<em>第三者の受付窓口</em>として、中立的な立場でお申し出をお受けします。</p>
 
     <!-- サイト（index.html）の三角図と同じ構成。文言は法務チェック後のもの -->
@@ -490,9 +525,75 @@
   <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>4</span></div>
 </section>
 
-<!-- ============ 5. 市場背景 ============ -->
+<!-- ============ 5. 市場背景①：法改正の動き ============ -->
+<!-- 出典：消費者庁「デジタル取引・特定商取引法等検討会」
+     https://www.caa.go.jp/policies/policy/consumer_transaction/meeting_materials/review_meeting_005
+     中間取りまとめ（令和8年9月10日公表）
+     ※政府サイトはこの作業環境から直接開けないため、記載は検索結果の要約に
+       もとづく。配布前に一次資料と突き合わせること。 -->
 <section class="slide">
-  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景</span>
+  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　法改正の動き</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body">
+    <p class="lead">訪問販売は、いま<em>ルールが見直されている最中</em>です。</p>
+    <div class="mrows">
+      <div class="mrow">
+        <p class="mrow__k">検討会の設置<span>令和8年1月22日 第1回</span></p>
+        <p class="mrow__v">消費者庁に<b>「デジタル取引・特定商取引法等検討会」</b>が設置されました。設置の背景として、<b>訪問販売や連鎖販売取引など、近年被害が増加している取引への対応</b>が挙げられています。</p>
+      </div>
+      <div class="mrow mrow--hot">
+        <p class="mrow__k">中間取りまとめの公表<span>令和8年9月10日</span></p>
+        <p class="mrow__v">同検討会の<b>中間取りまとめが公表</b>されました。訪問販売については、勧誘のあり方や、勧誘を行った者をどう特定するかが論点として取り上げられています。</p>
+      </div>
+      <div class="mrow">
+        <p class="mrow__k">論点の例<span>中間取りまとめより</span></p>
+        <p class="mrow__v"><b>勧誘者の特定を厳格にする方向</b>が示されています。不当な勧誘を行った者には直罰が科され、民事上の損害賠償責任の主体にもなり得るため、<b>告げる氏名は戸籍上の氏名を基本とすべき</b>とされています。再勧誘規制のあり方も論点に含まれています。</p>
+      </div>
+      <div class="mrow">
+        <p class="mrow__k">事業者への意味</p>
+        <p class="mrow__v">検討が進めば、<b>現場の運用（名乗り方・記録の残し方・再訪のルール）を見直す必要</b>が出てきます。現時点で体制を整えておくことが、改正後の対応コストを抑えることにつながります。</p>
+      </div>
+    </div>
+    <p class="note">出典：消費者庁「デジタル取引・特定商取引法等検討会」中間取りまとめ（令和8年9月10日公表）および同検討会の公表資料</p>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>5</span></div>
+</section>
+
+<!-- ============ 6. 市場背景②：行政処分のリスク ============ -->
+<!-- 件数は入れていない。一次資料（消費者庁 執行状況）を開けなかったため、
+     検証できない数字は載せない方針。件数を入れる場合は
+     https://www.no-trouble.caa.go.jp/action/ の数字を確認して追記すること。 -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　行政処分のリスク</span>
+    <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
+  <div class="body">
+    <p class="lead">行政処分は、<em>法人だけでなく役員個人にも及びます。</em></p>
+    <div class="mrows">
+      <div class="mrow">
+        <p class="mrow__k">業務停止命令<span>特定商取引法</span></p>
+        <p class="mrow__v">一定期間、<b>訪問販売に関する業務の全部または一部が停止</b>されます。停止のあいだ、その業務での売上は立ちません。</p>
+      </div>
+      <div class="mrow mrow--hot">
+        <p class="mrow__k">業務禁止命令<span>役員個人が対象になり得る</span></p>
+        <p class="mrow__v">法人への処分とあわせて、<b>その法人の役員個人に対して、同種の業務を新たに始めることを禁じる命令</b>が出されることがあります。会社を替えても続く点が、法人への処分と大きく違います。</p>
+      </div>
+      <div class="mrow mrow--hot">
+        <p class="mrow__k">公表</p>
+        <p class="mrow__v">処分を行った消費者庁・経済産業局・都道府県は、<b>事業者名と処分内容を公表</b>します。公表された情報は検索で残り続けます。</p>
+      </div>
+      <div class="mrow">
+        <p class="mrow__k">指示</p>
+        <p class="mrow__v">停止までは至らない場合でも、<b>業務の運営方法の改善を指示</b>されることがあります。指示に従わない場合は、さらに重い処分の対象になります。</p>
+      </div>
+    </div>
+    <p class="note">処分の権限は消費者庁・地方経済産業局・都道府県にあります。処分事例は消費者庁「特定商取引法ガイド」の執行状況で公表されています。</p>
+  </div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>6</span></div>
+</section>
+
+<!-- ============ 7. 市場背景③：相談の実態 ============ -->
+<section class="slide">
+  <div class="head"><span class="head__mark"></span><span class="head__title">市場背景　―　相談の実態</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
   <div class="body">
     <p class="lead">訪問販売のトラブルは、<em>決して他人事ではありません。</em></p>
@@ -525,35 +626,46 @@
     <div class="warn"><svg><use href="#i-warning"/></svg>
       <p>件数は高止まりしており、相談が重なることで<b>行政対応</b>に発展するリスクが高まっています。</p></div>
   </div>
-  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>5</span></div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>7</span></div>
 </section>
 
-<!-- ============ 6. 課題提起 ============ -->
+<!-- ============ 8. 課題提起 ============ -->
 <section class="slide">
   <div class="head"><span class="head__mark"></span><span class="head__title">課題提起</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
   <div class="body body--spread">
     <p class="lead">訪問販売の消費者対応に、<em>こんなリスクを抱えていませんか？</em></p>
-    <div class="cards4">
-      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-clock"/></svg></span>
-        <div class="pcard__box"><h3 class="pcard__title">営業時間外に<br>対応できない</h3>
-          <p class="pcard__note">休日の解約相談などに<br>すぐ対応できない</p></div></div>
-      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-hourglass"/></svg></span>
-        <div class="pcard__box"><h3 class="pcard__title">対応が<br>長期化する</h3>
-          <p class="pcard__note">クレーム対応が長引き<br>社員の時間と負担が増える</p></div></div>
-      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-chat"/></svg></span>
-        <div class="pcard__box"><h3 class="pcard__title">消費者センター<br>への相談</h3>
-          <p class="pcard__note">小さな行き違いから<br>外部への相談につながることも</p></div></div>
-      <div class="pcard"><span class="pcard__icon"><svg><use href="#i-gov"/></svg></span>
-        <div class="pcard__box"><h3 class="pcard__title">行政対応<br>へ発展</h3>
-          <p class="pcard__note">相談が重なることで<br>行政対応へ発展する可能性も</p></div></div>
+    <div class="risks">
+      <div class="risk">
+        <span class="risk__ic"><svg><use href="#i-clock"/></svg></span>
+        <p class="risk__t">営業時間外に対応できない</p>
+        <p class="risk__x">休日の解約のご連絡などに、その場ですぐ対応できません。</p>
+      </div>
+      <div class="risk">
+        <span class="risk__ic"><svg><use href="#i-hourglass"/></svg></span>
+        <p class="risk__t">対応が長期化する</p>
+        <p class="risk__x">クレーム対応が長引き、社員の時間と負担が増えていきます。</p>
+      </div>
+      <div class="risk">
+        <span class="risk__ic"><svg><use href="#i-chat"/></svg></span>
+        <p class="risk__t">消費者センターへの相談</p>
+        <p class="risk__x">小さな行き違いから、外部への相談につながることもあります。</p>
+      </div>
+      <div class="risk">
+        <span class="risk__ic"><svg><use href="#i-gov"/></svg></span>
+        <p class="risk__t">行政対応へ発展</p>
+        <p class="risk__x">相談が重なることで、行政対応へ発展する可能性もあります。</p>
+      </div>
     </div>
-    <p class="band">こうした「守り」を、外部の専門機関にお任せいただくという選択肢を、私たちはご提案しています。</p>
+    <div class="sumline">
+      <span class="sumline__ic"><svg><use href="#i-shield"/></svg></span>
+      <p>こうした「守り」を、<b>外部の専門機関にお任せいただく</b>という選択肢を、私たちはご提案しています。</p>
+    </div>
   </div>
-  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>6</span></div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>8</span></div>
 </section>
 
-<!-- ============ 7. サービス概要 ============ -->
+<!-- ============ 9. サービス概要 ============ -->
 <section class="slide">
   <div class="head"><span class="head__mark"></span><span class="head__title">サービス概要</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
@@ -589,10 +701,10 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>7</span></div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>9</span></div>
 </section>
 
-<!-- ============ 8. 専門家体制とサポートプログラム ============ -->
+<!-- ============ 10. 専門家体制とサポートプログラム ============ -->
 <section class="slide">
   <div class="head"><span class="head__mark"></span><span class="head__title">専門家体制とサポートプログラム</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
@@ -612,10 +724,10 @@
         <p class="prog__x">現場の営業担当者様が、最新の法規制を学べる任意参加の講座です。</p></div>
     </div>
   </div>
-  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>8</span></div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>10</span></div>
 </section>
 
-<!-- ============ 9. 活用事例 ============ -->
+<!-- ============ 11. 活用事例 ============ -->
 <!-- 掲載内容はすべてダミーです。サイト（index.html）の「加盟店の声」と同じ扱い。
      実在する加盟店の声に差し替えるまで、対外配布の前に確認すること。 -->
 <section class="slide">
@@ -644,10 +756,10 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>9</span></div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>11</span></div>
 </section>
 
-<!-- ============ 10. 加盟店のメリット ============ -->
+<!-- ============ 12. 加盟店のメリット ============ -->
 <section class="slide">
   <div class="head"><span class="head__mark"></span><span class="head__title">加盟店のメリット</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
@@ -682,10 +794,10 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>10</span></div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>12</span></div>
 </section>
 
-<!-- ============ 11. 料金体系と加盟の流れ ============ -->
+<!-- ============ 13. 料金体系と加盟の流れ ============ -->
 <section class="slide">
   <div class="head"><span class="head__mark"></span><span class="head__title">料金体系と加盟の流れ</span>
     <span class="head__logo"><img src="../../assets/images/LOGO.png" alt=""></span></div>
@@ -710,19 +822,14 @@
       </div>
     </div>
   </div>
-  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>11</span></div>
+  <div class="foot"><span>© 2026 JSOA All Rights Reserved.</span><span>13</span></div>
 </section>
 
-<!-- ============ 12. お問い合わせ ============ -->
+<!-- ============ 14. お問い合わせ ============ -->
 <section class="slide contact">
   <div class="contact__inner">
     <p class="contact__msg"><span>業界の健全な発展を、ともに目指す加盟店を募集しています。</span><br><br><span>まずはお気軽にご連絡ください。</span></p>
     <div class="contact__grid">
-      <div class="contact__card contact__card--a">
-        <p class="contact__t">個別説明会のご予約</p>
-        <div class="contact__qr"><img src="img/qr-reserve.png" alt=""></div>
-        <p class="contact__u">https://jsoa.net/reserve/</p>
-      </div>
       <div class="contact__card contact__card--b">
         <p class="contact__t">協会サイト</p>
         <div class="contact__qr"><img src="img/qr-site.png" alt=""></div>

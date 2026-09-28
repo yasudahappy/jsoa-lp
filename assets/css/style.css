@@ -192,16 +192,15 @@ body{
 .problems{padding-top:min(7.8vw,112px);padding-bottom:min(3.1vw,44px)}
 .flowsec{padding-top:min(3.1vw,45px);padding-bottom:min(4.9vw,70px)}
 .merits{padding-top:min(4.9vw,71px);padding-bottom:min(3.9vw,56px)}
-.compare{padding-top:min(3.96vw,57px);padding-bottom:min(1.88vw,27px)}
-/* 加盟店の声（現在 index.html 側でコメントアウト中）。
-   表示するときは .compare の padding-bottom を 56px / 40px に広げ、
-   CTA帯をこのセクションの末尾へ移すこと */
+.compare{padding-top:min(3.96vw,57px);padding-bottom:min(3.9vw,56px)}
+/* 加盟店の声。CTA帯をこのセクションの末尾に置いているので、下の余白は詰める。
+   CTA帯が比較セクションから抜けたぶん、.compare の padding-bottom を広げている */
 .voices{padding-top:min(4.2vw,60px);padding-bottom:min(1.88vw,27px)}
 @media (max-width:767px){
   .problems{padding-top:46px;padding-bottom:19px}
   .flowsec{padding-top:19px;padding-bottom:30px}
   .merits{padding-top:48px;padding-bottom:48px}
-  .compare{padding-top:45px;padding-bottom:14px}
+  .compare{padding-top:45px;padding-bottom:40px}
   .voices{padding-top:44px;padding-bottom:14px}
 }
 

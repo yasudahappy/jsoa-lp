@@ -279,7 +279,7 @@
 
         <!-- 消費者 → JSOA / JSOA → 消費者 -->
         <line x1="1116" y1="122" x2="742" y2="427" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
-        <text class="tri-label" x="938" y="268" text-anchor="end">JSOAへお申し出</text>
+        <text class="tri-label" x="908" y="268" text-anchor="end">JSOAへお申し出</text>
         <line x1="800" y1="440" x2="1157" y2="126" stroke="#000" stroke-width="2" marker-end="url(#ah)"/>
         <text class="tri-label" x="990" y="298">第三者として対応</text>
 
@@ -300,7 +300,14 @@
 
            ラベルは三角形の内側に置いている（外側には幅がない）。
            それぞれ対応する辺のすぐ内側に寄せて、どの矢印の説明かが
-           分かるようにしている。 -->
+           分かるようにしている。
+
+           置ける高さは限られる。三角形の内側の幅は下にいくほど狭くなり、
+           上下の中央では上辺の半分（約153）しかない。左右のラベルは
+           合わせて約162必要なので、中央付近には並べられない。
+           そのため上から1/4あたり（内側の幅 約216）に左右を並べ、
+           2行の左ラベルと1行の右ラベルの上下中心を揃えている。
+           文言を長くするときは、ここが破綻しないか確認すること。 -->
       <svg class="trisp sp-only" viewBox="0 0 354 272" role="img" aria-labelledby="triSpTitle">
         <title id="triSpTitle">企業から消費者へJSOAを案内し、消費者はJSOAへ相談、JSOAは必要に応じて企業と連携する関係図</title>
         <defs>
@@ -319,12 +326,12 @@
 
         <!-- 消費者 → JSOA -->
         <line x1="330" y1="62" x2="218" y2="232" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
-        <text class="trisp-label" x="264" y="145" text-anchor="end">JSOAへお申し出</text>
+        <text class="trisp-label" x="284" y="113" text-anchor="end">JSOAへお申し出</text>
 
         <!-- JSOA → 企業 -->
         <line x1="136" y1="232" x2="24" y2="62" stroke="#000" stroke-width="1.8" marker-end="url(#ahsp)"/>
-        <text class="trisp-label" x="96" y="136">必要に応じて</text>
-        <text class="trisp-label" x="96" y="154">企業に連携</text>
+        <text class="trisp-label" x="76" y="104">必要に応じて</text>
+        <text class="trisp-label" x="76" y="122">企業に連携</text>
       </svg>
 
       <p class="flowsec__text">企業様から消費者へJSOAを第三者の受付窓口としてご<br>案内いただきます。<br>消費者からのお申し出をJSOAが受け付け、<br>内容を記録して企業様へお伝えします。</p>
@@ -443,7 +450,7 @@
   <section class="section voices">
     <div class="container">
       <h2 class="h2">加盟店の声</h2>
-      <p class="section__lead">第三者の受付窓口を、現場でどのように活用いただいているか</p>
+      <p class="section__lead">第三者の受付窓口を、<br class="sp-only">現場でどのように活用いただいているか</p>
 
       <ul class="vcards">
         <li class="vcard">

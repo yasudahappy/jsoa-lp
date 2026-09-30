@@ -35,6 +35,11 @@
      .ico-gap はサイトの style.css にあるルールで、スプライトと一緒に必要 */
   .card__icon,.pcard__icon,.svc__icon,.stat__icon,.flow__ic,.chart__title svg,.warn svg{display:block}
   .ico-gap{fill:none;stroke:var(--icon-gap,#fff)}
+  /* 専門家3枠のイラスト。2色で描き分けるためのクラス */
+  .ill-bg{fill:#e4efe7}
+  .ill-a{fill:var(--g)}
+  .ill-b{fill:#8dc63f}
+  .ill-w{fill:#fff}
 
   /* ---------- スライドの器 ---------- */
   .slide{position:relative;width:297mm;height:210mm;overflow:hidden;
@@ -72,6 +77,15 @@
     letter-spacing:.1em;line-height:1.15}
   .cover__rule{margin-top:8mm;width:46mm;height:1.2mm;background:var(--g);border-radius:1mm}
   .cover__meta{margin-top:9mm;font-size:11pt;color:var(--muted);line-height:2}
+
+  /* 表紙：右半分に写真（サイトのヒーローと同じ画像） */
+  .cover{flex-direction:row;padding:0;align-items:stretch}
+  .cover__l{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 20mm;position:relative}
+  .cover__r{width:128mm;flex:none;position:relative;overflow:hidden}
+  .cover__r img{width:100%;height:100%;object-fit:cover;object-position:28% center;display:block}
+  .cover__r::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(228,239,231,1) 0%,rgba(228,239,231,0) 9%)}
+  .cover__logo{top:12mm;left:20mm;right:auto}
   .cover__band{position:absolute;left:0;right:0;bottom:0;height:5mm;
     background:linear-gradient(90deg,var(--g-dark),var(--g) 60%,var(--g-jsoa))}
 
@@ -247,7 +261,7 @@
   .expert{border:.4mm solid var(--g);border-radius:4mm;padding:8mm 4mm;background:#fff;
     min-height:54mm;display:flex;flex-direction:column;align-items:center;justify-content:center;
     gap:4mm;text-align:center}
-  .expert__ic{width:15mm;height:15mm;color:var(--g);display:block}
+  .expert__ic{width:21mm;height:21mm;color:var(--g);display:block}
   .expert__ic svg{width:100%;height:100%}
   .expert b{font-size:13pt;font-weight:700;color:var(--g-dark)}
   .expert div span{display:block;margin-top:2mm;font-size:9pt;color:var(--muted);line-height:1.6}
@@ -435,6 +449,34 @@
   <symbol id="i-arrow" viewBox="0 0 48 48">
     <path d="M8 24h30m-9-10 10 10-10 10" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
+
+  <!-- 専門家3枠のイラスト。警察は旭日章を模さず制帽、弁護士は法槌にしている -->
+  <symbol id="i-ill-gov" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="32" class="ill-bg"/>
+    <path d="M32 15 51 26H13Z" class="ill-a"/>
+    <rect x="16" y="30" width="5.5" height="14" class="ill-a"/>
+    <rect x="24.5" y="30" width="5.5" height="14" class="ill-a"/>
+    <rect x="33" y="30" width="5.5" height="14" class="ill-a"/>
+    <rect x="41.5" y="30" width="5.5" height="14" class="ill-a"/>
+    <rect x="14" y="44" width="36" height="3.6" class="ill-a"/>
+    <rect x="11" y="48.6" width="42" height="4" rx="2" class="ill-b"/>
+  </symbol>
+  <symbol id="i-ill-police" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="32" class="ill-bg"/>
+    <path d="M17 33v-6q0-9 15-9t15 9v6Z" class="ill-a"/>
+    <rect x="15" y="33" width="34" height="5.6" rx="1.4" class="ill-a"/>
+    <path d="M20.5 38.6h23q0 6-11.5 6t-11.5-6Z" class="ill-a"/>
+    <path d="M32 21 36.6 23v3.9q0 3.9-4.6 5.7-4.6-1.8-4.6-5.7V23Z" class="ill-b"/>
+  </symbol>
+  <symbol id="i-ill-law" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="32" class="ill-bg"/>
+    <g transform="rotate(-35 32 29)">
+      <rect x="19" y="16.5" width="26" height="10" rx="3.2" class="ill-a"/>
+      <rect x="29.4" y="26.6" width="5.2" height="18" rx="2.6" class="ill-a"/>
+      <rect x="26.6" y="26.2" width="10.8" height="2.2" class="ill-w"/>
+    </g>
+    <rect x="15" y="46" width="34" height="5.2" rx="2.6" class="ill-b"/>
+  </symbol>
   <symbol id="i-chevron" viewBox="0 0 48 48">
     <path d="M19 12l14 12-14 12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
@@ -442,13 +484,15 @@
 
 <!-- ============ 1. 表紙 ============ -->
 <section class="slide cover">
-  <div class="cover__logo"><img src="../../assets/images/LOGO.png" alt=""></div>
-  <div class="cover__inner">
+  <div class="cover__l">
+    <div class="cover__logo"><img src="../../assets/images/LOGO.png" alt=""></div>
     <p class="cover__to">XXXX株式会社　御中</p>
-    <h1 class="cover__title">加盟店ご案内資料</h1>
+    <h1 class="cover__title">加盟店<br>ご案内資料</h1>
     <div class="cover__rule"></div>
     <p class="cover__meta">2026/00/00<br>一般社団法人 訪問販売適正化推進協会（JSOA）</p>
   </div>
+  <!-- サイト（index.html）のヒーローと同じ写真。差し替えるときは両方を見ること -->
+  <div class="cover__r"><img src="../../assets/images/hero-main.jpg" alt=""></div>
   <div class="cover__band"></div>
 </section>
 
@@ -739,9 +783,9 @@
   <div class="body body--spread">
     <p class="lead">法務・行政・営業分野の専門家が連携し、<em>受付体制とリスク対策</em>を支えます。</p>
     <div class="experts">
-      <div class="expert"><span class="expert__ic"><svg><use href="#i-gov"/></svg></span><div><b>消費者庁OB</b><span>特商法・行政処分の基準を監修</span></div></div>
-      <div class="expert"><span class="expert__ic"><svg><use href="#i-shield"/></svg></span><div><b>警察OB</b><span>悪質トラブル対応を指導</span></div></div>
-      <div class="expert"><span class="expert__ic"><svg><use href="#i-person"/></svg></span><div><b>提携弁護士</b><span>法的な対応が必要な案件を担当</span></div></div>
+      <div class="expert"><span class="expert__ic"><svg><use href="#i-ill-gov"/></svg></span><div><b>消費者庁OB</b><span>特商法・行政処分の基準を監修</span></div></div>
+      <div class="expert"><span class="expert__ic"><svg><use href="#i-ill-police"/></svg></span><div><b>警察OB</b><span>悪質トラブル対応を指導</span></div></div>
+      <div class="expert"><span class="expert__ic"><svg><use href="#i-ill-law"/></svg></span><div><b>提携弁護士</b><span>法的な対応が必要な案件を担当</span></div></div>
     </div>
     <p class="escal">一次対応の中で法的な紛争に発展する可能性が確認された場合は、提携弁護士へ速やかにエスカレーションいたします。</p>
     <p class="subhead">サポート体制</p>

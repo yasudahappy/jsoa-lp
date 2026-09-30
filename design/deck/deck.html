@@ -33,7 +33,7 @@
   svg{display:block}
   /* アイコン用の span は inline のままだと width/height が効かない。
      .ico-gap はサイトの style.css にあるルールで、スプライトと一緒に必要 */
-  .card__icon,.pcard__icon,.svc__icon,.stat__icon,.flow__ic,.chart__title svg,.warn svg{display:block}
+  .card__icon,.pcard__icon,.stat__icon,.flow__ic,.chart__title svg,.warn svg{display:block}
   .ico-gap{fill:none;stroke:var(--icon-gap,#fff)}
   /* 専門家3枠のイラスト。2色で描き分けるためのクラス */
   .ill-bg{fill:#e4efe7}
@@ -232,15 +232,15 @@
 
   /* ---------- 7. サービス概要 ---------- */
   .svc{margin-top:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
-  .svc__item{min-height:64mm;border:.3mm solid var(--line);border-radius:2mm;overflow:hidden;display:flex;flex-direction:column}
+  .svc__item{min-height:78mm;border:.3mm solid var(--line);border-radius:2mm;overflow:hidden;display:flex;flex-direction:column}
   .svc__head{background:linear-gradient(120deg,#2e8b4c,#1a7c32);color:#fff;
     padding:3.5mm 4mm;font-size:11pt;font-weight:700;line-height:1.35;
     display:flex;align-items:center;justify-content:space-between;gap:3mm;min-height:16mm}
   .svc__no{font-size:20pt;font-weight:700;opacity:.4;line-height:1}
-  .svc__body{flex:1;padding:7mm 4mm;display:flex;flex-direction:column;align-items:center;
-    text-align:center;gap:3mm}
-  .svc__icon{width:12mm;height:12mm;color:var(--g-icon)}
-  .svc__icon svg{width:100%;height:100%}
+  .svc__photo{width:100%;height:36mm;overflow:hidden;background:var(--pale)}
+  .svc__photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .svc__body{flex:1;padding:6mm 5mm;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center}
   .svc__text{font-size:10pt;font-weight:500;line-height:1.7;color:var(--ink)}
 
   .steps{margin-top:11mm;margin-bottom:auto}
@@ -746,17 +746,20 @@
     <div class="svc">
       <div class="svc__item">
         <div class="svc__head"><span>解約のお申し出の<br>一次受付と通知</span><span class="svc__no">1</span></div>
-        <div class="svc__body"><span class="svc__icon"><svg><use href="#i-headset"/></svg></span>
+        <div class="svc__photo"><img src="img/ph-svc1.jpg" alt=""></div>
+        <div class="svc__body">
           <p class="svc__text">解約に関するお申し出は、<br>当協会が一次受付いたします。</p></div>
       </div>
       <div class="svc__item">
         <div class="svc__head"><span>顧問陣による<br>法務・行政連携</span><span class="svc__no">2</span></div>
-        <div class="svc__body"><span class="svc__icon"><svg><use href="#i-person"/></svg></span>
+        <div class="svc__photo"><img src="img/ph-svc2.jpg" alt=""></div>
+        <div class="svc__body">
           <p class="svc__text">法務・行政・営業分野の専門家が<br>連携し対応します。</p></div>
       </div>
       <div class="svc__item">
         <div class="svc__head"><span>改善支援</span><span class="svc__no">3</span></div>
-        <div class="svc__body"><span class="svc__icon"><svg><use href="#i-chartup"/></svg></span>
+        <div class="svc__photo"><img src="img/ph-svc3.jpg" alt=""></div>
+        <div class="svc__body">
           <p class="svc__text">レポートとセミナーで、<br>現場の改善を後押しします。</p></div>
       </div>
     </div>

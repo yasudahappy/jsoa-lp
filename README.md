@@ -470,12 +470,13 @@ design/deck/JSOA-加盟店ご案内資料.pdf   成果物
 | お問い合わせ | `jsoa.co.jp` → `jsoa.net`、フォーム → 個別説明会の予約ページ | URLが誤り。また消費者と事業者で問い合わせ先を分ける必要がある（法務チェック1-1） |
 | 事例の見出し | 「事例1」が2つ → 構成ごと差し替えで解消 | 誤記 |
 
-**サービス概要（P9）の写真は3枚のうち2枚入っています。**
-①受付は `design/deck/img/svc-reception.jpg`、③セミナーは `svc-seminar.jpg`（いずれも支給）。
-**②打ち合わせ `ph-svc2.jpg` だけが「写真が入ります」と書かれたグレーの板のままです。
-この状態で配布しないでください。**
-必要なのは**横長（3:2）**。差し替えたら `node design/deck/build.js` を実行します。
-写真の寄りは `.svc__photo img` の `object-position` で調整しています。
+**サービス概要（P9）の写真3枚はすべて支給データです。**
+`design/deck/img/` の `svc-reception.jpg`（①受付）／`svc-advisor.jpg`（②顧問）／
+`svc-seminar.jpg`（③セミナー）。いずれも横長（3:2）。仮画像は残っていません。
+差し替えたら `node design/deck/build.js` を実行します。
+帯の高さに対して元画像が縦長なので、寄りは `.svc__photo img` の `object-position`
+（既定は center 20%）で調整しています。③だけ被写体が上に寄っているため、
+img のインラインで center 8% を指定しています。
 
 **表紙の写真は `assets/images/hero-main.jpg`** で、サイトのヒーローと同じ画像です。
 資料とサイトを並べたときに一体で見えるように共有しています。**差し替えるときは

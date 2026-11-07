@@ -144,6 +144,30 @@ body{
   .btn--lg{font-size:min(1.299vw,18.7px);padding:min(1.32vw,19px) min(2.4vw,35px);border-radius:5px}
 }
 
+/* オンライン加盟申込（https://app.jsoa.net/apply）への導線。
+   既存の「資料請求・お問い合わせ」（data-cta）とは別のボタンとして並べる */
+.hero__ctas{display:flex;flex-wrap:wrap;gap:10px}
+.hero__cta--apply{background:var(--green)}
+.hero__note{font-size:12px;line-height:1.5}
+.btn--apply{background:var(--green-hero-btn)}
+.ctaband__btns{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.nav__apply{padding:8px 14px;color:var(--white)}
+.nav__list a.nav__apply:hover{color:var(--white)}
+@media (max-width:767px){
+  .hero__ctas{flex-direction:column;align-items:stretch;margin-top:32px}
+  .hero__ctas .hero__cta{margin-top:0}
+  .hero__note{margin-top:8px;margin-bottom:20px;font-size:11px}
+  .ctaband__btns{margin-top:7px;flex-direction:column;align-items:center;gap:6px}
+  .ctaband .ctaband__btns .btn{margin-top:0}
+}
+@media (min-width:768px){
+  .hero__ctas{margin-top:min(2.43vw,35px);gap:min(1.1vw,16px)}
+  .hero__ctas .hero__cta{margin-top:0}
+  .hero__note{margin-top:min(.8vw,12px);font-size:min(1.0vw,14px);color:var(--text-muted)}
+  .ctaband__btns{flex:none;gap:min(1.1vw,16px)}
+  .ctaband .ctaband__btns .btn{margin-top:0}
+}
+
 /* ---------- 5. Header（PCのみ / Figma: 高さ80px） ---------- */
 .header{background:var(--white)}
 .header__inner{max-width:calc(var(--container) + var(--gutter)*2);margin-inline:auto;
